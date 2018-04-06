@@ -75,6 +75,9 @@
     <Filter Include="src\TextureGeneration">
       <UniqueIdentifier>{a892b72d-74fc-4653-9af2-c3e486e92fdf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\data">
+      <UniqueIdentifier>{9dc165a8-19e9-4db1-8b6b-22d74387699f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
@@ -140,5 +143,55 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\data\blend.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\blurX.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\blurY.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\circle2d.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\circle2d.vert">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\perlin.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\shader.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\shader.vert">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\shaderPerlinZ.vert">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\stripes.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\waveMeshAdv.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\waveMeshAdv.vert">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\waveMeshOverlay.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\waveMeshOverlay.vert">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\waveMeshTexture.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\waveMeshTexture.vert">
+      <Filter>src\data</Filter>
+    </None>
   </ItemGroup>
 </Project>

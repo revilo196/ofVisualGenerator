@@ -223,6 +223,24 @@
       <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\data\blend.frag" />
+    <None Include="bin\data\blurX.frag" />
+    <None Include="bin\data\blurY.frag" />
+    <None Include="bin\data\circle2d.frag" />
+    <None Include="bin\data\circle2d.vert" />
+    <None Include="bin\data\perlin.frag" />
+    <None Include="bin\data\shader.frag" />
+    <None Include="bin\data\shader.vert" />
+    <None Include="bin\data\shaderPerlinZ.vert" />
+    <None Include="bin\data\stripes.frag" />
+    <None Include="bin\data\waveMeshAdv.frag" />
+    <None Include="bin\data\waveMeshAdv.vert" />
+    <None Include="bin\data\waveMeshOverlay.frag" />
+    <None Include="bin\data\waveMeshOverlay.vert" />
+    <None Include="bin\data\waveMeshTexture.frag" />
+    <None Include="bin\data\waveMeshTexture.vert" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>
     <VisualStudio>
