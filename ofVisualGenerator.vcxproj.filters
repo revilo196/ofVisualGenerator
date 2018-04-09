@@ -76,6 +76,12 @@
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp">
       <Filter>addons\ofxAnimatable\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\CircleGrow.cpp">
+      <Filter>src\TextureGeneration</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SphereGrow.cpp">
+      <Filter>src\TextureGeneration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -181,6 +187,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h">
       <Filter>addons\ofxAnimatable\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CircleGrow.h">
+      <Filter>src\TextureGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SphereGrow.h">
+      <Filter>src\TextureGeneration</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

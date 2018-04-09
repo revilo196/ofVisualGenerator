@@ -33,7 +33,7 @@ protected:
 		float cy = getHeight() / 2;
 		float cx = getWidth() / 2;
 		ofTranslate(cx, cy);
-		ofScale(cx, -cy, (cx + cy) / 2);
+		ofScale(cy, -cy, cy);
 	}
 
 private:

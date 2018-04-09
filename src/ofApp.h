@@ -6,6 +6,8 @@
 #include "SimpleStripes.h"
 #include "StripeSpiral.h"
 #include "StripeCubes.h"
+#include "CircleGrow.h"
+#include "SphereGrow.h"
 
 class ofApp : public ofBaseApp{
 
@@ -26,7 +28,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		StripeCubes texture;
+		SphereGrow texture;
 	//	SimpleStripes overlay;
 		ofxPanel gui;
 };

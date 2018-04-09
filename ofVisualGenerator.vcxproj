@@ -177,10 +177,12 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp" />
+    <ClCompile Include="src\CircleGrow.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\SimpleDots.cpp" />
     <ClCompile Include="src\SimpleStripes.cpp" />
+    <ClCompile Include="src\SphereGrow.cpp" />
     <ClCompile Include="src\StripeCubes.cpp" />
     <ClCompile Include="src\StripeSpiral.cpp" />
     <ClCompile Include="src\VjObject.cpp" />
@@ -202,10 +204,12 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.h" />
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.h" />
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h" />
+    <ClInclude Include="src\CircleGrow.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Overlay.h" />
     <ClInclude Include="src\SimpleDots.h" />
     <ClInclude Include="src\SimpleStripes.h" />
+    <ClInclude Include="src\SphereGrow.h" />
     <ClInclude Include="src\StripeCubes.h" />
     <ClInclude Include="src\StripeSpiral.h" />
     <ClInclude Include="src\TextureGen.h" />
