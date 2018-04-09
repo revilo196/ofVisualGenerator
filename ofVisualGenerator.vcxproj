@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -176,6 +176,7 @@
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\SimpleDots.cpp" />
     <ClCompile Include="src\SimpleStripes.cpp" />
+    <ClCompile Include="src\StripeCubes.cpp" />
     <ClCompile Include="src\StripeSpiral.cpp" />
     <ClCompile Include="src\VjObject.cpp" />
     <ClCompile Include="src\WaveMeshAdvTex.cpp" />
@@ -195,6 +196,7 @@
     <ClInclude Include="src\Overlay.h" />
     <ClInclude Include="src\SimpleDots.h" />
     <ClInclude Include="src\SimpleStripes.h" />
+    <ClInclude Include="src\StripeCubes.h" />
     <ClInclude Include="src\StripeSpiral.h" />
     <ClInclude Include="src\TextureGen.h" />
     <ClInclude Include="src\VjObject.h" />

@@ -58,6 +58,9 @@
     <ClCompile Include="src\WaveMeshTexture.cpp">
       <Filter>src\TextureGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\StripeCubes.cpp">
+      <Filter>src\TextureGeneration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -138,6 +141,9 @@
       <Filter>src\TextureGeneration</Filter>
     </ClInclude>
     <ClInclude Include="src\WaveMeshTexture.h">
+      <Filter>src\TextureGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StripeCubes.h">
       <Filter>src\TextureGeneration</Filter>
     </ClInclude>
   </ItemGroup>

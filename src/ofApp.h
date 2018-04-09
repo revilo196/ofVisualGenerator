@@ -5,6 +5,7 @@
 #include "WaveMeshAdvTex.h"
 #include "SimpleStripes.h"
 #include "StripeSpiral.h"
+#include "StripeCubes.h"
 
 class ofApp : public ofBaseApp{
 
@@ -25,7 +26,7 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 		
-		StripeSpiral texture;
+		StripeCubes texture;
 	//	SimpleStripes overlay;
 		ofxPanel gui;
 };

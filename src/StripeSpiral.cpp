@@ -87,10 +87,7 @@ void StripeSpiral::render()
 	fbo.begin();
 	ofClear(0, 0, 0, 255);
 
-	ofTranslate(cx, cy);
-	ofScale(cx, -cy, (cx + cy) / 2);
-	ofTranslate(0.0, 0.0);
-	
+	translateMidFlipScale();
 
 	shader.begin();
 	glEnable(GL_DEPTH_TEST);

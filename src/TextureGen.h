@@ -20,7 +20,22 @@ public:
 	virtual float getHeight() const override { return height; }
 	virtual float getWidth() const override { return width; }
 	virtual ofTexture& getTextureRef() = 0;
-	
+
+protected:
+	virtual void translateMid() {
+		float cy = getHeight() / 2;
+		float cx = getWidth() / 2;
+
+		ofTranslate(cx, cy);
+	}
+
+	virtual void translateMidFlipScale() {
+		float cy = getHeight() / 2;
+		float cx = getWidth() / 2;
+		ofTranslate(cx, cy);
+		ofScale(cx, -cy, (cx + cy) / 2);
+	}
+
 private:
 	TextureGen();
 	float width;
