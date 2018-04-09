@@ -40,7 +40,7 @@ void SimpleStripes::update()
 	lasttime = ofGetElapsedTimef();
 
 	time += deltatime * (speed);
-
+	
 	shader.begin();
 
 	shader.setUniform1i("fullscreen", 1);

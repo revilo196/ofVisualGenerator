@@ -1,5 +1,7 @@
 #pragma once
 #include "TextureGen.h"
+#include "ofxAnimatableFloat.h"
+
 class StripeCubes :
 	public TextureGen
 {
@@ -22,6 +24,8 @@ private:
 	float deltatime;
 	float lasttime;
 	float time;
+	float time_stripes;
+
 
 	ofShader shader;
 	ofFbo fbo;
@@ -30,7 +34,13 @@ private:
 	vector<float> speeds;
 	
 	ofParameter<float> speed;
+	ofParameter<float> speedStripes;
+	ofParameter<float> thikStripes;
+	ofParameter<float> tiltStripes;
 	ofParameter<float> addSpeed = 0.5;
+	ofParameter<bool> out = false;
+
+	ofxAnimatableFloat radius;
 
 };
 
