@@ -48,7 +48,7 @@ void ofApp::update(){
 	//texture.update();
 	//overlay.setTextureIn(texture.getTextureRef());
 
-
+	cout << ofGetElapsedTimef() << endl;
 
 	//overlay.update();
 

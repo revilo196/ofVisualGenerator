@@ -18,8 +18,8 @@ public:
 
 private:
 	ofFbo fbo;
-	float lasttime;
-	float time;
+	float lasttime = 0;
+	float time = 0;
 	int main_size = 20;
 
 	float randArray[RANDARR];

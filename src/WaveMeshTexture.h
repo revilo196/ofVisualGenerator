@@ -31,7 +31,7 @@ private:
 	
 	ofPlanePrimitive plane;
 	void render();
-	float lasttime;
+	float lasttime = 0;
 	ofVec3f time;
 	ofFbo fbo;
 	ofParameter<RenderMode> renderMode = RM_WIRE;

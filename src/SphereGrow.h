@@ -22,7 +22,7 @@ private:
 	float rmsTime = 0;
 	static const size_t sphereCount = 10;
 	vector <ofIcoSpherePrimitive> sphere;
-	float phase;
+	float phase = 0;
 	ofParameter<float> grow = 0.3f;
 	ofParameter<float> size = 0.1;
 	ofShader shader;
