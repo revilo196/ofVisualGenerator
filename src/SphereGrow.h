@@ -1,5 +1,5 @@
 #pragma once
-#include "e:\Oliver\Documents\openFramework\apps\myApps\ofVisualGenerator\src\TextureGen.h"
+#include "TextureGen.h"
 class SphereGrow :
 	public TextureGen
 {
@@ -20,7 +20,7 @@ private:
 
 	float lasttime = 0;
 	float rmsTime = 0;
-	static const UINT sphereCount = 10;
+	static const size_t sphereCount = 10;
 	vector <ofIcoSpherePrimitive> sphere;
 	float phase;
 	ofParameter<float> grow = 0.3f;

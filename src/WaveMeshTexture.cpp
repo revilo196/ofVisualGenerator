@@ -32,7 +32,9 @@ void WaveMeshTexture::setup(float width, float height)
 
 	shader.load("waveMeshTexture");
 
-
+	plane.set(width * 2, height * 4);
+	plane.setPosition(0, 0, 0);
+	plane.setResolution(res, res * 2);
 }
 
 ofTexture & WaveMeshTexture::getTextureRef()
@@ -49,7 +51,7 @@ void WaveMeshTexture::update()
 	time[0] += deltatime * speedLeft.get()*0.1;
 	time[1] += deltatime * speedFront.get()*0.1;
 	time[2] += deltatime * speedZ.get() * 0.01;
-	
+
 	render();
 }
 
@@ -61,11 +63,12 @@ void WaveMeshTexture::render()
 	fbo.begin();
 	ofClear(0, 0, 0, 255);
 	shader.begin();
-
-	ofTranslate(cx, cy - 250, -100);
+	ofSetColor(255,255,255);
+  ofTranslate(cx, cy - 250, -100);
 	ofRotateX(60);
 	ofRotateZ(rotateZ);
 	ofTranslate(0,-cy, -30);
+
 
 	shader.setUniform3f("offset", time[0], time[1], time[2]);
 	shader.setUniform1f("amp", amplitude);
@@ -78,8 +81,8 @@ void WaveMeshTexture::render()
 	else {
 		plane.draw();
 	}
-
 	shader.end();
+
 	fbo.end();
 }
 
