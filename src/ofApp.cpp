@@ -1,12 +1,13 @@
 #include "ofApp.h"
 #include "VjObject.h"
-
+#include "ParticleGrowTexture.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 
 
 	textures.push_back(new StripeSpiral("Layer01a"));
+	textures.push_back(new ParticleGrowTexture("Layer01a"));
 	textures.push_back(new CircleGrow("Layer01b"));
 	textures.push_back(new SimpleDots("Layer01c"));
 	textures.push_back(new SimpleStripes("Layer01d"));
@@ -48,7 +49,6 @@ void ofApp::update(){
 	//texture.update();
 	//overlay.setTextureIn(texture.getTextureRef());
 
-	cout << ofGetElapsedTimef() << endl;
 
 	//overlay.update();
 

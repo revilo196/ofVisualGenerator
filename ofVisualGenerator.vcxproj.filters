@@ -82,6 +82,9 @@
     <ClCompile Include="src\SphereGrow.cpp">
       <Filter>src\TextureGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\ParticleGrowTexture.cpp">
+      <Filter>src\TextureGeneration</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -192,6 +195,9 @@
       <Filter>src\TextureGeneration</Filter>
     </ClInclude>
     <ClInclude Include="src\SphereGrow.h">
+      <Filter>src\TextureGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleGrowTexture.h">
       <Filter>src\TextureGeneration</Filter>
     </ClInclude>
   </ItemGroup>
