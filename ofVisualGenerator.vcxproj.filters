@@ -85,6 +85,9 @@
     <ClCompile Include="src\ParticleGrowTexture.cpp">
       <Filter>src\TextureGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\ParticleSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -199,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="src\ParticleGrowTexture.h">
       <Filter>src\TextureGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleSystem.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
