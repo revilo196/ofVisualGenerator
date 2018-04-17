@@ -8,7 +8,7 @@ public:
 
 
 	void update();
-	void setup(ofVec3f pos, ofVec3f posMax, ofVec3f posMin);
+	void setup(ofVec3f * pos , ofFloatColor * color, ofVec3f posMax, ofVec3f posMin, float *time);
 	void draw() const;
 	void applyForce(ofVec3f force);
 	void applyForceRot(ofVec3f force);
@@ -19,9 +19,10 @@ public:
 	ofVec3f getPos();
 	ofVec3f getRot();
 private:
+	//pointers to whre to save the simulation data
+	ofFloatColor * color;
+	ofVec3f * pos;
 
-
-	ofVec3f pos;
 	ofVec3f vel;
 	ofVec3f acc;
 
@@ -32,7 +33,49 @@ private:
 	ofVec3f posMax;
 	ofVec3f posMin;
 
+	ofVec3f midVec;
+
+	//pointer to where to get the current time
+	float *time;
+
+};
+
+class BoxContainer {
+public:
+	BoxContainer() {};
+	BoxContainer(ofVec3f cubemin, ofVec3f cubemax);
+	~BoxContainer() {}
+	ofVec3f cubemin;
+	ofVec3f cubemax;
+
+
+	bool contains(ofVec3f pos);
+};
+
+class QubeTree {
+public:
+	QubeTree(BoxContainer bound, int cap);
+	~QubeTree();
 	
+	void insert(ofVec3f point);
+
+private:
+	int cap;
+	BoxContainer boundary;
+	vector<ofVec3f> points;
+	bool subdivided = false;
+	void subdivide();
+	
+	QubeTree * nwf;
+	QubeTree * nef;
+	QubeTree * sef;
+	QubeTree * swf;
+	QubeTree * nwb;
+	QubeTree * neb;
+	QubeTree * seb;
+	QubeTree * swb;
+
+
 
 };
 
@@ -57,6 +100,16 @@ public:
 
 
 private:
+
+	size_t count = 10000;
+	ofVec3f *vertex;
+	ofFloatColor *color;
+	ofIndexType *indices;
+
+	ofShader shader;
+	ofVbo vbo;
+
+	float time;
 	vector<Particle> system;
 	float width;
 	float height;

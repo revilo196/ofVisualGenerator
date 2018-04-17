@@ -249,6 +249,9 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <None Include="bin\data\blurY.frag" />
     <None Include="bin\data\circle2d.frag" />
     <None Include="bin\data\circle2d.vert" />
+    <None Include="bin\data\particle.frag" />
+    <None Include="bin\data\particle.geom" />
+    <None Include="bin\data\particle.vert" />
     <None Include="bin\data\perlin.frag" />
     <None Include="bin\data\shader.frag" />
     <None Include="bin\data\shader.vert" />

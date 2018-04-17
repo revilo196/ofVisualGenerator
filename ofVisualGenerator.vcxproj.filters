@@ -259,5 +259,14 @@
     <None Include="bin\data\waveMeshTexture.vert">
       <Filter>src\data</Filter>
     </None>
+    <None Include="bin\data\particle.frag">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\particle.geom">
+      <Filter>src\data</Filter>
+    </None>
+    <None Include="bin\data\particle.vert">
+      <Filter>src\data</Filter>
+    </None>
   </ItemGroup>
 </Project>
