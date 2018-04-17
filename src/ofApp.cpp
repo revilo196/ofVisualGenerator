@@ -21,7 +21,7 @@ void ofApp::setup(){
 		textures[i]->setup(1024, 768);
 	}
 	choose = 1;
-
+	
 //	texture.setup(1024, 768);
 //	overlay.setup(1024, 768);
 	main.add(choose.set("choose", 1, 0, 7));
@@ -33,7 +33,7 @@ void ofApp::setup(){
 
 	//gui.setup(texture.getParameterGroup());
 
-
+	system.setup(1024, 768);
 }
 
 //--------------------------------------------------------------
@@ -50,13 +50,18 @@ void ofApp::update(){
 	//overlay.setTextureIn(texture.getTextureRef());
 
 
+
 	//overlay.update();
 
+	system.update();
+	
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	textures[choose]->draw(0, 0);
+	//textures[choose]->draw(0, 0);
+
+	system.draw(0,0);
 
 	//texture.draw(0,0);
 	gui.draw();

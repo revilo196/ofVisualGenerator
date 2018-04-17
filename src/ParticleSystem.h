@@ -8,10 +8,11 @@ public:
 
 
 	void update();
-	void setup(ofVec3f pos);
-	void draw();
+	void setup(ofVec3f pos, ofVec3f posMax, ofVec3f posMin);
+	void draw() const;
 	void applyForce(ofVec3f force);
 	void applyForceRot(ofVec3f force);
+	void applyForceNoise();
 	void setVelocity(ofVec3f vel);
 	void setVelocityRot(ofVec3f velRot);
 
@@ -48,18 +49,8 @@ public:
 	virtual void draw(float x, float y, float w, float h) const override;
 	virtual void draw(float x, float y) const override;
 
-	virtual void setup(float width, float height)
-	{
-		this->height = height;
-		this->width = width;
+	virtual void setup(float width, float height);
 
-		system.resize(500);
-		for (int i = 0; i < 500; i++) {
-			system[i] = Particle();
-			system[i].setup(ofVec3f(ofRandomf(), ofRandomf(), ofRandomf()));
-		}
-
-	}
 
 	virtual float getHeight() const override { return height; }
 	virtual float getWidth() const override { return width; }
@@ -69,5 +60,6 @@ private:
 	vector<Particle> system;
 	float width;
 	float height;
+	
 };
 

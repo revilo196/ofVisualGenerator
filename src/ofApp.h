@@ -9,6 +9,7 @@
 #include "StripeCubes.h"
 #include "CircleGrow.h"
 #include "SphereGrow.h"
+#include "ParticleSystem.h"
 
 class ofApp : public ofBaseApp{
 
@@ -33,9 +34,12 @@ class ofApp : public ofBaseApp{
 
 		//WaveMeshTexture texture;
 
+		ParticleSystem system;
+
 		int lastchoose;
 		ofParameter<int> choose;
 		ofxPanel gui;
 		ofParameterGroup main;
 		ofxPanel gui2;
+
 };
