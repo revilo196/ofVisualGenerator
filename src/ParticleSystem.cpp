@@ -1,7 +1,6 @@
 #include "ParticleSystem.h"
 
 
-
 ParticleSystem::ParticleSystem() : VjObject("System")
 {
 
@@ -38,7 +37,8 @@ void ParticleSystem::draw(float x, float y) const
 	
 	//ofDrawLine(0, 0,0, -1, -1,-1);
 
-	ofDrawBox(0,0,-10,1);
+	//ofDrawBox(0,0,-10,1);
+
 
 	cam.end();
 
@@ -52,8 +52,8 @@ void ParticleSystem::setup(float width, float height)
 		system.resize(1000);
 		for (int i = 0; i < 1000; i++) {
 			system[i] = Particle();
-			system[i].setup(ofVec3f(ofRandomf()*20, ofRandomf()*20, -10 - ofRandomuf()*50),
-				ofVec3f(20,20,-10), ofVec3f(-20,-20,-75));
+			system[i].setup(ofVec3f(ofRandomf()*30, ofRandomf()*30, -10 - ofRandomuf()*80),
+				ofVec3f(30,30,-20), ofVec3f(-30,-30,-95));
 		}
 
 }
@@ -99,9 +99,26 @@ void Particle::setup(ofVec3f pos, ofVec3f posMax, ofVec3f posMin)
 void Particle::draw() const
 {
 	
-	//ofSetColor(255,255,255, -0.186 * ((pos.z - 38)*(pos.z - 38)) + 255);
+	float mid = ((posMin.z-30) - (posMax.z)) / 2;
+	float a = 255 /((posMin.z - mid)*(posMax.z  - mid));
+	float x =( pos.z - mid);
+	float y = a* x*x + 255;
+	//cout << "y =" << a <<"*(x-"<< mid <<")² +" << 255 << endl;
+	//ofSetColor(MIN(vel.x*255,255),MIN(vel.y*255,255),MIN(vel.z*255,255),MIN(y,255));
+	//ofSetColor(255,255,255,MAX(MIN(y,255),0));
+
+
+	ofVec3f midVec = (posMin + posMax)/2;
+	ofVec3f r = pos - midVec;
+	float dist = (1-(r.lengthSquared()/(midVec.lengthSquared()*0.3)))*255;
+//	cout << dist << endl;
+
+
+	ofSetColor(255,255,255,MAX(MIN(dist,255),0));
+
 
 	ofDrawBox(pos,1);
+	//ofDrawBox(midVec, 5);
 }
 
 void Particle::applyForce(ofVec3f force)
