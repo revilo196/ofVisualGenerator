@@ -6,13 +6,12 @@ public:
 	Particle() {}
 	~Particle() {}
 
-
 	void update();
 	void setup(ofVec3f * pos , ofFloatColor * color, ofVec3f posMax, ofVec3f posMin, float *time);
 	void draw() const;
 	void applyForce(ofVec3f force);
 	void applyForceRot(ofVec3f force);
-	void applyForceNoise();
+	void applyForceNoise(float amplitude, float scale);
 	void setVelocity(ofVec3f vel);
 	void setVelocityRot(ofVec3f velRot);
 
@@ -37,6 +36,8 @@ private:
 
 	//pointer to where to get the current time
 	float *time;
+	float *velfac;
+	float *air;
 
 };
 
@@ -110,9 +111,16 @@ private:
 	ofVbo vbo;
 
 	float time;
+	float m_air;
 	vector<Particle> system;
 	float width;
 	float height;
 	
+	ofParameter<float> speed;
+	ofParameter<float> forceAmplitude;
+	ofParameter<float> scale;
+	ofParameter<bool> add;
+	ofParameter<bool> remove;
+	ofParameter<float> air; 
 };
 

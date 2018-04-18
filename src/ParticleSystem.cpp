@@ -3,6 +3,7 @@
 
 ParticleSystem::ParticleSystem() : VjObject("System")
 {
+
 	vertex = new ofVec3f[count];
 	color = new ofFloatColor[count];
 	indices = new ofIndexType[count*3];
@@ -11,6 +12,14 @@ ParticleSystem::ParticleSystem() : VjObject("System")
 	{
 		indices[i] = i % count;
 	}
+
+	addParameter(speed.set("speed", 0.002, -0.05, 0.05));
+	addParameter(forceAmplitude.set("force", 1,-3,3));
+	addParameter(scale.set("scale", 1.0, 0.1, 5));
+	addParameter(air.set("air resistance", 0.2, 0.0, 2.0));
+	addParameter(add.set("add particle"));
+	addParameter(remove.set("remove Particle"));
+
 }
 
 
@@ -22,9 +31,9 @@ ParticleSystem::~ParticleSystem()
 
 void ParticleSystem::update()
 {
-	time += 0.005;
+	time += speed;
 	for (int i = 0; i < system.size(); i++) {
-		system[i].applyForceNoise();
+		system[i].applyForceNoise(forceAmplitude, scale);
 		system[i].update();
 	}
 	vbo.updateVertexData(&vertex[0], count);
@@ -69,7 +78,7 @@ void ParticleSystem::setup(float width, float height)
 		for (int i = 0; i < count; i++) {
 			system[i] = Particle();
 			vertex[i] = ofVec3f(ofRandomf() * 40, ofRandomf() * 40, -10 - ofRandomuf() * 80);
-			system[i].setup(&vertex[i],&color[i],ofVec3f(40,40,-20), ofVec3f(-40,-40,-95), &time);
+			system[i].setup(&vertex[i],&color[i],ofVec3f(40,40,-20), ofVec3f(-40,-40,-95), &time, &m_air);
 		}
 
 }
@@ -130,7 +139,7 @@ void Particle::update()
 
 }
 
-void Particle::setup(ofVec3f * pos, ofFloatColor * color, ofVec3f posMax, ofVec3f posMin, float *time)
+void Particle::setup(ofVec3f * pos, ofFloatColor * color, ofVec3f posMax, ofVec3f posMin, float *time, float *sair)
 {
 	this->pos = pos;
 	this->color = color;
@@ -139,6 +148,7 @@ void Particle::setup(ofVec3f * pos, ofFloatColor * color, ofVec3f posMax, ofVec3
 
 	 midVec = (posMin + posMax) / 2;
 	 this->time = time;
+	 this->air = air; 
 }
 
 void Particle::draw() const
@@ -166,14 +176,14 @@ void Particle::applyForceRot(ofVec3f force)
 	art += force;
 }
 
-void Particle::applyForceNoise()
+void Particle::applyForceNoise(float amp, float mscale)
 {
-	float scale = 30;
+	float scale = 30 *mscale;
 	float x = 1-(ofNoise(pos->x / scale, pos->y / scale, pos->z / scale, 1.0 + (*time))*2);
 	float y = 1-(ofNoise(pos->x / scale, pos->y / scale, pos->z / scale, 1000.0 + (*time))*2);
 	float z = 1-(ofNoise(pos->x / scale, pos->y / scale, pos->z / scale, -1000.0 + (*time))*2);
 
-	ofVec3f force = ofVec3f(x, y, z)*2;
+	ofVec3f force = ofVec3f(x, y, z)*amp;
 	applyForce(force*2);
 
 }

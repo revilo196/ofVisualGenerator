@@ -27,13 +27,14 @@ void ofApp::setup(){
 	main.add(choose.set("choose", 1, 0, 7));
 	lastchoose = 1;
 
-	gui2.setup(main);
+	//gui2.setup(main);
 
-	gui.setup(textures[choose]->getParameterGroup());
+	//gui.setup(textures[choose]->getParameterGroup());
 
-	//gui.setup(texture.getParameterGroup());
 
 	system.setup(1024, 768);
+	gui.setup(system.getParameterGroup());
+	
 }
 
 //--------------------------------------------------------------
