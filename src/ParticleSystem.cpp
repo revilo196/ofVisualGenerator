@@ -1,25 +1,28 @@
 #include "ParticleSystem.h"
 
 
-ParticleSystem::ParticleSystem() : VjObject("System")
+ParticleSystem::ParticleSystem(size_t count, string name) : VjObject(name)
 {
+	this->count = count;
 
+	//Create arrays for the VBO
 	vertex = new ofVec3f[count];
 	color = new ofFloatColor[count];
 	indices = new ofIndexType[count*3];
 
+	//init indices not uses we only draw points but needed for the shader
 	for (int i = 0; i < count*3; i++)
 	{
 		indices[i] = i % count;
 	}
 
+	//add Parameter to the VjObject
 	addParameter(speed.set("speed", 0.002, -0.05, 0.05));
 	addParameter(forceAmplitude.set("force", 1,-3,3));
 	addParameter(scale.set("scale", 1.0, 0.1, 5));
-	addParameter(air.set("air resistance", 0.2, 0.0, 2.0));
-	addParameter(add.set("add particle"));
-	addParameter(remove.set("remove Particle"));
-
+	addParameter(partVel.set("Particle Velocity", 0.20, 0.05, 0.7));
+	addParameter(add.set("add particle",false));
+	addParameter(remove.set("remove Particle",false));
 }
 
 
@@ -27,18 +30,26 @@ ParticleSystem::~ParticleSystem()
 {
 	delete[] vertex;
 	delete[] color;
+	delete[] indices;
 }
 
 void ParticleSystem::update()
 {
+	
+	//go foreward in time
 	time += speed;
+	m_partVel = partVel;
+	//update every particle
 	for (int i = 0; i < system.size(); i++) {
+		//applyForce to this particle acording to PerlinNoiseVectorfield
 		system[i].applyForceNoise(forceAmplitude, scale);
+		//update this particle
 		system[i].update();
 	}
+
+	//update the vertexBufferObject
 	vbo.updateVertexData(&vertex[0], count);
 	vbo.updateColorData(&color[0], count);
-
 }
 
 void ParticleSystem::draw(float x, float y, float w, float h) const
@@ -51,10 +62,13 @@ void ParticleSystem::draw(float x, float y) const
 	ofCamera cam;
 	cam.begin();
 
+	//draw every single particle
 	//for (int i = 0; i < system.size(); i++) {
 	//	system[i].draw();
 	//}
 
+
+	//draw all particles with one VertexBufferObject and Geometry shader
 	glPointSize(10.f);
 	shader.begin();
 	vbo.drawElements(GL_POINTS, count);
@@ -68,37 +82,47 @@ void ParticleSystem::setup(float width, float height)
 		this->height = height;
 		this->width = width;
 
+		//load shader
 		shader.load("particle.vert", "particle.frag", "particle.geom");
 
+		//init vertex buffer object
 		vbo.setVertexData(&vertex[0], count, GL_DYNAMIC_DRAW);
 		vbo.setColorData(&color[0], count, GL_DYNAMIC_DRAW);
 		vbo.setIndexData(&indices[0], count, GL_DYNAMIC_DRAW);
 
+		//init the particles and conenct them to the vertex array
 		system.resize(count);
 		for (int i = 0; i < count; i++) {
 			system[i] = Particle();
 			vertex[i] = ofVec3f(ofRandomf() * 40, ofRandomf() * 40, -10 - ofRandomuf() * 80);
-			system[i].setup(&vertex[i],&color[i],ofVec3f(40,40,-20), ofVec3f(-40,-40,-95), &time, &m_air);
+			system[i].setup(&vertex[i],&color[i],ofVec3f(40,40,-20), ofVec3f(-40,-40,-95), &time,&m_partVel);
 		}
 
 }
 
 void Particle::update()
 {
-	this->vel += acc - (vel.normalize()*(vel.lengthSquared())*0.3);
-	
+
+	if (vel.lengthSquared() > 0.1) {
+		this->vel += (acc) - (vel.normalize()*(vel.lengthSquared())*(0.4));
+	} else {
+		this->vel += acc;
+	}
+	 
 	if(vel.length() > 3) 
 	{
-		//vel = vel.normalize() * 1.5;
+		vel = vel.normalize() * 3;
 	}
 
-	(*this->pos) += vel*.1;
+	(*this->pos) += vel*(*velfac);
 	this->acc = acc * 0;
 
 	this->vrt += art; // TODO max / damping
 	this->rot += vrt;
 	this->art = art * 0;
 
+	//--- position is Out of Bounds
+	// --->Reset to random position on opposite plane
 	if (pos->x < posMin.x) {
 		pos->x = posMax.x;
 		pos->y = ofMap(ofRandomf(), -1, 1, posMin.y, posMax.y);
@@ -131,12 +155,10 @@ void Particle::update()
 		pos->y = ofMap(ofRandomf(), -1, 1, posMin.y, posMax.y);
 	}
 
-
+	//calculate color from distance from the mid
 	ofVec3f r = (*pos) - midVec;
 	float dist = (1 - (r.lengthSquared() / (midVec.lengthSquared()*0.3)));
-
 	color->a = MAX(MIN(dist, 1),0);
-
 }
 
 void Particle::setup(ofVec3f * pos, ofFloatColor * color, ofVec3f posMax, ofVec3f posMin, float *time, float *sair)
@@ -148,7 +170,7 @@ void Particle::setup(ofVec3f * pos, ofFloatColor * color, ofVec3f posMax, ofVec3
 
 	 midVec = (posMin + posMax) / 2;
 	 this->time = time;
-	 this->air = air; 
+	 this->velfac = sair; 
 }
 
 void Particle::draw() const
@@ -208,6 +230,10 @@ ofVec3f Particle::getRot()
 	return rot;
 }
 
+
+//----------------WIP----------------------------
+
+
 QubeTree::QubeTree(BoxContainer bound, int cap)
 {
 	this->boundary = bound;
@@ -253,7 +279,6 @@ void QubeTree::subdivide()
 	seb = new QubeTree(BoxContainer(min, mid, 4);
 	swb = new QubeTree();*/
 }
-
 
 BoxContainer::BoxContainer(ofVec3f cubemin, ofVec3f cubemax)
 {
