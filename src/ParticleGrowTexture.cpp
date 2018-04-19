@@ -132,7 +132,6 @@ ParticleGrowTexture::ParticleGrowTexture(string name) : TextureGen(name)
 	addParameter(radius.set("radius", 1, 0.2, 3));
 	addParameter(color);
 
-
 }
 
 
@@ -151,14 +150,17 @@ void ParticleGrowTexture::setup(float width, float height)
 	for (size_t b = 0; b < 5; b++) {
 		base[b] = ofVec2f(0.5, 0.5);
 		base[b].rotate((360.0 / 5.0) * b);
-		for (size_t i = 0; i < 4; i++) {
-			float t = (i / 4.0) * timeout;
-			for (size_t j = 0; j < 60; j++) {
 
+		for (size_t i = 0; i < 5; i++) {
+
+			float t = fmod( (i / 5.0) * timeout + ((b/5.0) * timeout) , timeout);
+
+			for (size_t j = 0; j < 60; j++) {
+				t = t + 0.0025;
 				p[b][i][j].setup(&base[b], direction, offset, &rotate_direction, &rotate_offset,&radius_part ,timeout, t, 0.01);
 				direction.rotateRad(TWO_PI / 60.0);
 				offset.rotateRad(TWO_PI / 4.2456789);
-
+				p[b][i][j].update(0.0);
 			}
 			direction.rotateRad(TWO_PI / 60.0);
 			offset.rotateRad(TWO_PI / 4.2456789);
@@ -179,9 +181,9 @@ void ParticleGrowTexture::update()
 {
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
-	time += (deltatime + speedRot)*0.1;
-	timeX += (deltatime + speedX)*0.1;
-	timeY += (deltatime + speedY)*0.1;
+	time += (1.0 / 60.0 + speedRot)*0.1;
+	timeX += (1.0/ 60.0 + speedX)*0.1;
+	timeY += (1.0 / 60.0 + speedY)*0.1;
 
 	this->radius_part = radius;
 
@@ -195,11 +197,11 @@ void ParticleGrowTexture::update()
 
 		base[b] = ofVec2f(sin(((TWO_PI / 5.0) * b) + time)*ampX + xoff, cos(((TWO_PI / 5.0) * b) + time)*ampY + yoff);
 
-		for (size_t i = 0; i < 4; i++) {
+		for (size_t i = 0; i < 5; i++) {
 
 			for (size_t j = 0; j < 60; j++) {
 
-				p[b][i][j].update(deltatime*speed);
+				p[b][i][j].update((1.0/60.0)*speed);
 
 			}
 
@@ -217,7 +219,7 @@ void ParticleGrowTexture::render()
 	ofClear(0,0,0,255);
 
 	for (size_t b = 0; b < 5; b++) {
-		for (size_t i = 0; i < 4; i++) {
+		for (size_t i = 0; i < 5; i++) {
 			for (size_t j = 0; j < 60; j++) {
 
 				p[b][i][j].draw();

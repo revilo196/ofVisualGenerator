@@ -10,6 +10,7 @@ public:
 
 	void addParameter(ofAbstractParameter &parm);
 	ofParameterGroup getParameterGroup();
+	void setParameterGroup(ofParameterGroup gp) { parameters = gp; }
 	void setName(string name);
 	string getName();
 

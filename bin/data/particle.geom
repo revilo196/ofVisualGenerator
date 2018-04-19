@@ -7,6 +7,7 @@ in vec4 baseColour[];
 
 out vec4 colour;
 
+
 uniform mat4 modelViewProjectionMatrix;
 
 void main()

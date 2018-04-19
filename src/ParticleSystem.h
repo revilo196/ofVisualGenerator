@@ -115,6 +115,7 @@ private:
 	ofParameter<bool> add;
 	ofParameter<bool> remove;
 	ofParameter<float> partVel; 
+	ofParameter<ofFloatColor> colorParm;
 };
 
 

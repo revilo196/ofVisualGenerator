@@ -34,7 +34,7 @@ class ofApp : public ofBaseApp{
 
 		//WaveMeshTexture texture;
 
-		ParticleSystem system;
+		//ParticleSystem system;
 
 		int lastchoose;
 		ofParameter<int> choose;

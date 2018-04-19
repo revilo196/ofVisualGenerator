@@ -62,8 +62,8 @@ private:
 	ofVec2f base[5];
 	float rotate_direction = 30;
 	float rotate_offset = 60;
-	float radius_part;
-	GrowParticle p[5][4][60];
+	float radius_part = 3;
+	GrowParticle p[5][5][60];
 	ofFbo fbo;
 	void render();
 

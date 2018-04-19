@@ -183,6 +183,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\ParticleGrowTexture.cpp" />
     <ClCompile Include="src\ParticleSystem.cpp" />
+    <ClCompile Include="src\ParticleSystemTexture.cpp" />
     <ClCompile Include="src\SimpleDots.cpp" />
     <ClCompile Include="src\SimpleStripes.cpp" />
     <ClCompile Include="src\SphereGrow.cpp" />
@@ -212,6 +213,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClInclude Include="src\Overlay.h" />
     <ClInclude Include="src\ParticleGrowTexture.h" />
     <ClInclude Include="src\ParticleSystem.h" />
+    <ClInclude Include="src\ParticleSystemTexture.h" />
     <ClInclude Include="src\SimpleDots.h" />
     <ClInclude Include="src\SimpleStripes.h" />
     <ClInclude Include="src\SphereGrow.h" />

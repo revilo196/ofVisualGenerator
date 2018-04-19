@@ -23,6 +23,8 @@ ParticleSystem::ParticleSystem(size_t count, string name) : VjObject(name)
 	addParameter(partVel.set("Particle Velocity", 0.20, 0.05, 0.7));
 	addParameter(add.set("add particle",false));
 	addParameter(remove.set("remove Particle",false));
+	addParameter(colorParm);
+	time = 0;
 }
 
 
@@ -71,6 +73,7 @@ void ParticleSystem::draw(float x, float y) const
 	//draw all particles with one VertexBufferObject and Geometry shader
 	glPointSize(10.f);
 	shader.begin();
+	shader.setUniform4f("mainColor", colorParm);
 	vbo.drawElements(GL_POINTS, count);
 	shader.end();
 	cam.end();

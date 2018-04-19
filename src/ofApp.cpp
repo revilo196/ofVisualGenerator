@@ -1,6 +1,7 @@
 #include "ofApp.h"
 #include "VjObject.h"
 #include "ParticleGrowTexture.h"
+#include "ParticleSystemTexture.h"
 
 
 
@@ -9,6 +10,7 @@ void ofApp::setup(){
 
 
 	textures.push_back(new StripeSpiral("Layer01a"));
+	textures.push_back(new ParticleSystemTexture("Layer01b"));
 	textures.push_back(new ParticleGrowTexture("Layer01a"));
 	textures.push_back(new CircleGrow("Layer01b"));
 	textures.push_back(new SimpleDots("Layer01c"));
@@ -29,13 +31,13 @@ void ofApp::setup(){
 	main.add(choose.set("choose", 1, 0, 7));
 	lastchoose = 1;
 
-	//gui2.setup(main);
+	gui2.setup(main);
 
-	//gui.setup(textures[choose]->getParameterGroup());
+	gui.setup(textures[choose]->getParameterGroup());
 
 
-	system.setup(1024, 768);
-	gui.setup(system.getParameterGroup());
+	//system.setup(1024, 768);
+	//gui.setup(system.getParameterGroup());
 	
 }
 
@@ -56,15 +58,15 @@ void ofApp::update(){
 
 	//overlay.update();
 
-	system.update();
+	//system.update();
 	
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	//textures[choose]->draw(0, 0);
+	textures[choose]->draw(0, 0);
 
-	system.draw(0,0);
+	//system.draw(0,0);
 
 	//texture.draw(0,0);
 	gui.draw();
