@@ -269,4 +269,7 @@
       <Filter>src\data</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Todo.txt" />
+  </ItemGroup>
 </Project>
