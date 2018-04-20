@@ -99,6 +99,7 @@
       <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxGui\src;
 E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -178,8 +179,12 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp" />
     <ClCompile Include="src\CircleGrow.cpp" />
+    <ClCompile Include="src\Layer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\ParticleGrowTexture.cpp" />
+    <ClCompile Include="src\ParticleSystem.cpp" />
+    <ClCompile Include="src\ParticleSystemTexture.cpp" />
     <ClCompile Include="src\SimpleDots.cpp" />
     <ClCompile Include="src\SimpleStripes.cpp" />
     <ClCompile Include="src\SphereGrow.cpp" />
@@ -205,8 +210,12 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.h" />
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h" />
     <ClInclude Include="src\CircleGrow.h" />
+    <ClInclude Include="src\Layer.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Overlay.h" />
+    <ClInclude Include="src\ParticleGrowTexture.h" />
+    <ClInclude Include="src\ParticleSystem.h" />
+    <ClInclude Include="src\ParticleSystemTexture.h" />
     <ClInclude Include="src\SimpleDots.h" />
     <ClInclude Include="src\SimpleStripes.h" />
     <ClInclude Include="src\SphereGrow.h" />
@@ -245,6 +254,9 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <None Include="bin\data\blurY.frag" />
     <None Include="bin\data\circle2d.frag" />
     <None Include="bin\data\circle2d.vert" />
+    <None Include="bin\data\particle.frag" />
+    <None Include="bin\data\particle.geom" />
+    <None Include="bin\data\particle.vert" />
     <None Include="bin\data\perlin.frag" />
     <None Include="bin\data\shader.frag" />
     <None Include="bin\data\shader.vert" />
@@ -256,6 +268,9 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <None Include="bin\data\waveMeshOverlay.vert" />
     <None Include="bin\data\waveMeshTexture.frag" />
     <None Include="bin\data\waveMeshTexture.vert" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Todo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>

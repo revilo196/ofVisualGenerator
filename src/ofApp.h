@@ -2,12 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "WaveMeshAdvTex.h"
-#include "SimpleStripes.h"
-#include "StripeSpiral.h"
-#include "StripeCubes.h"
-#include "CircleGrow.h"
-#include "SphereGrow.h"
+
+#include "Layer.h"
 
 class ofApp : public ofBaseApp{
 
@@ -27,8 +23,22 @@ class ofApp : public ofBaseApp{
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
-		
-		SphereGrow texture;
-	//	SimpleStripes overlay;
+
+		void guiUpdate();
+
+		Layer layer;
+
+		//vector<TextureGen*> textures;
+
+		//WaveMeshTexture texture;
+
+		//ParticleSystem system;
+
+		//int lastchoose;
+		//ofParameter<int> choose;
 		ofxPanel gui;
+		//ofParameterGroup main;
+		//ofxPanel gui2;
+
+		//bool listen(int &val);
 };

@@ -1,11 +1,13 @@
 #pragma once
 #include "TextureGen.h"
-class SphereGrow :
+#include "ParticleSystem.h"
+
+class ParticleSystemTexture :
 	public TextureGen
 {
 public:
-	SphereGrow(string name = "SphereGrow");
-	~SphereGrow();
+	ParticleSystemTexture(string name = "ParticleSystemTexture");
+	~ParticleSystemTexture();
 
 	virtual void setup(float width, float height) override;
 	virtual ofTexture& getTextureRef()	override;
@@ -15,17 +17,7 @@ public:
 	virtual void draw(float x, float y) const override;
 
 private:
-
-	float edge(float in);
-
-	float lasttime = 0;
-	float rmsTime = 0;
-	static const size_t sphereCount = 10;
-	vector <ofIcoSpherePrimitive> sphere;
-	float phase = 0;
-	ofParameter<float> grow = 0.3f;
-	ofParameter<float> size = 0.1;
-	ofShader shader;
+	ParticleSystem * system;
 	ofFbo fbo;
 };
 

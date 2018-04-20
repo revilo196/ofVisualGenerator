@@ -21,10 +21,10 @@ private:
 	void rotateBoxes();
 	void drawBoxes();
 	void render();
-	float deltatime;
-	float lasttime;
-	float time;
-	float time_stripes;
+	float deltatime = 0;
+	float lasttime = 0;
+	float time = 0;
+	float time_stripes = 0;
 
 
 	ofShader shader;

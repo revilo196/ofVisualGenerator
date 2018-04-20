@@ -22,6 +22,16 @@ ofParameterGroup VjObject::getParameterGroup()
 	return parameters;
 }
 
+void VjObject::clearParameter()
+{
+	
+	for (int i = 0; i < parameters.size(); i++) {
+		parameters.remove(i);
+	}
+	this->parameters = ofParameterGroup();
+	this->parameters.add(this->nameParameter);
+}
+
 void VjObject::setName(string name)
 {
 	nameParameter = name;

@@ -14,8 +14,8 @@ public:
 	virtual void draw(float x, float y) const override;
 
 private:
-	float time;
-	float lasttime;
+	float time = 0;
+	float lasttime = 0;
 
 	void render();
 	ofFbo fbo;

@@ -15,8 +15,8 @@ public:
 
 private:
 	void render();
-	float lasttime;
-	float time;
+	float lasttime = 0;
+	float time = 0;
 	ofPlanePrimitive plane;
 	ofFbo fbo;
 	ofShader shader;

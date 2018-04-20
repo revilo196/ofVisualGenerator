@@ -15,9 +15,9 @@ public:
 	virtual void draw(float x, float y) const override;
 
 private:
-	float lasttime;
-	float time;
-	float timerot;
+	float lasttime = 0;
+	float time = 0;
+	float timerot = 0;
 	void setupPoints();
 
 	float edge(float in);

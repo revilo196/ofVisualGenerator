@@ -22,14 +22,14 @@ public:
 	virtual ofTexture& getTextureRef() = 0;
 
 protected:
-	virtual void translateMid() {
+	virtual void translateMid() const {
 		float cy = getHeight() / 2;
 		float cx = getWidth() / 2;
 
 		ofTranslate(cx, cy);
 	}
 
-	virtual void translateMidFlipScale() {
+	virtual void translateMidFlipScale() const {
 		float cy = getHeight() / 2;
 		float cx = getWidth() / 2;
 		ofTranslate(cx, cy);
