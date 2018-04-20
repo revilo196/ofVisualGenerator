@@ -130,6 +130,7 @@ ParticleGrowTexture::ParticleGrowTexture(string name) : TextureGen(name)
 	addParameter(ampX.set("ampX", .125, 0, 2));
 	addParameter(ampY.set("ampY", .252, 0, 2));
 	addParameter(radius.set("radius", 1, 0.2, 3));
+	color.setName("color");
 	addParameter(color);
 
 }
@@ -191,7 +192,7 @@ void ParticleGrowTexture::update()
 	float xoff = sin(timeX);
 	float yoff = sin(timeY);
 
-	ofSetColor(color);
+	
 	for (size_t b = 0; b < 5; b++) {
 
 
@@ -217,7 +218,8 @@ void ParticleGrowTexture::render()
 	fbo.begin();
 	translateMidFlipScale();
 	ofClear(0,0,0,255);
-
+	ofPushStyle();
+	ofSetColor(color);
 	for (size_t b = 0; b < 5; b++) {
 		for (size_t i = 0; i < 5; i++) {
 			for (size_t j = 0; j < 60; j++) {
@@ -228,6 +230,7 @@ void ParticleGrowTexture::render()
 
 		}
 	}
+	ofPopStyle();
 
 	fbo.end();
 }

@@ -23,6 +23,7 @@ ParticleSystem::ParticleSystem(size_t count, string name) : VjObject(name)
 	addParameter(partVel.set("Particle Velocity", 0.20, 0.05, 0.7));
 	addParameter(add.set("add particle",false));
 	addParameter(remove.set("remove Particle",false));
+	colorParm.setName("color");
 	addParameter(colorParm);
 	time = 0;
 }

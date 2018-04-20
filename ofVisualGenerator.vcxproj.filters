@@ -91,6 +91,9 @@
     <ClCompile Include="src\ParticleSystemTexture.cpp">
       <Filter>src\TextureGeneration</Filter>
     </ClCompile>
+    <ClCompile Include="src\Layer.cpp">
+      <Filter>src\Layer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -116,6 +119,9 @@
     </Filter>
     <Filter Include="addons\ofxAnimatable\src">
       <UniqueIdentifier>{fa1b6616-d842-4f94-83b6-3fe856f436be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Layer">
+      <UniqueIdentifier>{bc450acf-bc31-4965-9ff5-8a9d62ce0420}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -211,6 +217,9 @@
     </ClInclude>
     <ClInclude Include="src\ParticleSystemTexture.h">
       <Filter>src\TextureGeneration</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Layer.h">
+      <Filter>src\Layer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

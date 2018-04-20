@@ -9,6 +9,7 @@ CircleGrow::CircleGrow(string name) : TextureGen(name)
 	addParameter(size.set("size", 1, 0, 3));
 	addParameter(res.set("res", 50, 2, 120));
 	addParameter(thick.set("thick", 0.02, 0, 0.5));
+	color.setName("color");
 	addParameter(color);
 }
 

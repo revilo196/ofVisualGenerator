@@ -2,14 +2,8 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
-#include "WaveMeshAdvTex.h"
-#include "SimpleStripes.h"
-#include "SimpleDots.h"
-#include "StripeSpiral.h"
-#include "StripeCubes.h"
-#include "CircleGrow.h"
-#include "SphereGrow.h"
-#include "ParticleSystem.h"
+
+#include "Layer.h"
 
 class ofApp : public ofBaseApp{
 
@@ -30,16 +24,21 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		vector<TextureGen*> textures;
+		void guiUpdate();
+
+		Layer layer;
+
+		//vector<TextureGen*> textures;
 
 		//WaveMeshTexture texture;
 
 		//ParticleSystem system;
 
-		int lastchoose;
-		ofParameter<int> choose;
+		//int lastchoose;
+		//ofParameter<int> choose;
 		ofxPanel gui;
-		ofParameterGroup main;
-		ofxPanel gui2;
+		//ofParameterGroup main;
+		//ofxPanel gui2;
 
+		//bool listen(int &val);
 };

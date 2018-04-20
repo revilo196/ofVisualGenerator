@@ -179,6 +179,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.cpp" />
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp" />
     <ClCompile Include="src\CircleGrow.cpp" />
+    <ClCompile Include="src\Layer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\ParticleGrowTexture.cpp" />
@@ -209,6 +210,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.h" />
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h" />
     <ClInclude Include="src\CircleGrow.h" />
+    <ClInclude Include="src\Layer.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Overlay.h" />
     <ClInclude Include="src\ParticleGrowTexture.h" />
