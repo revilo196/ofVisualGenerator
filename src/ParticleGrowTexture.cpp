@@ -121,7 +121,7 @@ float GrowParticle::calcD() const
 }
 
 
-ParticleGrowTexture::ParticleGrowTexture(string name) : TextureGen(name)
+ParticleGrowTexture::ParticleGrowTexture() : VjObject("ParticleGrowTexture")
 {
 	addParameter(speed.set("speed", 1.0, -3, 3));
 	addParameter(speedRot.set("speedRotation", 0.05, -0.3, 0.3));
@@ -140,10 +140,8 @@ ParticleGrowTexture::~ParticleGrowTexture()
 {
 }
 
-void ParticleGrowTexture::setup(float width, float height)
+void ParticleGrowTexture::setup()
 {
-	TextureGen::setup(width, height);
-	
 	ofVec2f offset(0.02, 0.02);
 	ofVec2f direction(0.1, 0.1);
 	float timeout = 4.0f;
@@ -170,13 +168,9 @@ void ParticleGrowTexture::setup(float width, float height)
 		offset.rotateRad(TWO_PI / 4.2456789);
 	}
 
-	fbo.allocate(width, height);
+	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 }
 
-ofTexture & ParticleGrowTexture::getTextureRef()
-{
-	return fbo.getTexture();
-}
 
 void ParticleGrowTexture::update()
 {
@@ -215,9 +209,15 @@ void ParticleGrowTexture::update()
 
 void ParticleGrowTexture::render()
 {
-	fbo.begin();
+	//fbo.begin();
+
+	//fbo.end();
+}
+
+void ParticleGrowTexture::draw()
+{
 	translateMidFlipScale();
-	ofClear(0,0,0,255);
+	ofClear(0, 0, 0, 255);
 	ofPushStyle();
 	ofSetColor(color);
 	for (size_t b = 0; b < 5; b++) {
@@ -232,18 +232,5 @@ void ParticleGrowTexture::render()
 	}
 	ofPopStyle();
 
-	fbo.end();
+	//fbo.draw(0, 0);
 }
-
-void ParticleGrowTexture::draw(float x, float y, float w, float h) const
-{
-	fbo.draw(x, y, w, h);
-
-}
-
-void ParticleGrowTexture::draw(float x, float y) const
-{
-	fbo.draw(x, y);
-}
-
-

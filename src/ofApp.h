@@ -3,7 +3,20 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 
-#include "Layer.h"
+#include "CircleGrow.h"
+#include "ParticleGrowTexture.h"
+#include "ParticleSystemTexture.h"
+#include "StripeSpiral.h"
+#include "SphereGrow.h"
+#include "StripeCubes.h"
+#include "WaveMeshTexture.h"
+#include "WaveMeshAdvTex.h"
+
+
+#include "ofxLayerManager.h"
+
+extern void changeToOtherWindow();
+extern void returnFromOtherWindow();
 
 class ofApp : public ofBaseApp{
 
@@ -24,21 +37,18 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		void guiUpdate();
-
-		Layer layer;
-
-		//vector<TextureGen*> textures;
-
-		//WaveMeshTexture texture;
-
-		//ParticleSystem system;
-
-		//int lastchoose;
-		//ofParameter<int> choose;
 		ofxPanel gui;
-		//ofParameterGroup main;
-		//ofxPanel gui2;
 
-		//bool listen(int &val);
+		CircleGrow * layer1;
+		ParticleGrowTexture * layer2;
+		ParticleSystemTexture * layer3;
+		StripeSpiral * layer4;
+		SphereGrow * layer5; 
+		StripeCubes * layer6;
+		WaveMeshTexture *layer7;
+		WaveMeshAdvTex * layer8;
+
+		ofxLayer::Manager mng;
+
+
 };

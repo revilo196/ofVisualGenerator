@@ -2,7 +2,7 @@
 
 
 
-WaveMeshAdvTex::WaveMeshAdvTex(string name) : WaveMeshTexture(name)
+WaveMeshAdvTex::WaveMeshAdvTex() : WaveMeshTexture()
 {
 	addParameter(freq.set("dot count", 256.0f, 64.0f, 512.0f));
 	addParameter(size.set("dot size", 0.1, 0.0, 1.5));
@@ -17,9 +17,9 @@ WaveMeshAdvTex::~WaveMeshAdvTex()
 {
 }
 
-void WaveMeshAdvTex::setup(float width, float height)
+void WaveMeshAdvTex::setup()
 {
-	WaveMeshTexture::setup(width, height);
+	WaveMeshTexture::setup();
 
 	this->shader.load("waveMeshAdv.vert", "waveMeshAdv.frag");
 	setRenderMode(RenderMode::RM_SURFACE);

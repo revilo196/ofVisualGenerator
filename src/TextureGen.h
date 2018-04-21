@@ -29,12 +29,7 @@ protected:
 		ofTranslate(cx, cy);
 	}
 
-	virtual void translateMidFlipScale() const {
-		float cy = getHeight() / 2;
-		float cx = getWidth() / 2;
-		ofTranslate(cx, cy);
-		ofScale(cy, -cy, cy);
-	}
+
 
 private:
 	TextureGen();

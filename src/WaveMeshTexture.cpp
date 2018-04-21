@@ -2,7 +2,7 @@
 #include "ofFbo.h"
 
 
-WaveMeshTexture::WaveMeshTexture( string name) : TextureGen(name)
+WaveMeshTexture::WaveMeshTexture() : VjObject("WaveMeshTexture")
 {
 	addParameter(renderMode.set("renderMode", RenderMode::RM_WIRE, RenderMode::RM_WIRE, RenderMode::RM_SURFACE));
 	addParameter(speedFront.set("speedFront", 0.5f, -1.0f, 1.0f));
@@ -24,23 +24,19 @@ void WaveMeshTexture::setResulution(int res)
 	this->res = res;
 }
 
-void WaveMeshTexture::setup(float width, float height)
+void WaveMeshTexture::setup()
 {
-	TextureGen::setup(width, height);
+	
 
-	fbo.allocate(width, height);
+	//fbo.allocate(ofGetWidth(), ofGetHeight());
 
 	shader.load("waveMeshTexture");
 
-	plane.set(width * 2, height * 4);
+	plane.set(ofGetWidth() * 2, ofGetHeight() * 4);
 	plane.setPosition(0, 0, 0);
 	plane.setResolution(res, res * 2);
 }
 
-ofTexture & WaveMeshTexture::getTextureRef()
-{
-	return fbo.getTextureReference();
-}
 
 void WaveMeshTexture::update()
 {
@@ -52,19 +48,20 @@ void WaveMeshTexture::update()
 	time[1] += deltatime * speedFront.get()*0.1;
 	time[2] += deltatime * speedZ.get() * 0.01;
 
-	render();
+	
 }
 
 void WaveMeshTexture::render()
 {
-	float cx = getWidth() / 2.0;
-	float cy = getHeight() / 2.0;
+	float cx = ofGetWidth() / 2.0;
+	float cy = ofGetHeight() / 2.0;
 
-	fbo.begin();
-	ofClear(0, 0, 0, 255);
+	//fbo.begin();
+	//ofClear(0, 0, 0, 255);
+
 	shader.begin();
 	ofSetColor(255,255,255);
-  ofTranslate(cx, cy - 250, -100);
+    ofTranslate(cx, cy - 250, -100);
 	ofRotateX(60);
 	ofRotateZ(rotateZ);
 	ofTranslate(0,-cy, -30);
@@ -83,25 +80,15 @@ void WaveMeshTexture::render()
 	}
 	shader.end();
 
-	fbo.end();
+	//fbo.end();
 }
 
-void WaveMeshTexture::draw(float x, float y, float w, float h) const
+void WaveMeshTexture::draw()
 {
-	fbo.draw(x, y);
-}
-
-void WaveMeshTexture::draw(float x, float y) const
-{
-	fbo.draw(x, y);
+	//fbo.draw(0, 0);
+	render();
 }
 void WaveMeshTexture::setRenderMode(RenderMode rm)
 {
 	renderMode = rm;
 }
-/*
-void WaveMeshTexture::overrideShader(string vertexShader, string fragmentShader)
-{
-	shader.load(vertexShader, fragmentShader);
-}
-*/

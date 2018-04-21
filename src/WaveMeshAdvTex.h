@@ -4,10 +4,10 @@ class WaveMeshAdvTex :
 	public WaveMeshTexture
 {
 public:
-	explicit WaveMeshAdvTex(string name = "WaveMeshAdvTex");
+	explicit WaveMeshAdvTex();
 	~WaveMeshAdvTex();
 
-	virtual void setup(float width, float height) override;
+	virtual void setup() override;
 	virtual void update() override;
 
 private:

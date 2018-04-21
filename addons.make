@@ -1,2 +1,4 @@
-ofxGui
 ofxAnimatable
+ofxGui
+ofxLayer
+ofxOsc

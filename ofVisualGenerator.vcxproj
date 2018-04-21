@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -96,15 +96,14 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxGui\src;
-E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
-      <GenerateXMLDocumentationFiles>true</GenerateXMLDocumentationFiles>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -116,8 +115,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxGui\src;
-E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -125,6 +123,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -135,8 +134,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxGui\src;
-E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
@@ -147,6 +145,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -157,8 +156,7 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxGui\src;
-E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
     </ClCompile>
     <Link>
@@ -168,20 +166,16 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp" />
-    <ClCompile Include="src\CircleGrow.cpp" />
-    <ClCompile Include="src\Layer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="src\CircleGrow.cpp" />
+    <ClCompile Include="src\Layer.cpp" />
     <ClCompile Include="src\ParticleGrowTexture.cpp" />
     <ClCompile Include="src\ParticleSystem.cpp" />
     <ClCompile Include="src\ParticleSystemTexture.cpp" />
@@ -194,6 +188,11 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClCompile Include="src\WaveMeshAdvTex.cpp" />
     <ClCompile Include="src\WaveMeshOverlay.cpp" />
     <ClCompile Include="src\WaveMeshTexture.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
@@ -202,16 +201,25 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxLayer\src\ofxLayer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxLayer\src\ofxLayerManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.h" />
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h" />
+    <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\CircleGrow.h" />
     <ClInclude Include="src\Layer.h" />
-    <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\Overlay.h" />
     <ClInclude Include="src\ParticleGrowTexture.h" />
     <ClInclude Include="src\ParticleSystem.h" />
@@ -226,6 +234,11 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClInclude Include="src\WaveMeshAdvTex.h" />
     <ClInclude Include="src\WaveMeshOverlay.h" />
     <ClInclude Include="src\WaveMeshTexture.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.h" />
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
@@ -235,6 +248,29 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayer.h" />
+    <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayerConstants.h" />
+    <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayerManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
@@ -247,30 +283,6 @@ E:\Oliver\Documents\openFramework\addons\ofxAnimatable\src</AdditionalIncludeDir
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\data\blend.frag" />
-    <None Include="bin\data\blurX.frag" />
-    <None Include="bin\data\blurY.frag" />
-    <None Include="bin\data\circle2d.frag" />
-    <None Include="bin\data\circle2d.vert" />
-    <None Include="bin\data\particle.frag" />
-    <None Include="bin\data\particle.geom" />
-    <None Include="bin\data\particle.vert" />
-    <None Include="bin\data\perlin.frag" />
-    <None Include="bin\data\shader.frag" />
-    <None Include="bin\data\shader.vert" />
-    <None Include="bin\data\shaderPerlinZ.vert" />
-    <None Include="bin\data\stripes.frag" />
-    <None Include="bin\data\waveMeshAdv.frag" />
-    <None Include="bin\data\waveMeshAdv.vert" />
-    <None Include="bin\data\waveMeshOverlay.frag" />
-    <None Include="bin\data\waveMeshOverlay.vert" />
-    <None Include="bin\data\waveMeshTexture.frag" />
-    <None Include="bin\data\waveMeshTexture.vert" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Todo.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>

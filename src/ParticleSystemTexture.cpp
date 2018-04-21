@@ -2,7 +2,7 @@
 
 
 
-ParticleSystemTexture::ParticleSystemTexture(string name) : TextureGen(name)
+ParticleSystemTexture::ParticleSystemTexture() : VjObject("ParticleSystemTexture")
 {
 	system = new ParticleSystem(5000);
 	this->addParameter(system->getParameterGroup());
@@ -14,36 +14,24 @@ ParticleSystemTexture::~ParticleSystemTexture()
 	delete system;
 }
 
-void ParticleSystemTexture::setup(float width, float height)
+void ParticleSystemTexture::setup()
 {
-	fbo.allocate(width, height);
+	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 
-	system->setup(width, height);
-}
-
-ofTexture & ParticleSystemTexture::getTextureRef()
-{
-	return fbo.getTexture();
+	system->setup(this->ofGetWidth(), this->ofGetHeight());
 }
 
 void ParticleSystemTexture::update()
 {
 	system->update();
 
-	fbo.begin();
-	ofClear(0, 0, 0, 255);
+}
 
+void ParticleSystemTexture::draw() 
+{
+	//fbo.draw(0, 0);
+	//fbo.begin();
+	//ofClear(0, 0, 0, 255);
 	system->draw(0, 0);
-	fbo.end();
-
-}
-
-void ParticleSystemTexture::draw(float x, float y, float w, float h) const
-{
-	fbo.draw(x, y, w, h);
-}
-
-void ParticleSystemTexture::draw(float x, float y) const
-{
-	fbo.draw(x, y);
+	//fbo.end();
 }

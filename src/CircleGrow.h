@@ -1,18 +1,24 @@
 #pragma once
-#include "TextureGen.h"
+#include "ofxLayer.h"
+#include "VjObject.h"
 
-class CircleGrow :
-	public TextureGen
+
+using namespace ofxLayer;
+
+class CircleGrow : public ofxLayer::Layer, public VjObject
 {
 public:
-	CircleGrow(string name = "CircleGrow");
+
+	OFX_LAYER_DEFINE_LAYER_CLASS(CircleGrow);
+
+	CircleGrow();
 	~CircleGrow();
 
-	virtual void setup(float width, float height) override;
-	virtual ofTexture& getTextureRef()	override;
+	virtual void setup() override;
+	virtual void updateEvery() override {}
 	virtual void update() override;
-	virtual void draw(float x, float y, float w, float h) const override;
-	virtual void draw(float x, float y) const override;
+	virtual void draw() override;
+
 
 private:
 	float lasttime = 0;
@@ -22,7 +28,7 @@ private:
 
 	float edge(float in);
 
-	ofFbo fbo;
+	//ofFbo fbo;
 	ofShader shader;
 
 	vector <ofPoint> points;

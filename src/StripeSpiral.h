@@ -1,24 +1,33 @@
 #pragma once
-#include "TextureGen.h"
+#include "ofxLayer.h"
+#include "VjObject.h"
+
+
+using namespace ofxLayer;
+
+
 class StripeSpiral :
-	public TextureGen
+	public ofxLayer::Layer, public VjObject
 {
 public:
-	StripeSpiral(string name = "StripeSpiral");
+
+	OFX_LAYER_DEFINE_LAYER_CLASS(StripeSpiral);
+
+
+	StripeSpiral();
 	~StripeSpiral();
 
-	virtual void setup(float width, float height) override;
-	virtual ofTexture& getTextureRef()	override;
+	virtual void setup() override;
 	virtual void update() override;
-	virtual void draw(float x, float y, float w, float h) const override;
-	virtual void draw(float x, float y) const override;
+	virtual void draw()  override;
+
 
 private:
 	float time = 0;
 	float lasttime = 0;
 
 	void render();
-	ofFbo fbo;
+	//ofFbo fbo;
 	ofShader shader;
 	ofPlanePrimitive plane;
 	

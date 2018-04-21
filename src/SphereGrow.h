@@ -1,18 +1,26 @@
 #pragma once
-#include "TextureGen.h"
+
+#include "ofxLayer.h"
+#include "VjObject.h"
+
+
+using namespace ofxLayer;
+
 class SphereGrow :
-	public TextureGen
+	public ofxLayer::Layer, public VjObject
 {
 public:
-	SphereGrow(string name = "SphereGrow");
+
+	OFX_LAYER_DEFINE_LAYER_CLASS(SphereGrow);
+
+
+	SphereGrow();
 	~SphereGrow();
 
-	virtual void setup(float width, float height) override;
-	virtual ofTexture& getTextureRef()	override;
-
+	virtual void setup() override;
 	virtual void update() override;
-	virtual void draw(float x, float y, float w, float h) const override;
-	virtual void draw(float x, float y) const override;
+	virtual void draw() override;
+
 
 private:
 
@@ -26,6 +34,6 @@ private:
 	ofParameter<float> grow = 0.3f;
 	ofParameter<float> size = 0.1;
 	ofShader shader;
-	ofFbo fbo;
+	//ofFbo fbo;
 };
 

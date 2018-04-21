@@ -1,12 +1,16 @@
 #pragma once
-#include "TextureGen.h"
+#include "VjObject.h"
+#include "ofxLayer.h"
+
+using namespace ofxLayer;
+
 
 class GrowParticle 
 {
 public:
 	GrowParticle();
 	void setup(ofVec2f * m_base, ofVec2f m_direction, ofVec2f offset,
-		float* directionRotateSpeed, float* offset_rotateSpeed,float* radius, float m_timeout, 
+	float* directionRotateSpeed, float* offset_rotateSpeed,float* radius, float m_timeout, 
 		float time = 0, float size = 0.01);
 	void update(float deltatime);
 	void draw() const;
@@ -40,18 +44,19 @@ private:
 
 
 class ParticleGrowTexture :
-	public TextureGen
+	public ofxLayer::Layer, public VjObject
 {
 public:
-	ParticleGrowTexture(string name = "ParticleGrowTexture");
+
+	OFX_LAYER_DEFINE_LAYER_CLASS(ParticleGrowTexture);
+
+
+	ParticleGrowTexture();
 	~ParticleGrowTexture();
 
-	virtual void setup(float width, float height) override;
-	virtual ofTexture& getTextureRef()	override;
-
+	virtual void setup() override;
 	virtual void update() override;
-	virtual void draw(float x, float y, float w, float h) const override;
-	virtual void draw(float x, float y) const override;
+	virtual void draw()  override;
 
 private:
 	float lasttime = 0;
@@ -64,7 +69,7 @@ private:
 	float rotate_offset = 60;
 	float radius_part = 3;
 	GrowParticle p[5][5][60];
-	ofFbo fbo;
+	//ofFbo fbo;
 	void render();
 
 	ofParameter<float> speed;

@@ -1,7 +1,7 @@
 #include "CircleGrow.h"
 
 
-CircleGrow::CircleGrow(string name) : TextureGen(name)
+CircleGrow::CircleGrow() : VjObject("CircleGrow")
 {
 	addParameter(bogen.set("bogen", 50.0, 0, 360));
 	addParameter(grow.set("grow", 0.2, -2, 2));
@@ -17,11 +17,9 @@ CircleGrow::~CircleGrow()
 {
 }
 
-void CircleGrow::setup(float width, float height)
+void CircleGrow::setup()
 {
-	TextureGen::setup(width, height);
-
-	fbo.allocate(width, height);
+	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 	setupPoints();
 }
 
@@ -42,11 +40,6 @@ float CircleGrow::edge(float in)
 		return in;
 }
 
-ofTexture & CircleGrow::getTextureRef()
-{
-	return fbo.getTexture();
-}
-
 void CircleGrow::update()
 {
 	float deltatime = ofGetElapsedTimef() - lasttime;
@@ -56,9 +49,14 @@ void CircleGrow::update()
 	time = edge(time);
 	timerot += deltatime * rotate;
 
-	fbo.begin();
+	
+}
 
-	ofClear(0, 0, 0, 255);
+void CircleGrow::draw()
+{
+
+	//ofClear(0, 0, 0, 255);
+
 	translateMidFlipScale();
 
 
@@ -74,8 +72,8 @@ void CircleGrow::update()
 
 		float myRotate = timerot + ofNoise(static_cast<float>(i) / static_cast<float>(points.size())) * 1000;
 		ofPath curve;
-		curve.arc(points[i], radius, radius, myRotate, myRotate+bogen);
-		curve.arcNegative(points[i], radius-thick, radius- thick, myRotate + bogen, myRotate);
+		curve.arc(points[i], radius, radius, myRotate, myRotate + bogen);
+		curve.arcNegative(points[i], radius - thick, radius - thick, myRotate + bogen, myRotate);
 		curve.close();
 		curve.setArcResolution(res);
 		curve.setFillColor(c);
@@ -84,15 +82,5 @@ void CircleGrow::update()
 
 	}
 
-	fbo.end();
 }
 
-void CircleGrow::draw(float x, float y, float w, float h) const
-{
-	fbo.draw(x, y, w, h);
-}
-
-void CircleGrow::draw(float x, float y) const
-{
-	fbo.draw(x, y);
-}
