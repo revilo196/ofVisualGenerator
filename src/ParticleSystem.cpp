@@ -38,6 +38,8 @@ ParticleSystem::~ParticleSystem()
 
 void ParticleSystem::update()
 {
+	this->updateParms();
+
 	
 	//go foreward in time
 	time += speed;

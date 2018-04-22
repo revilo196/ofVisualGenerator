@@ -65,5 +65,5 @@ class ofApp : public ofBaseApp{
 
 		ofxLayer::Manager mng;
 		void buttonPressed(const void * sender);
-
+		float rms = 0;
 };

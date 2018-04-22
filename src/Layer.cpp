@@ -40,7 +40,7 @@ ofTexture & Layer::getTextureRef()
 void Layer::update()
 {
 	if (textures.size() > 0) {
-		textures[choose]->update();
+		//textures[choose]->update();
 	}
 }
 
@@ -88,7 +88,7 @@ void Layer::listenEvent(int &val)
 {
 	if (lastval != val && val >= 0 && val < textures.size()) {
 		lastval = val;
-		this->clearParameter();
+		//this->clearParameter();
 		this->addParameter(choose);
 		this->addParameter(textures[choose]->getParameterGroup());
 

@@ -38,6 +38,7 @@ void StripeSpiral::setup()
 
 void StripeSpiral::update()
 {
+	this->updateParms();
 
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();

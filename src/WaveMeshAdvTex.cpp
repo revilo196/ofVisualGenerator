@@ -27,6 +27,9 @@ void WaveMeshAdvTex::setup()
 
 void WaveMeshAdvTex::update()
 {	
+	this->updateParms();
+
+
 	shader.begin();
 	shader.setUniform1f("freq", freq);
 	shader.setUniform1f("size", size);

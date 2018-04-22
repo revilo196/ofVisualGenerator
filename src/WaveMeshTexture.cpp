@@ -40,6 +40,9 @@ void WaveMeshTexture::setup()
 
 void WaveMeshTexture::update()
 {
+	this->updateParms();
+
+
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
 

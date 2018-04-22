@@ -44,6 +44,9 @@ float SphereGrow::edge(float in)
 
 void SphereGrow::update()
 {
+	this->updateParms();
+
+
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
 

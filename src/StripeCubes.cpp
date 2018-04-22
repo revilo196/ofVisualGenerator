@@ -35,6 +35,9 @@ void StripeCubes::setup()
 
 void StripeCubes::update()
 {
+	this->updateParms();
+
+
 	deltatime = lasttime - ofGetElapsedTimef();
 	lasttime = ofGetElapsedTimef();
 

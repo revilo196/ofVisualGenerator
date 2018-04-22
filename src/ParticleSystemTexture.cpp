@@ -23,8 +23,8 @@ void ParticleSystemTexture::setup()
 
 void ParticleSystemTexture::update()
 {
-	system->update();
 
+	system->update();
 }
 
 void ParticleSystemTexture::draw() 

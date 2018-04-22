@@ -17,14 +17,14 @@ void SoundAnalyzer::setup()
 
 	for (int i = 0; i < devices.size(); i++) {
 
-		ofLog() << devices[i].name;
-		for (int j = 0; j < devices[i].sampleRates.size(); j++) {
-			ofLog() << devices[i].sampleRates[j];
-		}
+		ofLog() << i <<  devices[i].name;
+		//for (int j = 0; j < devices[i].sampleRates.size(); j++) {
+			//ofLog() << devices[i].sampleRates[j];
+		//}
 
 	}
 
-	soundStream.setDeviceID(7);
+	soundStream.setDeviceID(6);
 	soundStream.setup(0, 1, 48000, bufferSize, 4);
 	soundStream.setInput(this);
 
@@ -96,10 +96,13 @@ void SoundAnalyzer::audioIn(ofSoundBuffer & buffer)
 
 	for (int j = 0; j < 33; j++) {
 
-		db[j] *= 0.80f; // decay // damping
+		
 		float current = sqrt(sqrt(bandSum[j]));
 		if (db[j] < current) {
 			db[j] = current;  // bump up
+		}
+		else {
+			db[j] *= 0.90f; // decay // damping
 		}
 
 

@@ -11,6 +11,8 @@ void ofApp::setup(){
 
 	mng.setup();
 
+	VjObject::rms = &this->rms;
+
 	layer1 = mng.createLayer<CircleGrow>(.2);
 	layer2 = mng.createLayer<ParticleGrowTexture>(0.2);
 	layer3 = mng.createLayer<ParticleSystemTexture>(0.2);
@@ -70,6 +72,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	rms = sound.getRMSSmooth();
 	mng.update();
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 	layer8->moveFront();

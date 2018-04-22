@@ -42,6 +42,8 @@ float CircleGrow::edge(float in)
 
 void CircleGrow::update()
 {
+	this->updateParms();
+
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
 

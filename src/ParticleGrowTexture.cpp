@@ -174,6 +174,9 @@ void ParticleGrowTexture::setup()
 
 void ParticleGrowTexture::update()
 {
+	this->updateParms();
+
+
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
 	time += (1.0 / 60.0 + speedRot)*0.1;
