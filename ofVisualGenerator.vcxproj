@@ -172,6 +172,8 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\kiss\kiss_fft.c" />
+    <ClCompile Include="src\kiss\kiss_fftr.c" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\CircleGrow.cpp" />
@@ -181,6 +183,7 @@
     <ClCompile Include="src\ParticleSystemTexture.cpp" />
     <ClCompile Include="src\SimpleDots.cpp" />
     <ClCompile Include="src\SimpleStripes.cpp" />
+    <ClCompile Include="src\SoundAnalyzer.cpp" />
     <ClCompile Include="src\SphereGrow.cpp" />
     <ClCompile Include="src\StripeCubes.cpp" />
     <ClCompile Include="src\StripeSpiral.cpp" />
@@ -217,6 +220,10 @@
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\kiss\kissfft.hh" />
+    <ClInclude Include="src\kiss\kiss_fft.h" />
+    <ClInclude Include="src\kiss\kiss_fftr.h" />
+    <ClInclude Include="src\kiss\_kiss_fft_guts.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\CircleGrow.h" />
     <ClInclude Include="src\Layer.h" />
@@ -226,6 +233,7 @@
     <ClInclude Include="src\ParticleSystemTexture.h" />
     <ClInclude Include="src\SimpleDots.h" />
     <ClInclude Include="src\SimpleStripes.h" />
+    <ClInclude Include="src\SoundAnalyzer.h" />
     <ClInclude Include="src\SphereGrow.h" />
     <ClInclude Include="src\StripeCubes.h" />
     <ClInclude Include="src\StripeSpiral.h" />

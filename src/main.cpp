@@ -3,18 +3,6 @@
 
 #include "glut.h"
 
-//int win_h;
-//int other_win_h;
-
-//void changeToOtherWindow() {
-//	glutSetWindow(other_win_h);  // have to tell glut which window you are rendering  
-//	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-//}
-//
-//void returnFromOtherWindow() {
-//	glutSwapBuffers();
-//	glutSetWindow(win_h);
-//}
 
 //========================================================================
 int main( ){

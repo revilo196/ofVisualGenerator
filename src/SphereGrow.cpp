@@ -1,6 +1,6 @@
 #include "SphereGrow.h"
 
-
+#include "SoundAnalyzer.h"
 
 SphereGrow::SphereGrow() : VjObject("SphereGrow")
 {
@@ -47,8 +47,13 @@ void SphereGrow::update()
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
 
-	phase += deltatime * grow*0.5;
+	phase += deltatime * grow*0.5  + grow * rmsTime;
 	phase = edge(phase);
+
+	if(sound != nullptr) 
+		rmsTime = sound->getRMS();
+	
+	cout << rmsTime << endl;
 
 	//fbo.begin();
 	
@@ -63,6 +68,8 @@ void SphereGrow::draw()
 
 	//ofClear(0, 0, 0, 255);
 	shader.begin();
+
+	shader.setUniform1f("time", rmsTime / 3);
 
 	translateMidFlipScale();
 	ofRotateZ(ofGetElapsedTimef());

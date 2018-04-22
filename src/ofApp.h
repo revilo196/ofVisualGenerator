@@ -12,11 +12,13 @@
 #include "WaveMeshTexture.h"
 #include "WaveMeshAdvTex.h"
 
+#include "ofxOscParameterSync.h"
 
 #include "ofxLayerManager.h"
 
-extern void changeToOtherWindow();
-extern void returnFromOtherWindow();
+#include "SoundAnalyzer.h"
+
+
 
 class ofApp : public ofBaseApp{
 
@@ -48,7 +50,20 @@ class ofApp : public ofBaseApp{
 		WaveMeshTexture *layer7;
 		WaveMeshAdvTex * layer8;
 
-		ofxLayer::Manager mng;
+		vector<ofxLayer::Layer*> layers;
+		vector<VjObject*> layerConfigs;
 
+		vector<ofxButton*> buttons;
+		vector<ofxPanel*> guis;
+		ofxPanel * currentConfig = nullptr;
+
+		ofParameterGroup allGroup;
+
+		ofxOscParameterSync sync;
+
+		SoundAnalyzer sound;
+
+		ofxLayer::Manager mng;
+		void buttonPressed(const void * sender);
 
 };

@@ -3,6 +3,7 @@
 #include "ofxLayer.h"
 #include "VjObject.h"
 
+class SoundAnalyzer;
 
 using namespace ofxLayer;
 
@@ -21,11 +22,12 @@ public:
 	virtual void update() override;
 	virtual void draw() override;
 
+	void setSound(const SoundAnalyzer * sound) { this->sound = sound; }
 
 private:
 
 	float edge(float in);
-
+	const SoundAnalyzer * sound = nullptr;
 	float lasttime = 0;
 	float rmsTime = 0;
 	static const size_t sphereCount = 10;

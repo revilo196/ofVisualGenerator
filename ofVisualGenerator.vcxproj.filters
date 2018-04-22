@@ -136,6 +136,15 @@
     <ClCompile Include="src\WaveMeshAdvTex.cpp">
       <Filter>src\Layers</Filter>
     </ClCompile>
+    <ClCompile Include="src\SoundAnalyzer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kiss\kiss_fft.c">
+      <Filter>src\kiss</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kiss\kiss_fftr.c">
+      <Filter>src\kiss</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -191,6 +200,9 @@
     </Filter>
     <Filter Include="src\TextureGen">
       <UniqueIdentifier>{27845010-9b03-43dc-813e-220ea0bf6020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\kiss">
+      <UniqueIdentifier>{78753b61-0757-458a-afe0-e556bfd9ba5e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -358,6 +370,21 @@
     </ClInclude>
     <ClInclude Include="src\WaveMeshAdvTex.h">
       <Filter>src\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoundAnalyzer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kiss_fft.h">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kiss_fftr.h">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kissfft.hh">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\_kiss_fft_guts.h">
+      <Filter>src\kiss</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
