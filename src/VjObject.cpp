@@ -12,11 +12,11 @@ VjObject::~VjObject()
 {
 }
 
-void VjObject::addParameter(ofAbstractParameter & param)
+void VjObject::addParameter(ofAbstractParameter & param, bool rms)
 {
 	parameters.add(param);
 	
-	if (param.type() == "class ofParameter<float>") {
+	if (param.type() == "class ofParameter<float>" && rms) {
 		ofParameter<float> p = param.cast<float>();
 		mod.emplace_back(p.getName(), p.get(), p.getMin(), p.getMax());
 		act.emplace_back("rms-" + p.getName(), false);
@@ -47,20 +47,6 @@ string VjObject::getName()
 	return nameParameter.get();
 }
 
-void VjObject::setup()
-{
-	for (int i = 0; i < parameters.size(); i++) {
-	
-		if (parameters.getType(i) == "class ofParameter<float>") {
-			ofParameter<float> p = parameters.getFloat(i);
-;
-		}
-		else {
-			modg1.add(parameters[i]);
-		}
-	}
-
-}
 
 void VjObject::updateParms()
 {
@@ -71,7 +57,7 @@ void VjObject::updateParms()
 
 			ofParameter<float> p = parameters.getFloat(i);
 
-			if (modg1.getBool("rms-" + p.getName())   && rms != nullptr)
+			if (modg1.contains(p.getName()) &&  modg1.getBool("rms-" + p.getName())   && rms != nullptr)
 			{
 				p = modg1.getFloat(p.getName()) + ((p.getMax() - p.getMin())/ 4) * (*rms) ;
 			}

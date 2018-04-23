@@ -7,9 +7,6 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\Layer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
@@ -145,6 +142,9 @@
     <ClCompile Include="src\kiss\kiss_fftr.c">
       <Filter>src\kiss</Filter>
     </ClCompile>
+    <ClCompile Include="src\ManagerLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -207,9 +207,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Layer.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ofApp.h">
@@ -385,6 +382,9 @@
     </ClInclude>
     <ClInclude Include="src\kiss\_kiss_fft_guts.h">
       <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ManagerLayer.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

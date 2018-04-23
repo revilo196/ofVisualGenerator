@@ -177,7 +177,7 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\CircleGrow.cpp" />
-    <ClCompile Include="src\Layer.cpp" />
+    <ClCompile Include="src\ManagerLayer.cpp" />
     <ClCompile Include="src\ParticleGrowTexture.cpp" />
     <ClCompile Include="src\ParticleSystem.cpp" />
     <ClCompile Include="src\ParticleSystemTexture.cpp" />
@@ -226,7 +226,7 @@
     <ClInclude Include="src\kiss\_kiss_fft_guts.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="src\CircleGrow.h" />
-    <ClInclude Include="src\Layer.h" />
+    <ClInclude Include="src\ManagerLayer.h" />
     <ClInclude Include="src\Overlay.h" />
     <ClInclude Include="src\ParticleGrowTexture.h" />
     <ClInclude Include="src\ParticleSystem.h" />

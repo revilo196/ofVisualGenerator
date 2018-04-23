@@ -37,7 +37,7 @@ private:
 	ofParameter<float> grow = 0.2f;
 	ofParameter<float> rotate = 50.0f;
 	ofParameter<float> size = 400.0f;
-	ofParameter<int> res = 50;
+	ofParameter<float> res = 50;
 	ofParameter<float> thick = 7.0f;
 	ofParameter<ofColor> color;
 

@@ -9,10 +9,11 @@ void ofApp::setup(){
 	ofSetVerticalSync(true);
 	ofBackground(0);
 
-	mng.setup();
+	//mng.setup();
 
 	VjObject::rms = &this->rms;
 
+	/*
 	layer1 = mng.createLayer<CircleGrow>(.2);
 	layer2 = mng.createLayer<ParticleGrowTexture>(0.2);
 	layer3 = mng.createLayer<ParticleSystemTexture>(0.2);
@@ -40,9 +41,9 @@ void ofApp::setup(){
 	layerConfigs.push_back(layer6);
 	layerConfigs.push_back(layer7);
 	layerConfigs.push_back(layer8);
+	*/
 
-	gui.setup();
-
+	/*
 	allGroup.setName("all");
 	int i = 0;
 	for each (VjObject * var in layerConfigs)
@@ -65,29 +66,37 @@ void ofApp::setup(){
 		i++;
 	}
 
-	sync.setup(allGroup, 6666, "192.168.105.58", 6667);
+	sync.setup(allGroup, 6666, "192.168.105.58", 6667);*/
 	sound.setup();
+
+	mgl.setup();
+	mgl.selfInit();
+	mgl.setupParamRouter();
+	gui.setup(mgl.paraRouter);
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
 	rms = sound.getRMSSmooth();
-	mng.update();
+	//mng.update();
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
-	layer8->moveFront();
+	//layer8->moveFront();
 	sync.update();
+
+	mgl.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 
 	ofEnableAlphaBlending();
-	mng.draw();
+	mgl.draw();
 
 
 	gui.draw();
-	currentConfig->draw();
+	//currentConfig->draw();
 
 	vector<float> db = sound.getDB();
 
@@ -153,20 +162,20 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::buttonPressed(const void * sender)
 {
 
-	assert(buttons.size() == layers.size());
-	assert(buttons.size() == guis.size());
+//	assert(buttons.size() == layers.size());
+//	assert(buttons.size() == guis.size());
 
 
-	for (int i = 0; i < buttons.size(); i++) {
-		if (sender == static_cast<void*>(buttons[i])) {
-			layers[i]->setAlpha(1.0);
-			currentConfig = guis[i];
-		}
-		else {
-			layers[i]->setAlpha(0.0);
+	//for (int i = 0; i < buttons.size(); i++) {
+	//	if (sender == static_cast<void*>(buttons[i])) {
+	//		layers[i]->setAlpha(1.0);
+	//		currentConfig = guis[i];
+	//	}
+	//	else {
+	//		layers[i]->setAlpha(0.0);
 
-		}
-	}
+//		}
+//	}
 
 }
 

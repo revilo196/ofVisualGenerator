@@ -9,7 +9,7 @@ public:
 	explicit VjObject(string name = "VjObject");
 	~VjObject();
 
-	void addParameter(ofAbstractParameter &parm);
+	void addParameter(ofAbstractParameter &parm, bool addRMS = true);
 	ofParameterGroup getParameterGroup();
 
 	void setParameterGroup(ofParameterGroup gp) { parameters = gp; }
@@ -17,7 +17,6 @@ public:
 	void setName(string name);
 	string getName();
 
-	virtual void setup();
 	virtual void updateParms();
 	//virtual void setRMS(float * rmsptr) { this->rms = rmsptr; }
 

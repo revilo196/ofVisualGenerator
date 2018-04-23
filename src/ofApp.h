@@ -16,6 +16,8 @@
 
 #include "ofxLayerManager.h"
 
+#include "ManagerLayer.h"
+
 #include "SoundAnalyzer.h"
 
 
@@ -40,7 +42,7 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		ofxPanel gui;
-
+		/*
 		CircleGrow * layer1;
 		ParticleGrowTexture * layer2;
 		ParticleSystemTexture * layer3;
@@ -49,21 +51,27 @@ class ofApp : public ofBaseApp{
 		StripeCubes * layer6;
 		WaveMeshTexture *layer7;
 		WaveMeshAdvTex * layer8;
-
+		
 		vector<ofxLayer::Layer*> layers;
 		vector<VjObject*> layerConfigs;
 
 		vector<ofxButton*> buttons;
 		vector<ofxPanel*> guis;
-		ofxPanel * currentConfig = nullptr;
+		*/
+		//ofxPanel * currentConfig = nullptr;
 
 		ofParameterGroup allGroup;
 
 		ofxOscParameterSync sync;
-
+		
 		SoundAnalyzer sound;
 
-		ofxLayer::Manager mng;
+		//ofxLayer::Manager mng;
+
+		
+
+		ManagerLayer mgl;
+
 		void buttonPressed(const void * sender);
 		float rms = 0;
 };

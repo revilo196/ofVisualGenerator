@@ -32,8 +32,8 @@ private:
 	ofPlanePrimitive plane;
 	
 	ofParameter<float> speed;
-	ofParameter<int> edges;
-	ofParameter<int> circles;
+	ofParameter<float> edges;
+	ofParameter<float> circles;
 	ofParameter<float> distance;
 	ofParameter<float> thik = 0.3;
 	ofParameter<float> stripPhaseSpeed;
