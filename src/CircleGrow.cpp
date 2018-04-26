@@ -11,6 +11,7 @@ CircleGrow::CircleGrow() : VjObject("CircleGrow")
 	addParameter(thick.set("thick", 0.02, 0, 0.5));
 	color.setName("color");
 	addParameter(color);
+	//cout << color.getEscapedName() << endl;
 }
 
 CircleGrow::~CircleGrow()

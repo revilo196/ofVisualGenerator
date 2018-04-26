@@ -144,9 +144,34 @@ void ManagerLayer::updateParamRouter()
 {
 
 	// modiyfy current Config;
+	ofParameterGroup g = configs[routTo];
+	int cntf = 0;
+	int cntb = 0;
+	int cntc = 0;
+	for (int i = 0; i < g.size(); i++) {
+		string type = g.getType(i);
 
+		if (type == "class ofParameter<float>") {
+			g.getFloat(i) = paraRouter.getFloat("f" + ofToString(cntf));
+			cntf++;
+		}
+		else if (type == "class ofParameter<bool>") {
+			g.getBool(i) = paraRouter.getBool("b" + ofToString(cntb));
 
-	cout << "update" << endl;
+			cntb++;
+		}
+		else if (type == "class ofParameter<class ofColor_<unsigned char> >") {
+			ofFloatColor c = paraRouter.getFloatColor("c" + ofToString(cntc));
+			g.getColor(i) = ofColor(c.r *255, c.g*255, c.b*255, c.a*255);
+			cntc++;
+		}
+		else if (type == "class ofParameter<class ofColor_<float> >") {
+			g.getFloatColor(i) = paraRouter.getFloatColor("c" + ofToString(cntb));
+			cntc++;
+		}
+	}
+
+	//cout << "update" << endl;
 
 }
 

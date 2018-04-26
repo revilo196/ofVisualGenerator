@@ -56,7 +56,7 @@ void SphereGrow::update()
 	if(sound != nullptr) 
 		rmsTime = sound->getRMS();
 	
-	cout << rmsTime << endl;
+	//cout << rmsTime << endl;
 
 	//fbo.begin();
 	

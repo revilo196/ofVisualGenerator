@@ -66,14 +66,14 @@ void ofApp::setup(){
 		i++;
 	}
 
-	sync.setup(allGroup, 6666, "192.168.105.58", 6667);*/
+	;/*/
 	sound.setup();
 
 	mgl.setup();
 	mgl.selfInit();
-	mgl.setupParamRouter();
-	gui.setup(mgl.paraRouter);
-
+	//mgl.setupParamRouter();
+	gui.setup(mgl.all);
+	sync.setup(mgl.all, 6666, "192.168.105.58", 6667);
 }
 
 //--------------------------------------------------------------
@@ -94,24 +94,27 @@ void ofApp::draw(){
 	ofEnableAlphaBlending();
 	mgl.draw();
 
-
-	gui.draw();
+	if(!fullscreen)
+		gui.draw();
 	//currentConfig->draw();
 
 	vector<float> db = sound.getDB();
-
+	/*
 	for (int i = 0; i < db.size(); i++) {
 		float x = (float)i / ( (float)db.size());
-
 		float h = db[i]*10;
-
 		ofDrawRectangle(x*ofGetWidth() , 0, 30, h);
 	}
+	*/
+
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	if (key == 'f') {
+		ofToggleFullscreen();
+		fullscreen = !fullscreen;
+	}
 }
 
 //--------------------------------------------------------------

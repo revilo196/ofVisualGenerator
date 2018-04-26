@@ -68,7 +68,7 @@ class ofApp : public ofBaseApp{
 
 		//ofxLayer::Manager mng;
 
-		
+		bool fullscreen = false;
 
 		ManagerLayer mgl;
 

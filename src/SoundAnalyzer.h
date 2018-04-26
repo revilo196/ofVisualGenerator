@@ -36,9 +36,9 @@ private:
 	ofSoundStream soundStream;
 	const int bufferSize = 2048;
 
-	float current;
-	float rms;
-	float rmsSmooth;
+	float current =0;
+	float rms =0;
+	float rmsSmooth=0;
 	vector<float> audioBuffer;
 	vector<float> power_spectrum;
 	vector<float> power_spectrumSmooth;
