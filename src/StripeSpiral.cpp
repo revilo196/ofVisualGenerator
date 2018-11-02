@@ -84,7 +84,7 @@ void StripeSpiral::render()
 	shader.begin();
 	glEnable(GL_DEPTH_TEST);
 
-	 ofTranslate(0, 0, 1);
+	 ofTranslate(0, 0, 1.5);
 
 
 	 float angle = 360.0 / edges;

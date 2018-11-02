@@ -20,7 +20,7 @@
 
 #include "SoundAnalyzer.h"
 
-
+#include "MainMixer.h"
 
 class ofApp : public ofBaseApp{
 
@@ -28,6 +28,11 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+
+		void art();
+
+		void updatePre();
+		void drawPre(ofEventArgs & args);
 
 		void keyPressed(int key);
 		void keyReleased(int key);
@@ -42,35 +47,63 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		ofxPanel gui;
-		/*
-		CircleGrow * layer1;
-		ParticleGrowTexture * layer2;
-		ParticleSystemTexture * layer3;
-		StripeSpiral * layer4;
-		SphereGrow * layer5; 
-		StripeCubes * layer6;
-		WaveMeshTexture *layer7;
-		WaveMeshAdvTex * layer8;
-		
-		vector<ofxLayer::Layer*> layers;
-		vector<VjObject*> layerConfigs;
+		ofxPanel gui2;
 
-		vector<ofxButton*> buttons;
-		vector<ofxPanel*> guis;
-		*/
-		//ofxPanel * currentConfig = nullptr;
 
 		ofParameterGroup allGroup;
-
 		ofxOscParameterSync sync;
+
 		
 		SoundAnalyzer sound;
 
-		//ofxLayer::Manager mng;
-
 		bool fullscreen = false;
 
-		ManagerLayer mgl;
+		ManagerLayer  mgl1;
+		ManagerLayer  mgl2;
+		ManagerLayer  mgl3;
+		ManagerLayer  mgl4;
+
+		MainMixer a12;
+		MainMixer b34;
+
+		MainMixer outAB;
+
+		ofFbo preFbo;
+		ofFbo preFboOut;
+
+		void songBeamerInputRender();
+		ofFbo sbEffectOut;
+		ofFbo effectLayer;
+		ofFbo songOverlay;
+		ofShader yExBlur;
+		ofShader xExBlur;
+		ofShader sbmix;
+		ofShader sbAdd;
+		ofFbo xEx;
+		ofFbo yEx;
+		ofFbo xExB;
+		ofFbo yExB;
+
+
+		ofPlanePrimitive fullQuad;
+		
+		ofVideoGrabber videoIn;
+
+		ofParameter<bool> fullSong;
+		ofParameter<bool> blkSong;
+		ofParameter<float> dimm;
+		ofParameter<float> stro;
+		ofParameter<float> colR;
+		ofParameter<float> colG;
+		ofParameter<float> colB;
+
+		ofParameter<bool> artL1;
+		ofParameter<bool> artL2;
+		ofParameter<bool> artL3;
+		ofParameter<bool> artL4;
+		
+
+		//ofxLayer::Manager mainMixer;
 
 		void buttonPressed(const void * sender);
 		float rms = 0;

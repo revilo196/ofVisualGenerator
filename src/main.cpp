@@ -11,19 +11,26 @@ int main( ){
 	settings.setGLVersion(4, 5);
 	settings.width = 1920;
 	settings.height = 1080;
-	settings.setPosition(ofVec2f(300, 0));
-	auto win_h = ofCreateWindow(settings);		
+	settings.setPosition(ofVec2f(50, 50));
+	settings.windowMode = OF_WINDOW;
+	settings.monitor = 1;
+	shared_ptr<ofAppBaseWindow> mainWindow = ofCreateWindow(settings);
 
-	//settings.width = 300;
-	//settings.height = 300;
-	//settings.setPosition(ofVec2f(0, 0));
-	//auto other_win_h = ofCreateWindow(settings);
+	settings.windowMode = OF_WINDOW;
+	settings.monitor = 0;
+	settings.width = 1920;
+	settings.height = 1080;
+	settings.setPosition(ofVec2f(0, 50));
+	settings.shareContextWith = mainWindow;
+	shared_ptr<ofAppBaseWindow> other_win_h = ofCreateWindow(settings);
+	other_win_h->setVerticalSync(false);
 
-	auto mainApp = make_shared<ofApp>();
-	//auto mainApp2 = make_shared<ofApp>();
+	shared_ptr<ofApp> mainApp(new ofApp);
+
+	ofAddListener(other_win_h->events().draw, mainApp.get(), &ofApp::drawPre);
 
 
-	ofRunApp(win_h, mainApp);
+	ofRunApp(mainWindow, mainApp);
 	//ofRunApp(other_win_h, mainApp2);
 	ofRunMainLoop();
 }

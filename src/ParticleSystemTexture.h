@@ -20,6 +20,19 @@ public:
 
 private:
 	ParticleSystem * system;
-	//ofFbo fbo;
+
+
+	ofParameter<float> speed;
+	ofParameter<float> forceAmplitude;
+	ofParameter<float> scale;
+	ofParameter<float> partVel;
+
+	ofParameter<float>rgb_r;
+	ofParameter<float>rgb_g;
+
+	ofParameter<float>rgb_b;
+
+
+	ofFloatColor colorParm;
 };
 

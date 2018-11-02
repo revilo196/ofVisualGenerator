@@ -14,6 +14,7 @@ public:
 		float time = 0, float size = 0.01);
 	void update(float deltatime);
 	void draw() const;
+	ofColor color;
 private:
 	//resetBasePosition
 	ofVec2f *base;
@@ -79,7 +80,12 @@ private:
 	ofParameter<float> speedX;
 	ofParameter<float> speedY;
 	ofParameter<float> radius;
-	ofParameter<ofColor> color;
+
+	ofColor color = ofColor(255);
+
+	ofParameter<float> rgb_r;
+	ofParameter<float> rgb_g;
+	ofParameter<float> rgb_b;
 
 
 

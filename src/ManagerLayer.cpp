@@ -63,14 +63,15 @@ void ManagerLayer::draw()
 
 void ManagerLayer::selfInit()
 {
-	this->createLayer<CircleGrow>(0.5);
-	this->createLayer<ParticleGrowTexture>(0.5);
-	this->createLayer<ParticleSystemTexture>(0.5);
-	this->createLayer<StripeSpiral>(0.5);
-	this->createLayer<SphereGrow>(0.5);
-	this->createLayer<StripeCubes>(0.5);
-	this->createLayer<WaveMeshTexture>(0.5);
-	this->createLayer<WaveMeshAdvTex>(0.5);
+	const float def_alpha = 0.0;
+	this->createLayer<CircleGrow>(def_alpha);
+	this->createLayer<ParticleGrowTexture>(def_alpha);
+	this->createLayer<ParticleSystemTexture>(def_alpha);
+	this->createLayer<StripeSpiral>(def_alpha);
+	this->createLayer<SphereGrow>(def_alpha);
+	this->createLayer<StripeCubes>(def_alpha);
+	this->createLayer<WaveMeshTexture>(def_alpha);
+	this->createLayer<WaveMeshAdvTex>(def_alpha);
 }
 
 void ManagerLayer::setupParamRouter()

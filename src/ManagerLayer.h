@@ -32,12 +32,14 @@ public:
 	ofParameterGroup paraRouter;
 	ofParameter<int> routTo;
 
+
 private:
 	void switchRoutionTo(int &val);
 	void updateParamRouter();
 	void updateParamRouterf(float &f);
 	void updateParamRouterb(bool &f);
 	void updateParamRouterc(ofFloatColor &f);
+
 
 
 

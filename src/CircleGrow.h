@@ -39,7 +39,14 @@ private:
 	ofParameter<float> size = 400.0f;
 	ofParameter<float> res = 50;
 	ofParameter<float> thick = 7.0f;
-	ofParameter<ofColor> color;
+
+	ofColor color = ofColor(255);
+
+	ofParameter<float> rgb_r;	
+	ofParameter<float> rgb_g;
+	ofParameter<float> rgb_b;
+
+
 
 
 };

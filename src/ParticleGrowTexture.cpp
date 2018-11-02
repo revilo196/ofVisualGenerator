@@ -19,6 +19,7 @@ void GrowParticle::setup(ofVec2f* m_base, ofVec2f m_direction, ofVec2f offset,
 	this->timeout = m_timeout;
 	this->position = ofVec2f(0, 0);
 	this->positioninv = ofVec2f(0, 0);
+	
 	updateInvBase();
 }
 
@@ -57,10 +58,11 @@ void GrowParticle::draw() const
 		val -= 1;
 	}
 
-	val *= 512;
+	val *= 2;
 	
-	val = CLAMP(val, 0, 255);
-	ofSetColor(val);
+	val = CLAMP(val, 0, 1);
+	ofSetColor(this->color * val);
+
 	ofDrawRectangle((*base) + position +offset , size, size);
 
 	//ofDrawRectangle(baseinv + positioninv + offset , size, size);
@@ -130,8 +132,15 @@ ParticleGrowTexture::ParticleGrowTexture() : VjObject("ParticleGrowTexture")
 	addParameter(ampX.set("ampX", .125, 0, 2));
 	addParameter(ampY.set("ampY", .252, 0, 2));
 	addParameter(radius.set("radius", 1, 0.2, 3));
-	color.setName("color");
-	addParameter(color);
+	//color.setName("color");
+	//addParameter(color);
+	addParameter(rgb_r.set("r", 255, 0, 255));
+	addParameter(rgb_g.set("g", 255, 0, 255));
+	addParameter(rgb_b.set("b", 255, 0, 255));
+
+	this->color.r = rgb_r;
+	this->color.g = rgb_g;
+	this->color.b = rgb_b;
 
 }
 
@@ -176,6 +185,9 @@ void ParticleGrowTexture::update()
 {
 	this->updateParms();
 
+	this->color.r = rgb_r;
+	this->color.g = rgb_g;
+	this->color.b = rgb_b;
 
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
@@ -227,6 +239,7 @@ void ParticleGrowTexture::draw()
 		for (size_t i = 0; i < 5; i++) {
 			for (size_t j = 0; j < 60; j++) {
 
+				p[b][i][j].color = color;
 				p[b][i][j].draw();
 
 			}

@@ -145,6 +145,9 @@
     <ClCompile Include="src\ManagerLayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\MainMixer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -384,6 +387,9 @@
       <Filter>src\kiss</Filter>
     </ClInclude>
     <ClInclude Include="src\ManagerLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MainMixer.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

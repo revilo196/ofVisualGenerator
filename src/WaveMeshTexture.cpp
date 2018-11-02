@@ -70,6 +70,7 @@ void WaveMeshTexture::render()
 	ofTranslate(0,-cy, -30);
 
 
+
 	shader.setUniform3f("offset", time[0], time[1], time[2]);
 	shader.setUniform1f("amp", amplitude);
 	shader.setUniform1f("fadewidth", 800);
