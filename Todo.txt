@@ -7,7 +7,7 @@ TODO:
 		§ Hintergrundfarbe anpassen
 		§ Videos abspielen (Hintergrundvideos etc.) -> Loops
 		§ Kurze Special Effects, per Knopfdruck auslösbar
-
+		§ Configuration file
 Steuerprogramm
 § Rhytmuselemnete/Rhytmustreiber (v.a. Für After Show Party)
   Ablaufsysteme -> Rhytmus
