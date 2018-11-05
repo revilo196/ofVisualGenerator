@@ -1,23 +1,33 @@
 #pragma once
-#include "TextureGen.h"
+
+#include "ofxLayer.h"
+#include "VjObject.h"
+
+class SoundAnalyzer;
+
+using namespace ofxLayer;
+
 class SphereGrow :
-	public TextureGen
+	public ofxLayer::Layer, public VjObject
 {
 public:
-	SphereGrow(string name = "SphereGrow");
+
+	OFX_LAYER_DEFINE_LAYER_CLASS(SphereGrow);
+
+
+	SphereGrow();
 	~SphereGrow();
 
-	virtual void setup(float width, float height) override;
-	virtual ofTexture& getTextureRef()	override;
-
+	virtual void setup() override;
 	virtual void update() override;
-	virtual void draw(float x, float y, float w, float h) const override;
-	virtual void draw(float x, float y) const override;
+	virtual void draw() override;
+
+	void setSound(const SoundAnalyzer * sound) { this->sound = sound; }
 
 private:
 
 	float edge(float in);
-
+	const SoundAnalyzer * sound = nullptr;
 	float lasttime = 0;
 	float rmsTime = 0;
 	static const size_t sphereCount = 10;
@@ -26,6 +36,6 @@ private:
 	ofParameter<float> grow = 0.3f;
 	ofParameter<float> size = 0.1;
 	ofShader shader;
-	ofFbo fbo;
+	//ofFbo fbo;
 };
 

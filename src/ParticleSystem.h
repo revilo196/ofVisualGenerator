@@ -74,7 +74,7 @@ private:
 
 /// Particle System Simulation with ofParametres for interaction
 class ParticleSystem :
-	public ofBaseDraws, public ofBaseUpdates, public VjObject
+	public ofBaseDraws, public ofBaseUpdates
 {
 public:
 	ParticleSystem(size_t count = 5000, string name = "Particle Simulation");
@@ -88,6 +88,12 @@ public:
 
 	virtual float getHeight() const override { return height; }
 	virtual float getWidth() const override { return width; }
+
+	float speed;
+    float forceAmplitude;
+	float scale;
+	float partVel;
+	ofFloatColor colorParm;
 
 private:
 
@@ -109,13 +115,7 @@ private:
 	float width;
 	float height;
 	
-	ofParameter<float> speed;
-	ofParameter<float> forceAmplitude;
-	ofParameter<float> scale;
-	ofParameter<bool> add;
-	ofParameter<bool> remove;
-	ofParameter<float> partVel; 
-	ofParameter<ofFloatColor> colorParm;
+
 };
 
 

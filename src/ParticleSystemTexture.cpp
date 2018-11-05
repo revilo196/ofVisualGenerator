@@ -2,10 +2,18 @@
 
 
 
-ParticleSystemTexture::ParticleSystemTexture(string name) : TextureGen(name)
+ParticleSystemTexture::ParticleSystemTexture() : VjObject("ParticleSystemTexture")
 {
 	system = new ParticleSystem(5000);
-	this->addParameter(system->getParameterGroup());
+
+	addParameter(speed.set("speed", 0.002, -0.05, 0.05));
+	addParameter(forceAmplitude.set("force", 1, -3, 3));
+	addParameter(scale.set("scale", 1.0, 0.1, 5));
+	addParameter(partVel.set("vel", 0.20, 0.05, 0.7));
+	addParameter(rgb_r.set("r", 255, 0, 255));
+	addParameter(rgb_g.set("g", 255, 0, 255));
+	addParameter(rgb_b.set("b", 255, 0, 255));
+
 }
 
 
@@ -14,36 +22,34 @@ ParticleSystemTexture::~ParticleSystemTexture()
 	delete system;
 }
 
-void ParticleSystemTexture::setup(float width, float height)
+void ParticleSystemTexture::setup()
 {
-	fbo.allocate(width, height);
+	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 
-	system->setup(width, height);
-}
-
-ofTexture & ParticleSystemTexture::getTextureRef()
-{
-	return fbo.getTexture();
+	system->setup(this->ofGetWidth(), this->ofGetHeight());
 }
 
 void ParticleSystemTexture::update()
 {
+	this->updateParms();
+
+	system->colorParm.r = rgb_r / 255.0;
+	system->colorParm.g = rgb_g / 255.0;
+	system->colorParm.b = rgb_b / 255.0;
+	system->speed = speed;
+	system->forceAmplitude = forceAmplitude;
+	system->scale = scale;
+	system->partVel = partVel;
+
+
 	system->update();
+}
 
-	fbo.begin();
-	ofClear(0, 0, 0, 255);
-
+void ParticleSystemTexture::draw() 
+{
+	//fbo.draw(0, 0);
+	//fbo.begin();
+	//ofClear(0, 0, 0, 255);
 	system->draw(0, 0);
-	fbo.end();
-
-}
-
-void ParticleSystemTexture::draw(float x, float y, float w, float h) const
-{
-	fbo.draw(x, y, w, h);
-}
-
-void ParticleSystemTexture::draw(float x, float y) const
-{
-	fbo.draw(x, y);
+	//fbo.end();
 }

@@ -13,11 +13,29 @@
     <ClCompile Include="src\ofApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\ParticleSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\VjObject.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\WaveMeshOverlay.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.cpp">
+      <Filter>addons\ofxAnimatable\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.cpp">
+      <Filter>addons\ofxAnimatable\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.cpp">
+      <Filter>addons\ofxAnimatable\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.cpp">
+      <Filter>addons\ofxAnimatable\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp">
+      <Filter>addons\ofxAnimatable\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp">
       <Filter>addons\ofxGui\src</Filter>
@@ -43,56 +61,92 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
       <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\SimpleDots.cpp">
-      <Filter>src\TextureGeneration</Filter>
+    <ClCompile Include="..\..\..\addons\ofxLayer\src\ofxLayer.cpp">
+      <Filter>addons\ofxLayer\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\SimpleStripes.cpp">
-      <Filter>src\TextureGeneration</Filter>
+    <ClCompile Include="..\..\..\addons\ofxLayer\src\ofxLayerManager.cpp">
+      <Filter>addons\ofxLayer\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\StripeSpiral.cpp">
-      <Filter>src\TextureGeneration</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\WaveMeshAdvTex.cpp">
-      <Filter>src\TextureGeneration</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\WaveMeshTexture.cpp">
-      <Filter>src\TextureGeneration</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\StripeCubes.cpp">
-      <Filter>src\TextureGeneration</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.cpp">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscSender.cpp">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.cpp">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.cpp">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\NetworkingUtils.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.cpp">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32\UdpSocket.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip\win32</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
     </ClCompile>
     <ClCompile Include="src\CircleGrow.cpp">
-      <Filter>src\TextureGeneration</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SphereGrow.cpp">
-      <Filter>src\TextureGeneration</Filter>
+      <Filter>src\Layers</Filter>
     </ClCompile>
     <ClCompile Include="src\ParticleGrowTexture.cpp">
-      <Filter>src\TextureGeneration</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ParticleSystem.cpp">
-      <Filter>src</Filter>
+      <Filter>src\Layers</Filter>
     </ClCompile>
     <ClCompile Include="src\ParticleSystemTexture.cpp">
-      <Filter>src\TextureGeneration</Filter>
+      <Filter>src\Layers</Filter>
     </ClCompile>
-    <ClCompile Include="src\Layer.cpp">
-      <Filter>src\Layer</Filter>
+    <ClCompile Include="src\StripeSpiral.cpp">
+      <Filter>src\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleDots.cpp">
+      <Filter>src\TextureGen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleStripes.cpp">
+      <Filter>src\TextureGen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SphereGrow.cpp">
+      <Filter>src\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StripeCubes.cpp">
+      <Filter>src\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WaveMeshTexture.cpp">
+      <Filter>src\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WaveMeshAdvTex.cpp">
+      <Filter>src\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SoundAnalyzer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kiss\kiss_fft.c">
+      <Filter>src\kiss</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kiss\kiss_fftr.c">
+      <Filter>src\kiss</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ManagerLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MainMixer.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,26 +156,56 @@
     <Filter Include="addons">
       <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
     </Filter>
+    <Filter Include="addons\ofxAnimatable">
+      <UniqueIdentifier>{76597DE6-6EC6-9B33-AE16-324A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAnimatable\src">
+      <UniqueIdentifier>{9A0AF1AC-D8D7-DC08-0B38-3CC3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="addons\ofxGui">
       <UniqueIdentifier>{4F2A59AF-5F4E-704B-D067-EC13}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxGui\src">
       <UniqueIdentifier>{645E9533-4DCD-6179-1CDF-CB65}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\TextureGeneration">
-      <UniqueIdentifier>{a892b72d-74fc-4653-9af2-c3e486e92fdf}</UniqueIdentifier>
+    <Filter Include="addons\ofxLayer">
+      <UniqueIdentifier>{695C9345-3585-6AE5-69E1-700F}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\data">
-      <UniqueIdentifier>{9dc165a8-19e9-4db1-8b6b-22d74387699f}</UniqueIdentifier>
+    <Filter Include="addons\ofxLayer\src">
+      <UniqueIdentifier>{29830DCA-D028-B29B-E883-19DC}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxAnimatable">
-      <UniqueIdentifier>{17cfd8b3-afd0-4d79-8599-51b3fcc90c73}</UniqueIdentifier>
+    <Filter Include="addons\ofxOsc">
+      <UniqueIdentifier>{D91DCA33-6E5D-4481-2AEC-9FBB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="addons\ofxAnimatable\src">
-      <UniqueIdentifier>{fa1b6616-d842-4f94-83b6-3fe856f436be}</UniqueIdentifier>
+    <Filter Include="addons\ofxOsc\src">
+      <UniqueIdentifier>{B9DD339A-D93D-92A1-0A2F-4B41}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Layer">
-      <UniqueIdentifier>{bc450acf-bc31-4965-9ff5-8a9d62ce0420}</UniqueIdentifier>
+    <Filter Include="addons\ofxOsc\libs">
+      <UniqueIdentifier>{99ECA1D9-873F-4622-8FC0-FC7B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack">
+      <UniqueIdentifier>{D3A98534-1602-4FEF-57A6-6593}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack\src">
+      <UniqueIdentifier>{BFB5BB47-98C8-BBCB-3066-1046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack\src\ip">
+      <UniqueIdentifier>{5A029128-EB41-95C5-CBC0-CDED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack\src\ip\win32">
+      <UniqueIdentifier>{79DFDFE2-400B-8654-3675-01A3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxOsc\libs\oscpack\src\osc">
+      <UniqueIdentifier>{EDACB89C-9768-9551-4D41-B590}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Layers">
+      <UniqueIdentifier>{e94aea2f-9657-4b65-9c54-6d20052c7053}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\TextureGen">
+      <UniqueIdentifier>{27845010-9b03-43dc-813e-220ea0bf6020}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\kiss">
+      <UniqueIdentifier>{78753b61-0757-458a-afe0-e556bfd9ba5e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +218,9 @@
     <ClInclude Include="src\Overlay.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\ParticleSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\TextureGen.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -142,6 +229,21 @@
     </ClInclude>
     <ClInclude Include="src\WaveMeshOverlay.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h">
+      <Filter>addons\ofxAnimatable\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.h">
+      <Filter>addons\ofxAnimatable\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.h">
+      <Filter>addons\ofxAnimatable\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.h">
+      <Filter>addons\ofxAnimatable\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h">
+      <Filter>addons\ofxAnimatable\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h">
       <Filter>addons\ofxGui\src</Filter>
@@ -170,121 +272,128 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleDots.h">
-      <Filter>src\TextureGeneration</Filter>
+    <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayer.h">
+      <Filter>addons\ofxLayer\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\SimpleStripes.h">
-      <Filter>src\TextureGeneration</Filter>
+    <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayerConstants.h">
+      <Filter>addons\ofxLayer\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\StripeSpiral.h">
-      <Filter>src\TextureGeneration</Filter>
+    <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayerManager.h">
+      <Filter>addons\ofxLayer\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\WaveMeshAdvTex.h">
-      <Filter>src\TextureGeneration</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\WaveMeshTexture.h">
-      <Filter>src\TextureGeneration</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClInclude>
-    <ClInclude Include="src\StripeCubes.h">
-      <Filter>src\TextureGeneration</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.h">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableFloat.h">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.h">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfColor.h">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscReceiver.h">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableOfPoint.h">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscSender.h">
+      <Filter>addons\ofxOsc\src</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h">
-      <Filter>addons\ofxAnimatable\src</Filter>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\IpEndpointName.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\NetworkingUtils.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\PacketListener.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\TimerListener.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\ip\UdpSocket.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\ip</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\MessageMappingOscPacketListener.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscException.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscHostEndianness.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscOutboundPacketStream.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPacketListener.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h">
+      <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
     </ClInclude>
     <ClInclude Include="src\CircleGrow.h">
-      <Filter>src\TextureGeneration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SphereGrow.h">
-      <Filter>src\TextureGeneration</Filter>
+      <Filter>src\Layers</Filter>
     </ClInclude>
     <ClInclude Include="src\ParticleGrowTexture.h">
-      <Filter>src\TextureGeneration</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ParticleSystem.h">
-      <Filter>src</Filter>
+      <Filter>src\Layers</Filter>
     </ClInclude>
     <ClInclude Include="src\ParticleSystemTexture.h">
-      <Filter>src\TextureGeneration</Filter>
+      <Filter>src\Layers</Filter>
     </ClInclude>
-    <ClInclude Include="src\Layer.h">
-      <Filter>src\Layer</Filter>
+    <ClInclude Include="src\StripeSpiral.h">
+      <Filter>src\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleDots.h">
+      <Filter>src\TextureGen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleStripes.h">
+      <Filter>src\TextureGen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SphereGrow.h">
+      <Filter>src\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StripeCubes.h">
+      <Filter>src\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WaveMeshTexture.h">
+      <Filter>src\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WaveMeshAdvTex.h">
+      <Filter>src\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoundAnalyzer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kiss_fft.h">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kiss_fftr.h">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kissfft.hh">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\_kiss_fft_guts.h">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ManagerLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MainMixer.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="bin\data\blend.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\blurX.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\blurY.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\circle2d.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\circle2d.vert">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\perlin.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\shader.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\shader.vert">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\shaderPerlinZ.vert">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\stripes.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\waveMeshAdv.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\waveMeshAdv.vert">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\waveMeshOverlay.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\waveMeshOverlay.vert">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\waveMeshTexture.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\waveMeshTexture.vert">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\particle.frag">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\particle.geom">
-      <Filter>src\data</Filter>
-    </None>
-    <None Include="bin\data\particle.vert">
-      <Filter>src\data</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Todo.txt" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 #version 450
 
 uniform sampler2DRect tex0;
+uniform vec2 format;
 uniform float blurAmnt;
 uniform float glowAmnt;
 

@@ -2,7 +2,7 @@
 
 
 
-StripeCubes::StripeCubes(string name) : TextureGen(name)
+StripeCubes::StripeCubes() : VjObject("StripeCubes")
 {
 	addParameter(speed.set("speed", 0.5, 0.0, 3.0));
 	addParameter(speedStripes.set("speedStripes", 0.5, 0.0, 3.0));
@@ -16,10 +16,10 @@ StripeCubes::~StripeCubes()
 {
 }
 
-void StripeCubes::setup(float width, float height)
+void StripeCubes::setup()
 {
-	TextureGen::setup(width, height);
-	fbo.allocate(width, height);
+
+	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 	shader.load("shader.vert", "stripes.frag");
 	setCubes(5);
 	radius.setup();
@@ -32,13 +32,12 @@ void StripeCubes::setup(float width, float height)
 
 }
 
-ofTexture & StripeCubes::getTextureRef()
-{
-	return fbo.getTexture();
-}
 
 void StripeCubes::update()
 {
+	this->updateParms();
+
+
 	deltatime = lasttime - ofGetElapsedTimef();
 	lasttime = ofGetElapsedTimef();
 
@@ -64,6 +63,13 @@ void StripeCubes::update()
 
 	radius.update(deltatime);
 
+
+}
+
+
+
+void StripeCubes::draw()
+{
 	shader.begin();
 	shader.setUniform1i("fullscreen", 0);
 	shader.setUniform1f("time", time_stripes);
@@ -74,16 +80,7 @@ void StripeCubes::update()
 	shader.end();
 
 	render();
-}
-
-void StripeCubes::draw(float x, float y, float w, float h) const
-{
-	fbo.draw(x, y, w, h);
-}
-
-void StripeCubes::draw(float x, float y) const
-{
-	fbo.draw(x,y);
+	//fbo.draw(0,0);
 }
 
 void StripeCubes::setCubes(int count)
@@ -119,9 +116,9 @@ void StripeCubes::drawBoxes()
 
 void StripeCubes::render()
 {
-	fbo.begin();
+	//fbo.begin();
 	glEnable(GL_DEPTH_TEST);
-	ofClear(0, 0, 0, 255);
+	//ofClear(0, 0, 0, 255);
 	
 
 	translateMidFlipScale();
@@ -136,6 +133,6 @@ void StripeCubes::render()
 
 	shader.end();
 	glDisable(GL_DEPTH_TEST);
-	fbo.end();
+	//fbo.end();
 }
 

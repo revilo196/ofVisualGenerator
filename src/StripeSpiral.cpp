@@ -2,7 +2,7 @@
 
 
 
-StripeSpiral::StripeSpiral(string name) : TextureGen(name)
+StripeSpiral::StripeSpiral() : VjObject("StripeSpiral")
 {
 	addParameter(speed.set("speed", 0.5, -1, 1));
 	addParameter(edges.set("edges", 8, 2, 16));
@@ -13,11 +13,6 @@ StripeSpiral::StripeSpiral(string name) : TextureGen(name)
 	addParameter(stripCount.set("stripCount", 10.0, 3.0, 30.0));
 	addParameter(stripTilt.set("stripTilt", 0.0, 0.0, 1.0));
 	addParameter(stripRot.set("stripRot", 0.0, 0.0, 1.0));
-
-
-
-
-
 }
 
 
@@ -25,11 +20,10 @@ StripeSpiral::~StripeSpiral()
 {
 }
 
-void StripeSpiral::setup(float width, float height)
+void StripeSpiral::setup()
 {
-	TextureGen::setup(width, height);
 
-	fbo.allocate(width, height);
+	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 
 
 	shader.load("shader.vert", "stripes.frag");
@@ -40,18 +34,24 @@ void StripeSpiral::setup(float width, float height)
 	
 }
 
-ofTexture & StripeSpiral::getTextureRef()
-{
-	return fbo.getTexture();
-}
+
 
 void StripeSpiral::update()
 {
+	this->updateParms();
 
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
 
 	time += deltatime * (speed);
+
+
+}
+
+
+
+void StripeSpiral::draw()
+{
 
 	shader.begin();
 
@@ -66,33 +66,25 @@ void StripeSpiral::update()
 
 
 	render();
-}
 
-void StripeSpiral::draw(float x, float y, float w, float h) const
-{
-	fbo.draw(x, y, w, h);
-}
-
-void StripeSpiral::draw(float x, float y) const
-{
-	fbo.draw(x, y);
+	//fbo.draw(0, 0);
 }
 
 void StripeSpiral::render()
 {
 
-	float cx = getWidth() / 2;
-	float cy = getHeight() / 2;
+	float cx = this->ofGetWidth() / 2;
+	float cy = this->ofGetHeight() / 2;
 
-	fbo.begin();
-	ofClear(0, 0, 0, 255);
+	//fbo.begin();
+	//ofClear(0, 0, 0, 255);
 
 	translateMidFlipScale();
 
 	shader.begin();
 	glEnable(GL_DEPTH_TEST);
 
-	 ofTranslate(0, 0, 1);
+	 ofTranslate(0, 0, 1.5);
 
 
 	 float angle = 360.0 / edges;
@@ -118,6 +110,6 @@ void StripeSpiral::render()
 	}
 	glDisable(GL_DEPTH_TEST);
 	shader.end();
-	fbo.end();
+	//fbo.end();
 
 }

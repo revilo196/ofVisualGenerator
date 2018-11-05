@@ -1,19 +1,24 @@
 #pragma once
-#include "TextureGen.h"
+
+#include "ofxLayer.h"
+#include "VjObject.h"
 #include "ofxAnimatableFloat.h"
 
+using namespace ofxLayer;
+
+
 class StripeCubes :
-	public TextureGen
+	 public ofxLayer::Layer, public VjObject
 {
 public:
-	StripeCubes(string name = "StripeCubes");
+	OFX_LAYER_DEFINE_LAYER_CLASS(StripeCubes);
+
+	StripeCubes();
 	~StripeCubes();
 
-	virtual void setup(float width, float height) override;
-	virtual ofTexture& getTextureRef()	override;
+	virtual void setup() override;
 	virtual void update() override;
-	virtual void draw(float x, float y, float w, float h) const override;
-	virtual void draw(float x, float y) const override;
+	virtual void draw() override;
 	void setCubes(int count);
 
 private:
@@ -28,7 +33,7 @@ private:
 
 
 	ofShader shader;
-	ofFbo fbo;
+	//ofFbo fbo;
 	vector<ofBoxPrimitive> boxes;
 	vector<ofVec3f> rotations;
 	vector<float> speeds;

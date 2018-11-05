@@ -1,8 +1,8 @@
 #include "SphereGrow.h"
 
+#include "SoundAnalyzer.h"
 
-
-SphereGrow::SphereGrow(string name) : TextureGen(name)
+SphereGrow::SphereGrow() : VjObject("SphereGrow")
 {
 	const int res = 1;
 	sphere.resize(sphereCount);
@@ -23,18 +23,13 @@ SphereGrow::~SphereGrow()
 {
 }
 
-void SphereGrow::setup(float width, float height)
+void SphereGrow::setup()
 {
-	TextureGen::setup(width, height);
-
-	fbo.allocate(width, height);
+	
+	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 	shader.load("shader.vert", "shader.frag");
 }
 
-ofTexture & SphereGrow::getTextureRef()
-{
-	return fbo.getTexture();
-}
 
 float SphereGrow::edge(float in)
 {
@@ -49,15 +44,35 @@ float SphereGrow::edge(float in)
 
 void SphereGrow::update()
 {
+	this->updateParms();
+
+
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
 
-	phase += deltatime * grow*0.5;
+	phase += deltatime * grow*0.5  + grow * rmsTime;
 	phase = edge(phase);
 
-	fbo.begin();
-	ofClear(0, 0, 0, 255);
+	if(sound != nullptr) 
+		rmsTime = sound->getRMS();
+	
+	//cout << rmsTime << endl;
+
+	//fbo.begin();
+	
+	//fbo.end();
+}
+
+
+
+void SphereGrow::draw()
+{
+	//fbo.draw(0, 0);
+
+	//ofClear(0, 0, 0, 255);
 	shader.begin();
+
+	shader.setUniform1f("time", rmsTime / 3);
 
 	translateMidFlipScale();
 	ofRotateZ(ofGetElapsedTimef());
@@ -66,26 +81,15 @@ void SphereGrow::update()
 		float myphase = phase + static_cast<float>(i) / static_cast<float>(sphereCount);
 		myphase = edge(myphase);
 		sphere[i].setRadius(size * myphase);
-		sphere[i].setGlobalPosition(0.2+myphase, 0.2+myphase, -2);
-		ofRotateX(rmsTime * 0.5+3);
-		ofRotateY(rmsTime * 0.2+2);
-		ofRotateY(ofGetElapsedTimef() / 2+3);
+		sphere[i].setGlobalPosition(0.2 + myphase, 0.2 + myphase, -2);
+		ofRotateX(rmsTime * 0.5 + 3);
+		ofRotateY(rmsTime * 0.2 + 2);
+		ofRotateY(ofGetElapsedTimef() / 2 + 3);
 		ofRotateZ(5);
 		ofSetColor((1 - myphase) * 255);
 		sphere[i].drawWireframe();
 	}
 
 	shader.end();
-	fbo.end();
-}
-
-void SphereGrow::draw(float x, float y, float w, float h) const
-{
-	fbo.draw(x, y, w, h);
-}
-
-void SphereGrow::draw(float x, float y) const
-{
-	fbo.draw(x, y);
 }
 

@@ -19,6 +19,7 @@ void GrowParticle::setup(ofVec2f* m_base, ofVec2f m_direction, ofVec2f offset,
 	this->timeout = m_timeout;
 	this->position = ofVec2f(0, 0);
 	this->positioninv = ofVec2f(0, 0);
+	
 	updateInvBase();
 }
 
@@ -57,10 +58,11 @@ void GrowParticle::draw() const
 		val -= 1;
 	}
 
-	val *= 512;
+	val *= 2;
 	
-	val = CLAMP(val, 0, 255);
-	ofSetColor(val);
+	val = CLAMP(val, 0, 1);
+	ofSetColor(this->color * val);
+
 	ofDrawRectangle((*base) + position +offset , size, size);
 
 	//ofDrawRectangle(baseinv + positioninv + offset , size, size);
@@ -121,7 +123,7 @@ float GrowParticle::calcD() const
 }
 
 
-ParticleGrowTexture::ParticleGrowTexture(string name) : TextureGen(name)
+ParticleGrowTexture::ParticleGrowTexture() : VjObject("ParticleGrowTexture")
 {
 	addParameter(speed.set("speed", 1.0, -3, 3));
 	addParameter(speedRot.set("speedRotation", 0.05, -0.3, 0.3));
@@ -130,8 +132,15 @@ ParticleGrowTexture::ParticleGrowTexture(string name) : TextureGen(name)
 	addParameter(ampX.set("ampX", .125, 0, 2));
 	addParameter(ampY.set("ampY", .252, 0, 2));
 	addParameter(radius.set("radius", 1, 0.2, 3));
-	color.setName("color");
-	addParameter(color);
+	//color.setName("color");
+	//addParameter(color);
+	addParameter(rgb_r.set("r", 255, 0, 255));
+	addParameter(rgb_g.set("g", 255, 0, 255));
+	addParameter(rgb_b.set("b", 255, 0, 255));
+
+	this->color.r = rgb_r;
+	this->color.g = rgb_g;
+	this->color.b = rgb_b;
 
 }
 
@@ -140,10 +149,8 @@ ParticleGrowTexture::~ParticleGrowTexture()
 {
 }
 
-void ParticleGrowTexture::setup(float width, float height)
+void ParticleGrowTexture::setup()
 {
-	TextureGen::setup(width, height);
-	
 	ofVec2f offset(0.02, 0.02);
 	ofVec2f direction(0.1, 0.1);
 	float timeout = 4.0f;
@@ -170,16 +177,18 @@ void ParticleGrowTexture::setup(float width, float height)
 		offset.rotateRad(TWO_PI / 4.2456789);
 	}
 
-	fbo.allocate(width, height);
+	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 }
 
-ofTexture & ParticleGrowTexture::getTextureRef()
-{
-	return fbo.getTexture();
-}
 
 void ParticleGrowTexture::update()
 {
+	this->updateParms();
+
+	this->color.r = rgb_r;
+	this->color.g = rgb_g;
+	this->color.b = rgb_b;
+
 	float deltatime = ofGetElapsedTimef() - lasttime;
 	lasttime = ofGetElapsedTimef();
 	time += (1.0 / 60.0 + speedRot)*0.1;
@@ -215,15 +224,22 @@ void ParticleGrowTexture::update()
 
 void ParticleGrowTexture::render()
 {
-	fbo.begin();
+	//fbo.begin();
+
+	//fbo.end();
+}
+
+void ParticleGrowTexture::draw()
+{
 	translateMidFlipScale();
-	ofClear(0,0,0,255);
+	ofClear(0, 0, 0, 255);
 	ofPushStyle();
 	ofSetColor(color);
 	for (size_t b = 0; b < 5; b++) {
 		for (size_t i = 0; i < 5; i++) {
 			for (size_t j = 0; j < 60; j++) {
 
+				p[b][i][j].color = color;
 				p[b][i][j].draw();
 
 			}
@@ -232,18 +248,5 @@ void ParticleGrowTexture::render()
 	}
 	ofPopStyle();
 
-	fbo.end();
+	//fbo.draw(0, 0);
 }
-
-void ParticleGrowTexture::draw(float x, float y, float w, float h) const
-{
-	fbo.draw(x, y, w, h);
-
-}
-
-void ParticleGrowTexture::draw(float x, float y) const
-{
-	fbo.draw(x, y);
-}
-
-

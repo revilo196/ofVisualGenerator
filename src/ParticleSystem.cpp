@@ -1,7 +1,7 @@
 #include "ParticleSystem.h"
 
 
-ParticleSystem::ParticleSystem(size_t count, string name) : VjObject(name)
+ParticleSystem::ParticleSystem(size_t count, string name)
 {
 	this->count = count;
 
@@ -15,16 +15,7 @@ ParticleSystem::ParticleSystem(size_t count, string name) : VjObject(name)
 	{
 		indices[i] = i % count;
 	}
-
-	//add Parameter to the VjObject
-	addParameter(speed.set("speed", 0.002, -0.05, 0.05));
-	addParameter(forceAmplitude.set("force", 1,-3,3));
-	addParameter(scale.set("scale", 1.0, 0.1, 5));
-	addParameter(partVel.set("Particle Velocity", 0.20, 0.05, 0.7));
-	addParameter(add.set("add particle",false));
-	addParameter(remove.set("remove Particle",false));
-	colorParm.setName("color");
-	addParameter(colorParm);
+	
 	time = 0;
 }
 
@@ -38,7 +29,6 @@ ParticleSystem::~ParticleSystem()
 
 void ParticleSystem::update()
 {
-	
 	//go foreward in time
 	time += speed;
 	m_partVel = partVel;

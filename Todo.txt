@@ -1,5 +1,15 @@
 TODO:
-	ParticleSystemTexture
-	Layer that contains n-TextureGenerators
-	Dummy Textures for Color/Black
-	Mixer
+	Dummy Textures for Color
+	Änderungen Beamerprogramm (nach Weiter 2018)§
+		§ Layer 4 rausschmeißen und ersetzen, am besten mit was mit FFT
+		§ Songbeamer faden überarbeiten
+		§ Mehr Farben einbauen
+		§ Hintergrundfarbe anpassen
+		§ Videos abspielen (Hintergrundvideos etc.) -> Loops
+		§ Kurze Special Effects, per Knopfdruck auslösbar
+
+Steuerprogramm
+§ Rhytmuselemnete/Rhytmustreiber (v.a. Für After Show Party)
+  Ablaufsysteme -> Rhytmus
+	Szenenmanager/Szenenspeicher
+	§ Mischpult statt Tablet

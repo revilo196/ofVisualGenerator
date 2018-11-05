@@ -1,23 +1,38 @@
 #pragma once
-#include "TextureGen.h"
+#include "ofxLayer.h"
+#include "VjObject.h"
 #include "ParticleSystem.h"
 
-class ParticleSystemTexture :
-	public TextureGen
+using namespace ofxLayer;
+
+class ParticleSystemTexture : public ofxLayer::Layer, public VjObject
 {
 public:
-	ParticleSystemTexture(string name = "ParticleSystemTexture");
+
+	OFX_LAYER_DEFINE_LAYER_CLASS(ParticleSystemTexture);
+
+	ParticleSystemTexture();
 	~ParticleSystemTexture();
 
-	virtual void setup(float width, float height) override;
-	virtual ofTexture& getTextureRef()	override;
-
+	virtual void setup() override;
 	virtual void update() override;
-	virtual void draw(float x, float y, float w, float h) const override;
-	virtual void draw(float x, float y) const override;
+	virtual void draw()  override;
 
 private:
 	ParticleSystem * system;
-	ofFbo fbo;
+
+
+	ofParameter<float> speed;
+	ofParameter<float> forceAmplitude;
+	ofParameter<float> scale;
+	ofParameter<float> partVel;
+
+	ofParameter<float>rgb_r;
+	ofParameter<float>rgb_g;
+
+	ofParameter<float>rgb_b;
+
+
+	ofFloatColor colorParm;
 };
 
