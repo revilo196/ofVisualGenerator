@@ -96,6 +96,7 @@ class ofApp : public ofBaseApp{
 		ofParameter<float> colR;
 		ofParameter<float> colG;
 		ofParameter<float> colB;
+		ofParameter<float> songFade;
 
 		ofParameter<bool> artL1;
 		ofParameter<bool> artL2;

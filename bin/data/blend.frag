@@ -59,6 +59,8 @@ void main()
 
   if(mode == 0)  {//add
     outputColor = bld(c0+c1,c0,c1);
+    //outputColor = c0+c1//bld(c0+c1,c0,c1);
+
   } else if (mode == 1) { // mul
     outputColor = bld(c0*c1,c0,c1);
     if (submodeA == -1) {

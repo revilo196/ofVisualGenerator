@@ -24,7 +24,7 @@ void SoundAnalyzer::setup()
 
 	}
 
-	soundStream.setDeviceID(8);
+	soundStream.setDeviceID(10);
 	soundStream.setup(0, 1, 48000, bufferSize, 4);
 	soundStream.setInput(this);
 

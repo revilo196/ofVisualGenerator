@@ -53,10 +53,10 @@ void ofApp::setup(){
 	allGroup.add(mgl4.all);
 
 
-	a12.setup(&mgl1, &mgl2);
-	b34.setup(&mgl3, &mgl4);
+	a12.setup(&mgl1, &mgl2, width, height);
+	b34.setup(&mgl3, &mgl4, width, height);
 	
-	outAB.setup(&a12, &b34);
+	outAB.setup(&a12, &b34, width, height);
 
 
 	
@@ -75,6 +75,9 @@ void ofApp::setup(){
 	allGroup.add(artL2.set("artL2", false));
 	allGroup.add(artL3.set("artL3", false));
 	allGroup.add(artL4.set("artL4", false));
+
+	allGroup.add(songFade.set("sbFade",1,0,1));
+
 
 	allGroup.add(fullSong.set("fullSong", false));
 	allGroup.add(blkSong.set("blkSong", false));
@@ -178,20 +181,21 @@ void ofApp::draw(){
 			sbmix.setUniformTexture("mtex0", sbEffectOut.getTexture(), 1);
 			sbmix.setUniformTexture("mtex1", videoIn.getTexture(), 2);
 			sbmix.setUniform1i("mode", 0);
-			sbmix.setUniform1f("faderA", 1);
-			sbmix.setUniform1f("faderB", 1);
+			sbmix.setUniform1f("faderA",  1-songFade);
+			sbmix.setUniform1f("faderB", 1-songFade);
 			sbmix.setUniform1i("invertA", 0);
 			sbmix.setUniform1i("invertB", 0);
 			sbmix.setUniform1i("tcd", 1);
 			sbmix.setUniform1i("width", ofGetWidth());
 			sbmix.setUniform1i("height", ofGetHeight());
-
-
-				fullQuad.draw();
-				//ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
-
-				sbmix.end();
 			
+
+			fullQuad.draw();
+			//ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+			sbmix.end();
+			
+
+			//songOverlay.draw(0, 0);
 		}
 		else {
 			effectLayer.draw(0, 0);
@@ -472,6 +476,8 @@ void ofApp::updatePre()
 		ofClear(0, 0);
 		mgl1.draw();
 
+		//xEx.draw(0, 0);
+
 		//glPopMatrix();
 		ofPopStyle();
 
@@ -496,7 +502,7 @@ void ofApp::updatePre()
 	ofClear(0, 0);
 
 	mgl3.draw();
-
+	//yEx.draw(0, 0);
 	//glPopMatrix();
 	ofPopStyle();
 
@@ -520,6 +526,9 @@ void ofApp::updatePre()
 	ofClear(0, 0);
 
 	mgl2.draw();
+	//songOverlay.draw(0, 0);
+
+
 
 	//glPopMatrix();
 	ofPopStyle();

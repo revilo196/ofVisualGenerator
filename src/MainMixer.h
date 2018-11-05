@@ -17,7 +17,7 @@ public:
 	~MainMixer();
 
 
-	virtual void setup(ofxLayer::Layer * l1, ofxLayer::Layer * l2);
+	virtual void setup(ofxLayer::Layer * l1, ofxLayer::Layer * l2, int w, int h);
 	virtual void update() override;
 	virtual void draw() override;
 

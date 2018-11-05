@@ -37,27 +37,29 @@ MainMixer::~MainMixer()
 
 }
 
-void MainMixer::setup(ofxLayer::Layer * l1, ofxLayer::Layer * l2)
+void MainMixer::setup(ofxLayer::Layer * l1, ofxLayer::Layer * l2,int w,int h)
 {
 	this->l1 = l1;
 	this->l2 = l2;
 
-	fbo_layer1.allocate(::ofGetWidth(), ::ofGetHeight());
-	fbo_layer2.allocate(::ofGetWidth(), ::ofGetHeight());
-	fbo_layer1_efx.allocate(::ofGetWidth(), ::ofGetHeight());
-	fbo_layer2_efx.allocate(::ofGetWidth(), ::ofGetHeight());
+	width = w;
+	height = h;
+
+	fbo_layer1.allocate(width, height);
+	fbo_layer2.allocate(width, height);
+	fbo_layer1_efx.allocate(width, height);
+	fbo_layer2_efx.allocate(width, height);
 
 	shader.load("shader.vert", "blend.frag");
 	blurXShader.load("shader.vert", "blurX.frag");
 	blurYShader.load("shader.vert", "blurY.frag");
 
 
-	fullQuad.set(::ofGetWidth(), ::ofGetHeight());
-	fullQuad.setPosition(::ofGetWidth()/2, ::ofGetHeight()/2, 0);
+	fullQuad.set(width, height);
+	fullQuad.setPosition(width /2, height /2, 0);
 	fullQuad.setResolution(2, 2);
 
-	width = ::ofGetWidth();
-	height = ::ofGetHeight();
+
 
 }
 
