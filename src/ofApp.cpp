@@ -2,8 +2,9 @@
 
 
 //--------------------------------------------------------------
-void ofApp::setup(){
+void ofApp::setup() {
 
+	settings.loadFile("settings.xml");
 
 	ofSetFrameRate(60);
 	ofSetVerticalSync(true);
@@ -11,27 +12,49 @@ void ofApp::setup(){
 	//ofToggleFullscreen();
 	//fullscreen = true;
 
-	const int width = 1920;
-	const int height = 1080;
+	const int width = settings.getValue("settings:render:width", 1920);
+	const int height = settings.getValue("settings:render:width", 1080);
+	videoID = settings.getValue("settings:vidioInID", 1);
+	soundID = settings.getValue("settings:audioInID", 1);
+	artnet = settings.getValue("settings:artnetPort", 0);
 
 	std::vector<ofVideoDevice> videoList = videoIn.listDevices();
-
+	ofLog() << "Video Devices:";
 	for (int i = 0; i < videoList.size(); i++) {
-		
+
 		ofLogNotice("VideoIn", videoList[i].deviceName + "  " + ofToString(videoList[i].id));
-	
+
 	}
 
-	videoIn.setDeviceID(0);
-	videoIn.setUseTexture(true);
-	videoIn.setDesiredFrameRate(60);
-	//videoIn.videoSettings();
-	videoIn.setup(width, height);
-	videoIn.bind();
+	if (videoID >= 0) {
+		videoIn.setDeviceID(videoID);
+		videoIn.setUseTexture(true);
+		videoIn.setDesiredFrameRate(60);
+		//videoIn.videoSettings();
+		videoIn.setup(width, height);
+		videoIn.bind();
 
-	VjObject::rms = &this->rms;
+		allGroup.add(songFade.set("sbFade", 1, 0, 1));
+		allGroup.add(fullSong.set("fullSong", false));
+		allGroup.add(blkSong.set("blkSong", false));
 
-	sound.setup();
+		songOverlay.allocate(width, height);
+		sbEffectOut.allocate(width, height);
+		xEx.allocate(width, height);
+		yEx.allocate(width, height);
+		xExB.allocate(width, height);
+		yExB.allocate(width, height);
+		yExBlur.load("shader.vert", "blurYextrem.frag");
+		xExBlur.load("shader.vert", "blurXextrem.frag");
+		sbmix.load("shader.vert", "blend.frag");
+		sbAdd.load("shader.vert", "songadd.frag");
+	}
+
+	if (soundID >= 0) {
+		VjObject::rms = &this->rms;
+
+		sound.setup();
+	}
 
 	mgl1.setup();
 	mgl2.setup();
@@ -65,39 +88,27 @@ void ofApp::setup(){
 	allGroup.add(b34.all);
 
 	allGroup.add(outAB.all);
-	allGroup.add(dimm.set("artD",0, 0,255));
-	allGroup.add(stro.set("artS", 0, 0, 255));
-	allGroup.add(colR.set("artR", 0, 0, 255));
-	allGroup.add(colG.set("artG", 0, 0, 255));
-	allGroup.add(colB.set("artB", 0, 0, 255));
-
-	allGroup.add(artL1.set("artL1",false ));
-	allGroup.add(artL2.set("artL2", false));
-	allGroup.add(artL3.set("artL3", false));
-	allGroup.add(artL4.set("artL4", false));
-
-	allGroup.add(songFade.set("sbFade",1,0,1));
 
 
-	allGroup.add(fullSong.set("fullSong", false));
-	allGroup.add(blkSong.set("blkSong", false));
+	if (artnet > 0) {
+		allGroup.add(dimm.set("artD", 0, 0, 255));
+		allGroup.add(stro.set("artS", 0, 0, 255));
+		allGroup.add(colR.set("artR", 0, 0, 255));
+		allGroup.add(colG.set("artG", 0, 0, 255));
+		allGroup.add(colB.set("artB", 0, 0, 255));
 
+		allGroup.add(artL1.set("artL1", false));
+		allGroup.add(artL2.set("artL2", false));
+		allGroup.add(artL3.set("artL3", false));
+		allGroup.add(artL4.set("artL4", false));
+	}
 
 
 
 	preFbo.allocate(width, height);
 	preFboOut.allocate(width, height);
 	effectLayer.allocate(width, height);
-	songOverlay.allocate(width, height);
-	sbEffectOut.allocate(width, height);
-	xEx.allocate(width, height);
-	yEx.allocate(width, height);
-	xExB.allocate(width, height);
-	yExB.allocate(width, height);
-	yExBlur.load("shader.vert", "blurYextrem.frag");
-    xExBlur.load("shader.vert", "blurXextrem.frag");
-	sbmix.load("shader.vert", "blend.frag");
-	sbAdd.load("shader.vert", "songadd.frag");
+
 
 	gui.setup(allGroup);
 
@@ -106,22 +117,29 @@ void ofApp::setup(){
 	fullQuad.setPosition(width/2, height/2, 0);
 	fullQuad.setResolution(2, 2 );
 
-	sync.setup(allGroup, 6666, "10.0.0.197", 6667);
-
+	sync.setup(allGroup, settings.getValue("settings:osc:port_in", 6666 ), settings.getValue("settings:osc:ip", "192.168.1.1"), settings.getValue("settings:osc:port_out", 6667));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
 
-	rms = sound.getRMSSmooth();
-	ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
-	videoIn.update();
+	if (soundID >= 0) {
+		rms = sound.getRMSSmooth();
+	}
 
-	songBeamerInputRender();
-	 
+	ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
+
+	if (videoID >= 0) {
+		videoIn.update();
+		songBeamerInputRender();
+	}
+
 	sync.update();
 
-	art();
+
+	if (artnet > 0) {
+		art();
+	}
 
 	mgl1.update();
 	mgl2.update();
@@ -138,27 +156,27 @@ void ofApp::update(){
 	outAB.draw();
 	effectLayer.end();
 
-	sbEffectOut.begin();
-	ofClear(0, 0);
+	if (videoID >= 0) {
+		sbEffectOut.begin();
+		ofClear(0, 0);
 
-	sbmix.begin();
-	sbmix.setUniformTexture("mtex0", songOverlay.getTexture(), 1);
-	sbmix.setUniformTexture("mtex1", effectLayer.getTexture(), 2);
-	sbmix.setUniform1i("mode", 1);
-	sbmix.setUniform1f("faderA", 1);
-	sbmix.setUniform1f("faderB", 1);
-	sbmix.setUniform1i("invertA", 1);
-	sbmix.setUniform1i("invertB", 0);
-	sbmix.setUniform1f("submodeA", -1);
-	sbmix.setUniform1i("tcd", 1);
-	sbmix.setUniform1i("width", ofGetWidth());
-	sbmix.setUniform1i("height", ofGetHeight());
+		sbmix.begin();
+		sbmix.setUniformTexture("mtex0", songOverlay.getTexture(), 1);
+		sbmix.setUniformTexture("mtex1", effectLayer.getTexture(), 2);
+		sbmix.setUniform1i("mode", 1);
+		sbmix.setUniform1f("faderA", 1);
+		sbmix.setUniform1f("faderB", 1);
+		sbmix.setUniform1i("invertA", 1);
+		sbmix.setUniform1i("invertB", 0);
+		sbmix.setUniform1f("submodeA", -1);
+		sbmix.setUniform1i("tcd", 1);
+		sbmix.setUniform1i("width", ofGetWidth());
+		sbmix.setUniform1i("height", ofGetHeight());
 
-
-
-	fullQuad.draw();
-	sbmix.end();
-	sbEffectOut.end();
+		fullQuad.draw();
+		sbmix.end();
+		sbEffectOut.end();
+	}
 
 
 	updatePre();
@@ -171,45 +189,47 @@ void ofApp::draw(){
 
 	ofEnableAlphaBlending();
 
+	if (videoID >= 0) {
 
-	if (!fullSong)
-	{
+		if (!fullSong)
+		{
+			if (!blkSong) {
 
-		if (!blkSong) {
+				sbmix.begin();
+				sbmix.setUniformTexture("mtex0", sbEffectOut.getTexture(), 1);
+				sbmix.setUniformTexture("mtex1", videoIn.getTexture(), 2);
+				sbmix.setUniform1i("mode", 0);
+				sbmix.setUniform1f("faderA", 1 - songFade);
+				sbmix.setUniform1f("faderB", 1 - songFade);
+				sbmix.setUniform1i("invertA", 0);
+				sbmix.setUniform1i("invertB", 0);
+				sbmix.setUniform1i("tcd", 1);
+				sbmix.setUniform1i("width", ofGetWidth());
+				sbmix.setUniform1i("height", ofGetHeight());
 
-			sbmix.begin();
-			sbmix.setUniformTexture("mtex0", sbEffectOut.getTexture(), 1);
-			sbmix.setUniformTexture("mtex1", videoIn.getTexture(), 2);
-			sbmix.setUniform1i("mode", 0);
-			sbmix.setUniform1f("faderA",  1-songFade);
-			sbmix.setUniform1f("faderB", 1-songFade);
-			sbmix.setUniform1i("invertA", 0);
-			sbmix.setUniform1i("invertB", 0);
-			sbmix.setUniform1i("tcd", 1);
-			sbmix.setUniform1i("width", ofGetWidth());
-			sbmix.setUniform1i("height", ofGetHeight());
-			
 
-			fullQuad.draw();
-			//ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
-			sbmix.end();
-			
+				fullQuad.draw();
+				//ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
+				sbmix.end();
 
-			//songOverlay.draw(0, 0);
+
+				//songOverlay.draw(0, 0);
+			}
+			else {
+				effectLayer.draw(0, 0);
+			}
+
 		}
 		else {
-			effectLayer.draw(0, 0);
+			videoIn.draw(0, 0, ofGetWidth(), ofGetHeight());
 		}
-
 	}
 	else {
-		videoIn.draw(0, 0, ofGetWidth(), ofGetHeight());
+		effectLayer.draw(0, 0);
 	}
 
 	if(!fullscreen)
 		gui.draw();
-
-	vector<float> db = sound.getDB();
 
 }
 
@@ -711,7 +731,6 @@ void ofApp::windowResized(int w, int h){
 void ofApp::gotMessage(ofMessage msg){
 
 }
-
 
 
 void ofApp::buttonPressed(const void * sender)

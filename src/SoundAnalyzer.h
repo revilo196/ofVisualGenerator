@@ -4,7 +4,7 @@
 #include "ofSoundBuffer.h"
 #include "kiss\kiss_fftr.h"
 #include "ofThread.h"
-
+#include "ofxXmlSettings.h"
 struct Band {
 	float low;
 	float center;
@@ -32,7 +32,7 @@ public:
 
 
 private:
-
+	ofxXmlSettings settings;
 	ofSoundStream soundStream;
 	const int bufferSize = 2048;
 

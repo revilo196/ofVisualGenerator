@@ -1,5 +1,6 @@
 #include "SoundAnalyzer.h"
 
+#include "ofxXmlSettings.h"
 
 
 SoundAnalyzer::SoundAnalyzer()
@@ -14,7 +15,7 @@ SoundAnalyzer::~SoundAnalyzer()
 void SoundAnalyzer::setup()
 {
 	vector<ofSoundDevice> devices = soundStream.getDeviceList();
-
+	ofLog() << "Audio Devices";
 	for (int i = 0; i < devices.size(); i++) {
 
 		ofLog() << i <<  devices[i].name;
@@ -23,8 +24,8 @@ void SoundAnalyzer::setup()
 		//}
 
 	}
-
-	soundStream.setDeviceID(10);
+	int devID = settings.getValue("settings:audioInID", 10);
+	soundStream.setDeviceID(devID);
 	soundStream.setup(0, 1, 48000, bufferSize, 4);
 	soundStream.setInput(this);
 

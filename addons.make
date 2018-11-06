@@ -1,4 +1,6 @@
-ofxAnimatable
 ofxGui
-ofxLayer
+ofxNetwork
 ofxOsc
+ofxXmlSettings
+ofxAnimatable
+ofxLayer

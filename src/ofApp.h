@@ -19,6 +19,7 @@
 #include "ManagerLayer.h"
 
 #include "SoundAnalyzer.h"
+#include "ofxXmlSettings.h"
 
 #include "MainMixer.h"
 
@@ -52,7 +53,7 @@ class ofApp : public ofBaseApp{
 
 		ofParameterGroup allGroup;
 		ofxOscParameterSync sync;
-
+		ofxXmlSettings settings;
 		
 		SoundAnalyzer sound;
 
@@ -84,9 +85,8 @@ class ofApp : public ofBaseApp{
 		ofFbo xExB;
 		ofFbo yExB;
 
-
 		ofPlanePrimitive fullQuad;
-		
+
 		ofVideoGrabber videoIn;
 
 		ofParameter<bool> fullSong;
@@ -108,4 +108,7 @@ class ofApp : public ofBaseApp{
 
 		void buttonPressed(const void * sender);
 		float rms = 0;
+		int videoID = 0;
+		int soundID = 0;
+		int artnet = 0;
 };
