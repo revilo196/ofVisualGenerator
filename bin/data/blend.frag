@@ -9,7 +9,6 @@ uniform int height;
 uniform int submodeA;
 uniform int submodeB;
 
-
 uniform int mode;
 uniform float faderA;
 uniform float faderB;

@@ -8,8 +8,8 @@
         <width>1920</width>
         <height>1080</height>
     </render>
-    <audioInID>10</audioInID>
+    <audioInID>-1</audioInID>
     <vidioInID>-1</vidioInID>
     <artnetEnable>0</artnetEnable>
-    <artnetPort>0</artnetPort>
+    <artnetPort>9999</artnetPort>
 </settings>

@@ -20,7 +20,7 @@
 
 #include "SoundAnalyzer.h"
 #include "ofxXmlSettings.h"
-
+#include "ofxNDI.h"
 #include "MainMixer.h"
 
 class ofApp : public ofBaseApp{
@@ -29,6 +29,7 @@ class ofApp : public ofBaseApp{
 		void setup();
 		void update();
 		void draw();
+		void exit();
 
 		void art();
 
@@ -111,4 +112,16 @@ class ofApp : public ofBaseApp{
 		int videoID = 0;
 		int soundID = 0;
 		int artnet = 0;
+
+
+		ofxNDIsender ndiSender;    // NDI sender
+		char senderName[256];      // Sender name
+		ofFbo ndiFbo;              // Fbo used for graphics and sending
+
+
+	//	bool isConnected;
+	//	ofTexture texture; // created from memory mapped file
+	//	ofShader convertARGB;
+	//	ofPlanePrimitive fullQuadVid;
+	//	ofFbo capture;
 };

@@ -13,7 +13,7 @@ void ofApp::setup() {
 	//fullscreen = true;
 
 	const int width = settings.getValue("settings:render:width", 1920);
-	const int height = settings.getValue("settings:render:width", 1080);
+	const int height = settings.getValue("settings:render:height", 1080);
 	videoID = settings.getValue("settings:vidioInID", 1);
 	soundID = settings.getValue("settings:audioInID", 1);
 	artnet = settings.getValue("settings:artnetPort", 0);
@@ -23,14 +23,23 @@ void ofApp::setup() {
 	for (int i = 0; i < videoList.size(); i++) {
 
 		ofLogNotice("VideoIn", videoList[i].deviceName + "  " + ofToString(videoList[i].id));
+		
+		for (int j = 0; j < videoList[i].formats.size(); i++) {
+			ofLogNotice("VideoIn", ofToString(videoList[i].formats[j].framerates));
+			ofLogNotice("VideoIn", ofToString(videoList[i].formats[j].height));
+			ofLogNotice("VideoIn", ofToString(videoList[i].formats[j].width));
+			ofLogNotice("VideoIn", ofToString(videoList[i].formats[j].pixelFormat));
+		}
 
 	}
 
 	if (videoID >= 0) {
+		videoIn.setVerbose(true);
 		videoIn.setDeviceID(videoID);
 		videoIn.setUseTexture(true);
-		videoIn.setDesiredFrameRate(60);
-		//videoIn.videoSettings();
+		videoIn.setDesiredFrameRate(24);
+		videoIn.setPixelFormat(ofPixelFormat::OF_PIXELS_UYVY);
+		videoIn.videoSettings();
 		videoIn.setup(width, height);
 		videoIn.bind();
 
@@ -49,6 +58,7 @@ void ofApp::setup() {
 		sbmix.load("shader.vert", "blend.frag");
 		sbAdd.load("shader.vert", "songadd.frag");
 	}
+
 
 	if (soundID >= 0) {
 		VjObject::rms = &this->rms;
@@ -117,12 +127,50 @@ void ofApp::setup() {
 	fullQuad.setPosition(width/2, height/2, 0);
 	fullQuad.setResolution(2, 2 );
 
+//	fullQuadVid.set(videoWidth, videoHeight);
+//	fullQuadVid.setPosition(videoWidth / 2, videoHeight / 2,0);
+//	fullQuadVid.setResolution(2, 2);
+
+	strcpy_s(senderName, 256, "Openframeworks NDI Sender"); // Set the sender name
+	cout << ndiSender.GetNDIversion() << " (http://ndi.tv/)" << endl;
+
+	// Create an RGBA fbo for collection of data
+	ndiFbo.allocate(width, height, GL_RGBA);
+
+	// Optionally set fbo readback using OpenGL pixel buffers
+	ndiSender.SetReadback(); // Change to false to compare
+
+	// Optionally set NDI asynchronous sending
+	// instead of clocked at the specified frame rate (60fps default)
+	ndiSender.SetAsync();
+
+	ndiSender.CreateSender(senderName, width, height);
+
+	cout << "Created NDI sender [" << senderName << "] (" << width << "x" << height << ")" << endl;
+
 	sync.setup(allGroup, settings.getValue("settings:osc:port_in", 6666 ), settings.getValue("settings:osc:ip", "192.168.1.1"), settings.getValue("settings:osc:port_out", 6667));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	/*
+	if (isConnected) {
+		texture.loadData(memoryMappedFile.getData(), videoWidth, videoHeight, GL_RGBA, GL_UNSIGNED_INT_8_8_8_8_REV);
+	}
 
+		capture.begin();
+		ofClear(0, 0, 0);
+		convertARGB.begin();
+		convertARGB.setUniformTexture("mtex0", texture, 1);
+		convertARGB.setUniform1i("width", videoWidth);
+		convertARGB.setUniform1i("height", videoHeight);
+		fullQuadVid.draw();
+		convertARGB.end();
+		capture.end();
+		*/
+	//glTexSubImage2D(GL_IMAGE_2D, 0, 0, 0, videoWidth, videoHeight, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, memoryMappedFile.getData());
+	//texture.unbind();
+	
 	if (soundID >= 0) {
 		rms = sound.getRMSSmooth();
 	}
@@ -187,6 +235,7 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 
+	
 	ofEnableAlphaBlending();
 
 	if (videoID >= 0) {
@@ -230,7 +279,9 @@ void ofApp::draw(){
 
 	if(!fullscreen)
 		gui.draw();
-
+	ndiSender.SendImage(effectLayer);
+	//texture.draw(0, 0);
+	//videoIn.draw(0,0);
 }
 
 void ofApp::art()
@@ -488,9 +539,8 @@ void ofApp::updatePre()
 	{
 		preFbo.begin();
 
-		ofPushStyle();
+		//ofPushStyle();
 		//glPushMatrix();
-
 
 		ofSetColor(255, 255);
 		ofClear(0, 0);
@@ -499,7 +549,7 @@ void ofApp::updatePre()
 		//xEx.draw(0, 0);
 
 		//glPopMatrix();
-		ofPopStyle();
+		//ofPopStyle();
 
 		preFbo.end();
 	}
@@ -513,7 +563,7 @@ void ofApp::updatePre()
 	{
 	preFbo.begin();
 
-	ofPushStyle();
+	//ofPushStyle();
 	//glPushMatrix();
 
 
@@ -523,8 +573,10 @@ void ofApp::updatePre()
 
 	mgl3.draw();
 	//yEx.draw(0, 0);
+
+
 	//glPopMatrix();
-	ofPopStyle();
+	//ofPopStyle();
 
 	preFbo.end();
 	}
@@ -537,7 +589,7 @@ void ofApp::updatePre()
 	{
 	preFbo.begin();
 
-	ofPushStyle();
+	//ofPushStyle();
 	//glPushMatrix();
 
 
@@ -551,7 +603,7 @@ void ofApp::updatePre()
 
 
 	//glPopMatrix();
-	ofPopStyle();
+	//ofPopStyle();
 
 	preFbo.end();
 	}
@@ -564,7 +616,7 @@ void ofApp::updatePre()
 	{
 	preFbo.begin();
 
-	ofPushStyle();
+	//ofPushStyle();
 	//glPushMatrix();
 
 
@@ -575,7 +627,7 @@ void ofApp::updatePre()
 	mgl4.draw();
 
 	//glPopMatrix();
-	ofPopStyle();
+	//ofPopStyle();
 
 	preFbo.end();
 	}
@@ -588,18 +640,17 @@ void ofApp::updatePre()
 	{
 		preFbo.begin();
 
-		ofPushStyle();
+		//ofPushStyle();
 		//glPushMatrix();
 
 
 
 		ofSetColor(255, 255);
 		ofClear(0, 0);
-
 		a12.draw();
 
 		//glPopMatrix();
-		ofPopStyle();
+		//ofPopStyle();
 
 		preFbo.end();
 	}
@@ -611,19 +662,18 @@ void ofApp::updatePre()
 	{
 		preFbo.begin();
 
-		ofPushStyle();
+		//ofPushStyle();
 		//glPushMatrix();
 
 
 
 		ofSetColor(255, 255);
 		ofClear(0, 0);
-
 		b34.draw();
 
-		//
-		ofPopStyle();
-
+		
+		//ofPopStyle();
+		//ofPopMatrix();
 		preFbo.end();
 	}
 	glPopAttrib();
@@ -635,7 +685,7 @@ void ofApp::updatePre()
 	{
 		preFbo.begin();
 
-		ofPushStyle();
+		//ofPushStyle();
 		//glPushMatrix();
 
 
@@ -645,8 +695,9 @@ void ofApp::updatePre()
 
 		outAB.draw();
 
-		//
-		ofPopStyle();
+		
+		//ofPopStyle();
+		//ofPopMatrix();
 
 		preFbo.end();
 	}
@@ -662,6 +713,8 @@ void ofApp::updatePre()
 void ofApp::drawPre(ofEventArgs & args)
 { 
 	ofClear(0, 0, 0, 0);
+
+	ofDrawCircle(5, 5, 20);
 	glPushMatrix();
 
 	ofTranslate(1920, 1080, 0);
@@ -669,6 +722,8 @@ void ofApp::drawPre(ofEventArgs & args)
 
 	preFboOut.draw(0, 0);
 	glPopMatrix();
+
+
 }
 
 //--------------------------------------------------------------
@@ -743,4 +798,10 @@ void ofApp::buttonPressed(const void * sender)
 //--------------------------------------------------------------
 void ofApp::dragEvent(ofDragInfo dragInfo){
 
+}
+
+void ofApp::exit() {
+	// The sender must be released 
+	// or NDI sender discovery will still find it
+	ndiSender.ReleaseSender();
 }

@@ -7,19 +7,64 @@
     <ClCompile Include="src\main.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\CircleGrow.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kiss\kiss_fft.c">
+      <Filter>src\kiss</Filter>
+    </ClCompile>
+    <ClCompile Include="src\kiss\kiss_fftr.c">
+      <Filter>src\kiss</Filter>
+    </ClCompile>
     <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MainMixer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ManagerLayer.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\ofApp.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\ParticleGrowTexture.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\ParticleSystem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ParticleSystemTexture.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleDots.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimpleStripes.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SoundAnalyzer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SphereGrow.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StripeCubes.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\StripeSpiral.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\VjObject.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\WaveMeshAdvTex.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
     <ClCompile Include="src\WaveMeshOverlay.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\WaveMeshTexture.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.cpp">
@@ -43,7 +88,13 @@
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp">
       <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxColorPicker.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxInputField.cpp">
       <Filter>addons\ofxGui\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp">
@@ -66,6 +117,39 @@
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxLayer\src\ofxLayerManager.cpp">
       <Filter>addons\ofxLayer\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIdynloader.cpp">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIreceive.cpp">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIreceiver.cpp">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIsend.cpp">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIsender.cpp">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIutils.cpp">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp">
+      <Filter>addons\ofxNetwork\src</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp">
       <Filter>addons\ofxOsc\src</Filter>
@@ -103,63 +187,6 @@
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp">
       <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
     </ClCompile>
-    <ClCompile Include="src\CircleGrow.cpp">
-      <Filter>src\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ParticleGrowTexture.cpp">
-      <Filter>src\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ParticleSystemTexture.cpp">
-      <Filter>src\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\StripeSpiral.cpp">
-      <Filter>src\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleDots.cpp">
-      <Filter>src\TextureGen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SimpleStripes.cpp">
-      <Filter>src\TextureGen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SphereGrow.cpp">
-      <Filter>src\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\StripeCubes.cpp">
-      <Filter>src\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\WaveMeshTexture.cpp">
-      <Filter>src\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\WaveMeshAdvTex.cpp">
-      <Filter>src\Layers</Filter>
-    </ClCompile>
-    <ClCompile Include="src\SoundAnalyzer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\kiss\kiss_fft.c">
-      <Filter>src\kiss</Filter>
-    </ClCompile>
-    <ClCompile Include="src\kiss\kiss_fftr.c">
-      <Filter>src\kiss</Filter>
-    </ClCompile>
-    <ClCompile Include="src\ManagerLayer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MainMixer.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp">
       <Filter>addons\ofxXmlSettings\src</Filter>
     </ClCompile>
@@ -176,6 +203,9 @@
   <ItemGroup>
     <Filter Include="src">
       <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\kiss">
+      <UniqueIdentifier>{4AB93010-4759-1C8E-B800-0B01}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons">
       <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
@@ -197,6 +227,27 @@
     </Filter>
     <Filter Include="addons\ofxLayer\src">
       <UniqueIdentifier>{29830DCA-D028-B29B-E883-19DC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNDI">
+      <UniqueIdentifier>{577C5AAC-F44E-A0BE-E58F-B066}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNDI\src">
+      <UniqueIdentifier>{3BB183CD-62BF-E58A-FD5C-A603}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNDI\libs">
+      <UniqueIdentifier>{C2091C9D-63A5-7B51-5F40-CF0C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNDI\libs\NDI">
+      <UniqueIdentifier>{50DDA443-51F6-CCFC-46D7-85CE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNDI\libs\NDI\include">
+      <UniqueIdentifier>{B9E7D45F-AC3D-9349-FCD4-7EA6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNetwork">
+      <UniqueIdentifier>{01A15744-29A6-108D-08E9-83A7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxNetwork\src">
+      <UniqueIdentifier>{3D1C10C7-8F35-E796-9C70-F5F3}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxOsc">
       <UniqueIdentifier>{D91DCA33-6E5D-4481-2AEC-9FBB}</UniqueIdentifier>
@@ -222,33 +273,39 @@
     <Filter Include="addons\ofxOsc\libs\oscpack\src\osc">
       <UniqueIdentifier>{EDACB89C-9768-9551-4D41-B590}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Layers">
-      <UniqueIdentifier>{e94aea2f-9657-4b65-9c54-6d20052c7053}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\TextureGen">
-      <UniqueIdentifier>{27845010-9b03-43dc-813e-220ea0bf6020}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\kiss">
-      <UniqueIdentifier>{78753b61-0757-458a-afe0-e556bfd9ba5e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxNetwork">
-      <UniqueIdentifier>{c99c78a9-6a74-441b-af9d-cc1f69cf2061}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="addons\ofxNetwork\src">
-      <UniqueIdentifier>{9bde60dd-8077-4437-903d-6acea0899e8e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="addons\ofxXmlSettings">
-      <UniqueIdentifier>{5071336a-9619-416b-add4-e0057124eec5}</UniqueIdentifier>
+      <UniqueIdentifier>{877F005D-13E6-0592-1D97-F2E3}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxXmlSettings\src">
-      <UniqueIdentifier>{8b8196cb-50c1-4959-8ab8-6a2e35172e08}</UniqueIdentifier>
+      <UniqueIdentifier>{CCB2AC63-49D2-977C-CFE8-AEAD}</UniqueIdentifier>
     </Filter>
     <Filter Include="addons\ofxXmlSettings\libs">
-      <UniqueIdentifier>{fe0ec7da-4d94-4396-a3aa-94fc8590f472}</UniqueIdentifier>
+      <UniqueIdentifier>{687714A8-1662-FA1C-261F-50F0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CircleGrow.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kissfft.hh">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kiss_fft.h">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\kiss_fftr.h">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\kiss\_kiss_fft_guts.h">
+      <Filter>src\kiss</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MainMixer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ManagerLayer.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ofApp.h">
@@ -257,7 +314,31 @@
     <ClInclude Include="src\Overlay.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\ParticleGrowTexture.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\ParticleSystem.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ParticleSystemTexture.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleDots.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SimpleStripes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoundAnalyzer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SphereGrow.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StripeCubes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\StripeSpiral.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\TextureGen.h">
@@ -266,7 +347,13 @@
     <ClInclude Include="src\VjObject.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\WaveMeshAdvTex.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\WaveMeshOverlay.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\WaveMeshTexture.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatable.h">
@@ -290,10 +377,19 @@
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h">
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxColorPicker.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h">
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiUtils.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxInputField.h">
       <Filter>addons\ofxGui\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h">
@@ -319,6 +415,93 @@
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayerManager.h">
       <Filter>addons\ofxLayer\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDI.h">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIdynloader.h">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIplatforms.h">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIreceive.h">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIreceiver.h">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIsend.h">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIsender.h">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIutils.h">
+      <Filter>addons\ofxNDI\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.compat.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.deprecated.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.DynamicLoad.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Find.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.FrameSync.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Lib.cplusplus.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Lib.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Recv.ex.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Recv.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Routing.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Send.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.structs.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.utilities.h">
+      <Filter>addons\ofxNDI\libs\NDI\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPSettings.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h">
+      <Filter>addons\ofxNetwork\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPSettings.h">
+      <Filter>addons\ofxNetwork\src</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h">
       <Filter>addons\ofxOsc\src</Filter>
@@ -380,75 +563,6 @@
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h">
       <Filter>addons\ofxOsc\libs\oscpack\src\osc</Filter>
     </ClInclude>
-    <ClInclude Include="src\CircleGrow.h">
-      <Filter>src\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ParticleGrowTexture.h">
-      <Filter>src\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ParticleSystemTexture.h">
-      <Filter>src\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\StripeSpiral.h">
-      <Filter>src\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleDots.h">
-      <Filter>src\TextureGen</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SimpleStripes.h">
-      <Filter>src\TextureGen</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SphereGrow.h">
-      <Filter>src\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\StripeCubes.h">
-      <Filter>src\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\WaveMeshTexture.h">
-      <Filter>src\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\WaveMeshAdvTex.h">
-      <Filter>src\Layers</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SoundAnalyzer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kiss\kiss_fft.h">
-      <Filter>src\kiss</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kiss\kiss_fftr.h">
-      <Filter>src\kiss</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kiss\kissfft.hh">
-      <Filter>src\kiss</Filter>
-    </ClInclude>
-    <ClInclude Include="src\kiss\_kiss_fft_guts.h">
-      <Filter>src\kiss</Filter>
-    </ClInclude>
-    <ClInclude Include="src\ManagerLayer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\MainMixer.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h">
-      <Filter>addons\ofxNetwork\src</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h">
       <Filter>addons\ofxXmlSettings\src</Filter>
     </ClInclude>
@@ -458,8 +572,5 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="icon.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="bin\data\settings.xml" />
   </ItemGroup>
 </Project>

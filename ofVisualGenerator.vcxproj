@@ -18,11 +18,15 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <PropertyGroup Condition="'$(WindowsTargetPlatformVersion)'==''">
+    <LatestTargetPlatformVersion>$([Microsoft.Build.Utilities.ToolLocationHelper]::GetLatestSDKTargetPlatformVersion('Windows', '10.0'))</LatestTargetPlatformVersion>
+    <WindowsTargetPlatformVersion Condition="'$(WindowsTargetPlatformVersion)' == ''">$(LatestTargetPlatformVersion)</WindowsTargetPlatformVersion>
+    <TargetPlatformVersion>$(WindowsTargetPlatformVersion)</TargetPlatformVersion>
+  </PropertyGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>ofVisualGenerator</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -67,26 +71,26 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>bin\</OutDir>
-    <IntDir>obj\$(Configuration)\</IntDir>
+    <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>bin\</OutDir>
-    <IntDir>obj\$(Configuration)\</IntDir>
+    <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName)_debug</TargetName>
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>bin\</OutDir>
-    <IntDir>obj\$(Configuration)\</IntDir>
+    <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>bin\</OutDir>
-    <IntDir>obj\$(Configuration)\</IntDir>
+    <IntDir>obj\$(Platform)\$(Configuration)\</IntDir>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -96,15 +100,16 @@
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;E:\Oliver\Documents\openFramework\addons\ofxNetwork\src;
-E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\src;
-E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\kiss;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxNDI\libs\NDI\include;..\..\..\addons\ofxNDI\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -116,16 +121,17 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;E:\Oliver\Documents\openFramework\addons\ofxNetwork\src;
-E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\src;
-E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\kiss;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxNDI\libs\NDI\include;..\..\..\addons\ofxNDI\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -136,11 +142,11 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;E:\Oliver\Documents\openFramework\addons\ofxNetwork\src;
-E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\src;
-E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\kiss;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxNDI\libs\NDI\include;..\..\..\addons\ofxNDI\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -149,6 +155,7 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
@@ -159,10 +166,10 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;E:\Oliver\Documents\openFramework\addons\ofxNetwork\src;
-E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\src;
-E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);src;src\kiss;..\..\..\addons\ofxAnimatable\src;..\..\..\addons\ofxGui\src;..\..\..\addons\ofxLayer\src;..\..\..\addons\ofxNDI\libs\NDI\include;..\..\..\addons\ofxNDI\src;..\..\..\addons\ofxNetwork\src;..\..\..\addons\ofxOsc\libs;..\..\..\addons\ofxOsc\libs\oscpack;..\..\..\addons\ofxOsc\libs\oscpack\src;..\..\..\addons\ofxOsc\libs\oscpack\src\ip;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\posix;..\..\..\addons\ofxOsc\libs\oscpack\src\ip\win32;..\..\..\addons\ofxOsc\libs\oscpack\src\osc;..\..\..\addons\ofxOsc\src;..\..\..\addons\ofxXmlSettings\libs;..\..\..\addons\ofxXmlSettings\src</AdditionalIncludeDirectories>
       <CompileAs>CompileAsCpp</CompileAs>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <PreprocessorDefinitions>OSC_HOST_LITTLE_ENDIAN</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -171,25 +178,18 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
-    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
-    <ClCompile Include="src\kiss\kiss_fft.c" />
-    <ClCompile Include="src\kiss\kiss_fftr.c" />
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\MainMixer.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="src\CircleGrow.cpp" />
+    <ClCompile Include="src\kiss\kiss_fft.c" />
+    <ClCompile Include="src\kiss\kiss_fftr.c" />
+    <ClCompile Include="src\MainMixer.cpp" />
     <ClCompile Include="src\ManagerLayer.cpp" />
     <ClCompile Include="src\ParticleGrowTexture.cpp" />
     <ClCompile Include="src\ParticleSystem.cpp" />
@@ -211,7 +211,9 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
     <ClCompile Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxColorPicker.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxInputField.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
@@ -219,6 +221,17 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
     <ClCompile Include="..\..\..\addons\ofxLayer\src\ofxLayer.cpp" />
     <ClCompile Include="..\..\..\addons\ofxLayer\src\ofxLayerManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIdynloader.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIreceive.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIreceiver.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIsend.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIsender.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNDI\src\ofxNDIutils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscMessage.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\src\ofxOscParameterSync.cpp" />
@@ -231,23 +244,19 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.cpp" />
     <ClCompile Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlerror.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxXmlSettings\libs\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h" />
-    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
-    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
-    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="src\CircleGrow.h" />
     <ClInclude Include="src\kiss\kissfft.hh" />
     <ClInclude Include="src\kiss\kiss_fft.h" />
     <ClInclude Include="src\kiss\kiss_fftr.h" />
     <ClInclude Include="src\kiss\_kiss_fft_guts.h" />
     <ClInclude Include="src\MainMixer.h" />
-    <ClInclude Include="src\ofApp.h" />
-    <ClInclude Include="src\CircleGrow.h" />
     <ClInclude Include="src\ManagerLayer.h" />
     <ClInclude Include="src\Overlay.h" />
     <ClInclude Include="src\ParticleGrowTexture.h" />
@@ -271,8 +280,11 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
     <ClInclude Include="..\..\..\addons\ofxAnimatable\src\ofxAnimatableQueue.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxColorPicker.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxInputField.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
@@ -281,6 +293,35 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
     <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayer.h" />
     <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayerConstants.h" />
     <ClInclude Include="..\..\..\addons\ofxLayer\src\ofxLayerManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDI.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIdynloader.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIplatforms.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIreceive.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIreceiver.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIsend.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIsender.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\src\ofxNDIutils.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.compat.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.deprecated.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.DynamicLoad.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Find.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.FrameSync.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Lib.cplusplus.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Lib.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Recv.ex.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Recv.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Routing.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.Send.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.structs.h" />
+    <ClInclude Include="..\..\..\addons\ofxNDI\libs\NDI\include\Processing.NDI.utilities.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetwork.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxNetworkUtils.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPClient.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPServer.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxTCPSettings.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPManager.h" />
+    <ClInclude Include="..\..\..\addons\ofxNetwork\src\ofxUDPSettings.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOsc.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscArg.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\src\ofxOscBundle.h" />
@@ -301,6 +342,8 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscPrintReceivedElements.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscReceivedElements.h" />
     <ClInclude Include="..\..\..\addons\ofxOsc\libs\oscpack\src\osc\OscTypes.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\src\ofxXmlSettings.h" />
+    <ClInclude Include="..\..\..\addons\ofxXmlSettings\libs\tinyxml.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
@@ -313,9 +356,6 @@ E:\Oliver\Documents\openFramework\addons\ofxXmlSettings\libs</AdditionalIncludeD
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
       <AdditionalIncludeDirectories>$(OF_ROOT)\libs\openFrameworksCompiled\project\vs</AdditionalIncludeDirectories>
     </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Xml Include="bin\data\settings.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ProjectExtensions>
