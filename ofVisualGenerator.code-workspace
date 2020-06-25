@@ -10,5 +10,9 @@
 			"path": "${workspaceRoot}/../../../../addons"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.associations": {
+			"xstring": "cpp"
+		}
+	}
 }

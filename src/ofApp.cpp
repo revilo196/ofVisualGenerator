@@ -9,8 +9,7 @@ void ofApp::setup() {
 	ofSetFrameRate(60);
 	ofSetVerticalSync(true);
 	ofBackground(0);
-	//ofToggleFullscreen();
-	//fullscreen = true;
+
 
 	const int width = settings.getValue("settings:render:width", 1920);
 	const int height = settings.getValue("settings:render:height", 1080);
@@ -125,11 +124,8 @@ void ofApp::setup() {
 
 	fullQuad.set(width, height);
 	fullQuad.setPosition(width/2, height/2, 0);
-	fullQuad.setResolution(2, 2 );
+	fullQuad.setResolution(2, 2);
 
-//	fullQuadVid.set(videoWidth, videoHeight);
-//	fullQuadVid.setPosition(videoWidth / 2, videoHeight / 2,0);
-//	fullQuadVid.setResolution(2, 2);
 
 	strcpy_s(senderName, 256, "Openframeworks NDI Sender"); // Set the sender name
 	cout << ndiSender.GetNDIversion() << " (http://ndi.tv/)" << endl;
@@ -153,23 +149,7 @@ void ofApp::setup() {
 
 //--------------------------------------------------------------
 void ofApp::update(){
-	/*
-	if (isConnected) {
-		texture.loadData(memoryMappedFile.getData(), videoWidth, videoHeight, GL_RGBA, GL_UNSIGNED_INT_8_8_8_8_REV);
-	}
 
-		capture.begin();
-		ofClear(0, 0, 0);
-		convertARGB.begin();
-		convertARGB.setUniformTexture("mtex0", texture, 1);
-		convertARGB.setUniform1i("width", videoWidth);
-		convertARGB.setUniform1i("height", videoHeight);
-		fullQuadVid.draw();
-		convertARGB.end();
-		capture.end();
-		*/
-	//glTexSubImage2D(GL_IMAGE_2D, 0, 0, 0, videoWidth, videoHeight, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, memoryMappedFile.getData());
-	//texture.unbind();
 	
 	if (soundID >= 0) {
 		rms = sound.getRMSSmooth();
@@ -258,11 +238,8 @@ void ofApp::draw(){
 
 
 				fullQuad.draw();
-				//ofDrawRectangle(0, 0, ofGetWidth(), ofGetHeight());
 				sbmix.end();
 
-
-				//songOverlay.draw(0, 0);
 			}
 			else {
 				effectLayer.draw(0, 0);

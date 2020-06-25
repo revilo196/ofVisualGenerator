@@ -105,8 +105,6 @@ class ofApp : public ofBaseApp{
 		ofParameter<bool> artL4;
 		
 
-		//ofxLayer::Manager mainMixer;
-
 		void buttonPressed(const void * sender);
 		float rms = 0;
 		int videoID = 0;

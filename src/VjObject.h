@@ -20,7 +20,7 @@ public:
 	virtual void updateParms();
 	//virtual void setRMS(float * rmsptr) { this->rms = rmsptr; }
 
-	void translateMidFlipScale()  const {
+	static void translateMidFlipScale() {
 		float cy = ofGetHeight() / 2;
 		float cx = ofGetWidth() / 2;
 		ofTranslate(cx, cy);

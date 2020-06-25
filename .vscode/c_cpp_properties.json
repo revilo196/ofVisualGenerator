@@ -55,7 +55,10 @@
             "macFrameworkPath": [
                 "/System/Library/Frameworks",
                 "/Library/Frameworks"
-            ]
+            ],
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         },
         {
             "name": "Linux",
@@ -126,17 +129,84 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*"
+                "${workspaceRoot}/../../../libs/openFrameworks",
+                "${workspaceRoot}/../../../libs/openFrameworks/3d",
+                "${workspaceRoot}/../../../libs/openFrameworks/app",
+                "${workspaceRoot}/../../../libs/openFrameworks/communication",
+                "${workspaceRoot}/../../../libs/openFrameworks/events",
+                "${workspaceRoot}/../../../libs/openFrameworks/gl",
+                "${workspaceRoot}/../../../libs/openFrameworks/graphics",
+                "${workspaceRoot}/../../../libs/openFrameworks/math",
+                "${workspaceRoot}/../../../libs/openFrameworks/sound",
+                "${workspaceRoot}/../../../libs/openFrameworks/types",
+                "${workspaceRoot}/../../../libs/openFrameworks/utils",
+                "${workspaceRoot}/../../../libs/openFrameworks/video",
+                "${workspaceRoot}/../../../libs/boost/include",
+                "${workspaceRoot}/../../../libs/cairo/include",
+                "${workspaceRoot}/../../../libs/curl/include",
+                "${workspaceRoot}/../../../libs/fmodex/include",
+                "${workspaceRoot}/../../../libs/FreeImage/include",
+                "${workspaceRoot}/../../../libs/freetype/include",
+                "${workspaceRoot}/../../../libs/glew/include",
+                "${workspaceRoot}/../../../libs/glfw/include",
+                "${workspaceRoot}/../../../libs/glm/include",
+                "${workspaceRoot}/../../../libs/json/include",
+                "${workspaceRoot}/../../../libs/pugixml/include",
+                "${workspaceRoot}/../../../libs/rtAudio/include",
+                "${workspaceRoot}/../../../libs/tess2/include",
+                "${workspaceRoot}/../../../libs/uriparser/include",
+                "${workspaceRoot}/../../../libs/videoinput/include",
+                "${workspaceRoot}/../../../libs/utf8/include",
+                "${workspaceRoot}/src",
+                "${workspaceRoot}/**",
+                "${workspaceRoot}/../../../addons/**",
+                "${workspaceRoot}/../../../libs/cairo/**",
+                "${workspaceRoot}/../../../**"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
                 "databaseFilename": "",
                 "path": [
-                    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*"
+                    "${workspaceRoot}/../../../libs/openFrameworks",
+                    "${workspaceRoot}/../../../libs/openFrameworks/3d",
+                    "${workspaceRoot}/../../../libs/openFrameworks/app",
+                    "${workspaceRoot}/../../../libs/openFrameworks/communication",
+                    "${workspaceRoot}/../../../libs/openFrameworks/events",
+                    "${workspaceRoot}/../../../libs/openFrameworks/gl",
+                    "${workspaceRoot}/../../../libs/openFrameworks/graphics",
+                    "${workspaceRoot}/../../../libs/openFrameworks/math",
+                    "${workspaceRoot}/../../../libs/openFrameworks/sound",
+                    "${workspaceRoot}/../../../libs/openFrameworks/types",
+                    "${workspaceRoot}/../../../libs/openFrameworks/utils",
+                    "${workspaceRoot}/../../../libs/openFrameworks/video",
+                    "${workspaceRoot}/../../../libs/boost/include",
+                    "${workspaceRoot}/../../../libs/cairo/include",
+                    "${workspaceRoot}/../../../libs/curl/include",
+                    "${workspaceRoot}/../../../libs/fmodex/include",
+                    "${workspaceRoot}/../../../libs/FreeImage/include",
+                    "${workspaceRoot}/../../../libs/freetype/include",
+                    "${workspaceRoot}/../../../libs/glew/include",
+                    "${workspaceRoot}/../../../libs/glfw/include",
+                    "${workspaceRoot}/../../../libs/glm/include",
+                    "${workspaceRoot}/../../../libs/json/include",
+                    "${workspaceRoot}/../../../libs/pugixml/include",
+                    "${workspaceRoot}/../../../libs/rtAudio/include",
+                    "${workspaceRoot}/../../../libs/tess2/include",
+                    "${workspaceRoot}/../../../libs/uriparser/include",
+                    "${workspaceRoot}/../../../libs/utf8/include",
+                    "${workspaceRoot}/src",
+                    "${workspaceRoot}/**",
+                    "${workspaceRoot}/../../../addons/**",
+                    "${workspaceRoot}/../../../libs/cairo/**",
+                    "${workspaceRoot}/../../../**"
                 ]
             },
-            "intelliSenseMode": "msvc-x64"
+            "intelliSenseMode": "msvc-x64",
+            "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++17"
         }
     ],
-    "version": 3
+    "version": 4
 }
+
