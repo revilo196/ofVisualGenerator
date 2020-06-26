@@ -7,9 +7,13 @@
     <render>
         <width>1920</width>
         <height>1080</height>
+        <framerate>25</framerate>
     </render>
     <audioInID>1</audioInID>
     <vidioInID>1</vidioInID>
     <artnetEnable>0</artnetEnable>
     <artnetPort>9999</artnetPort>
+    <ndi>
+        <name>OfVisualGenerator NDI Send</name>
+    </ndi>
 </settings>

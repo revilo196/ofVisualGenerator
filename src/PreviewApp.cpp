@@ -1,3 +1,13 @@
+/**
+ * @file PreviewApp.cpp
+ * @author your name (you@domain.com)
+ * @brief 
+ * @version 0.1
+ * @date 2020-06-26
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include "PreviewApp.h"
 
 /**
@@ -11,11 +21,19 @@ void PreviewApp::setup()
 	const int height = settings.getValue("settings:render:height", 1080);
 }
 
+/**
+ * @brief upadte the window
+ * 
+ */
 void PreviewApp::update()
 {
+	//Unsued
 }
 
-
+/**
+ * @brief draw the diffrent preview FBO's
+ * 
+ */
 void PreviewApp::draw()
 {
 	ofClear(0, 0, 0, 0);
@@ -30,6 +48,12 @@ void PreviewApp::exit()
 {
 }
 
+/**
+ * @brief add a Preview FBO to the preview window
+ * 
+ * @param lay ofFbo to add to the preview
+ * @param conf preview size an position in the window
+ */
 void PreviewApp::addLayer(ofFbo lay, PreviewConfig conf)
 {
 	layers.push_back(lay);

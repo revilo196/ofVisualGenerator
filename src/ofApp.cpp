@@ -2,20 +2,25 @@
 
 
 
-//--------------------------------------------------------------
+/** -------------------------------------------------
+ * @brief setup the main window and all needed components 
+ */
 void ofApp::setup() {
 
 	settings.loadFile("settings.xml");
 
+	//set the desierd framerate 
 	ofSetFrameRate(settings.getValue("settings:render:framerate", 25));
-	ofSetVerticalSync(false);
-	ofBackground(0);
+	ofSetVerticalSync(false); // <- needed to get good framerates 
+	ofBackground(0); // set the background of the App to black
 
+	//use a constant window size for all windows, settings and FBO's 
 	const int width = settings.getValue("settings:render:width", 1920);
 	const int height = settings.getValue("settings:render:height", 1080);
 	VjObject::width = width;
 	VjObject::height = height;
 
+	// setup the effect Layers 
 	mgl1.setup();
 	mgl2.setup();
 	mgl3.setup();
@@ -26,35 +31,40 @@ void ofApp::setup() {
 	mgl3.selfInit();
 	mgl4.selfInit();
 
+	// add effect Layer parameter to the global paramerter group
 	allGroup.add(mgl1.all);
 	allGroup.add(mgl2.all);
 	allGroup.add(mgl3.all);
 	allGroup.add(mgl4.all);
 
+	// setup the layer mixer
 	a12.setup(&mgl1, &mgl2, width, height);
 	wa12.setup(&a12, width, height);
 	b34.setup(&mgl3, &mgl4, width, height);
 	outAB.setup(&a12, &b34, width, height);
 
+	// setup the mixer to fbo Wrapper/renderer
 	wa12.setup(&a12, width, height);
 	wb34.setup(&b34, width, height);
 	effectEndMixer.setup(&outAB, width, height);
 
+	// add mixer parameter to the global paramerter group
 	allGroup.add(a12.all);
 	allGroup.add(b34.all);
 	allGroup.add(outAB.all);
 
-
+	// put the paramerter group on the gui
 	gui.setup(allGroup);
 
-
+	// configure the fullscreen quad 
 	fullQuad.set(width, height);
 	fullQuad.setPosition(width/2, height/2, 0);
 	fullQuad.setResolution(2, 2);
 
-
+	// start the OSC sync parameter server
 	sync.setup(allGroup, settings.getValue("settings:osc:port_in", 6666 ), settings.getValue("settings:osc:ip", "192.168.1.1"), settings.getValue("settings:osc:port_out", 6667));
 
+	// add all previews to the preview Window/App
 	const int xoff = 200;
 	const int yoff = 0;
 	const int gap = 10;
@@ -118,17 +128,20 @@ void ofApp::setup() {
 //--------------------------------------------------------------
 void ofApp::update(){
 
+	// make the framerate visible form the outside
 	ofSetWindowTitle(ofToString(ofGetFrameRate(), 2));
 
+	//get updates from the OSC sync server
 	sync.update();
 
-
+	//update all the effect layers
 	mgl1.update();
 	mgl2.update();
 	mgl3.update();
 	mgl4.update();
 
-	wa12.update();
+	// update the mixers and mixer fbo wrapper 
+	wa12.update(); //<- internal call to the MainMixer update()
 	wb34.update();
 	effectEndMixer.update();
 
@@ -155,12 +168,14 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+	//renderd effect output from the mixer as fbo
 	ofFbo effectLayer = effectEndMixer.wrapper;
 
 	ofEnableAlphaBlending();
 
 	#ifdef SONGBEAMER
 		if (videoID >= 0) {
+			// let the songbeamer draw the effectLayer in the background
 			sb_mix.draw(effectLayer);
 		}
 		else {
@@ -204,19 +219,7 @@ void ofApp::windowResized(int w, int h){
 
 }
 
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){
-
-}
-
 void ofApp::exit() {
-
 
 #ifdef NDI_OUT
 	// The sender must be released 
@@ -227,9 +230,15 @@ void ofApp::exit() {
 }
 
 #ifdef ARTNET_IN
+/**
+ * @brief map artnet parameter to some Layer Parameter
+ * 
+ * artnet parameters need to be received and convertet to OSC externaly
+ * 
+ */
 void ofApp::art()
 {
-
+	//time calculaton use for strobe effect
 	float time = ofGetElapsedTimef();
 	float timfrac = time - (long)time;
 	int timefracind = timfrac * 20;

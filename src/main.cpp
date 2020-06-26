@@ -5,11 +5,11 @@
 #include "ofxXmlSettings.h"
 
 
-const char config[] = "<settings><osc><ip>192.168.105.33</ip><port_in>6666</port_in><port_out>6667</port_out ></osc><render><width>1920</width><height>1080 </height ></render><audioInID>5 </audioInID ><vidioInID>0</vidioInID><artnetEnable>1 </artnetEnable ><artnetPort>1 </artnetPort></settings>";
+const char config[] = "<settings><osc><ip>192.168.105.33</ip><port_in>6666</port_in><port_out>6667</port_out></osc><render><width>1920</width><height>1080</height><framerate>25</framerate></render><audioInID>-1</audioInID><vidioInID>-1</vidioInID><artnetEnable>-1</artnetEnable><artnetPort>9999</artnetPort><ndi><name>OfVisualGeneratorNDISend</name></ndi></settings>";
 
 
 //========================================================================
-int main(int argc, char** árgv) {
+int main(int argc, char** ï¿½rgv) {
 
 
 	ofxXmlSettings xmlsettings;
