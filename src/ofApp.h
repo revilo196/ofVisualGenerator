@@ -3,29 +3,20 @@
 #include "ofMain.h"
 #include "ofxGui.h"
 
-#include "CircleGrow.h"
-#include "ParticleGrowTexture.h"
-#include "ParticleSystemTexture.h"
-#include "StripeSpiral.h"
-#include "SphereGrow.h"
-#include "StripeCubes.h"
-#include "WaveMeshTexture.h"
-#include "WaveMeshAdvTex.h"
-
 #include "ofxOscParameterSync.h"
 
 #include "ofxLayerManager.h"
 
 #include "ManagerLayer.h"
 
-#include "SoundAnalyzer.h"
 #include "ofxXmlSettings.h"
 #include "ofxNDI.h"
 #include "MainMixer.h"
+#include "PreviewApp.h"
 
 //#define SONGBEAMER
 //#define SOUND
-//#define NDI_OUT
+#define NDI_OUT
 //#define ARTNET_IN
 
 
@@ -49,11 +40,6 @@ class ofApp : public ofBaseApp{
 		void draw();
 		void exit();
 
-		
-		void drawPreviewLayer(ofxLayer::Layer * layer);
-		void updatePre();
-		void drawPre(ofEventArgs & args);
-
 		void keyPressed(int key);
 		void keyReleased(int key);
 		void windowResized(int w, int h);
@@ -61,14 +47,12 @@ class ofApp : public ofBaseApp{
 		void gotMessage(ofMessage msg);
 
 		ofxPanel gui;
-		ofxPanel gui2;
-
-
 		ofParameterGroup allGroup;
 		ofxOscParameterSync sync;
+
 		ofxXmlSettings settings;
 		
-
+		shared_ptr<PreviewApp>  preview;
 		bool fullscreen = false;
 
 		ManagerLayer  mgl1;
@@ -80,10 +64,9 @@ class ofApp : public ofBaseApp{
 		MainMixer b34;
 		MainMixer outAB;
 
-		ofFbo effectLayer;
-		ofFbo preFbo;
-		ofFbo preFboOut;
-		
+		MixerFboWrapper wa12;
+		MixerFboWrapper wb34;
+		MixerFboWrapper effectEndMixer;
 
 		ofPlanePrimitive fullQuad;
 
@@ -106,7 +89,6 @@ class ofApp : public ofBaseApp{
 		#ifdef NDI_OUT
 			ofxNDIsender ndiSender;    // NDI sender
 			char senderName[256];      // Sender name
-			ofFbo ndiFbo;
 		#endif
 
 		#ifdef SOUND

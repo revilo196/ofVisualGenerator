@@ -1,22 +1,33 @@
 /**
  * @file SongBeamer.cpp
- * @author your name (you@domain.com)
- * @brief 
+ * @author Oliver Walter
+ * @brief Songbeamer module for mixing the the songbeamer output into this Stream
  * @version 0.1
  * @date 2020-06-26
  * 
  * @copyright Copyright (c) 2020
- * 
  */
 
 #include "SongBeamer.h"
 
+/**
+ * @brief Construct a new Song Beamer:: Song Beamer object
+ * add parameter to the VjObject UI
+ * @param name name of the songbeamer VjObject
+ */
 SongBeamer::SongBeamer(string name = "SongBeamer"): VjObject(name) {
     addParameter(fullSong.set("only songbeamer",false), false);
     addParameter(blkSong.set("block songbeamer", false), false);
     addParameter(songFade.set("fade songbeamer", 1.0f, 0.0f, 1.0f), false);
 }
 
+/**
+ * @brief setup the SongBeamer Module, 
+ * load shaders, allocate FBO's and init the Video Input
+ * @param vid_id configured video device id
+ * @param width  screen width
+ * @param height screen height
+ */
 void SongBeamer::setup(int vid_id, int width, int height) {
 
     std::vector<ofVideoDevice> videoList = videoIn.listDevices();
@@ -59,23 +70,38 @@ void SongBeamer::setup(int vid_id, int width, int height) {
 	    fullQuad.setResolution(2, 2 );
 }
 
+/**
+ * @brief update SongBeamer module
+ * 
+ * updates the videoIn();
+ * need to be run to grap new Video input
+ */
 void SongBeamer::update() {
     videoIn.update();
 }
 
+/**
+ * @brief draw the given effectLayer with the Songbeamer Overlay
+ * 
+ * @param effectLayer 
+ */
 void SongBeamer::draw(ofFbo effectLayer) {
-
+	
+	//Draw only Songbeamer
     if(fullSong) {
        videoIn.draw(0, 0, ofGetWidth(), ofGetHeight()); 
        return;
     }
 
+	//Block the Songbeamer
     if(blkSong) {
         effectLayer.draw(0, 0);
         return;
     }
 
+	//Generate the Mask for the Songbeamer
     songBeamerInputRender();
+
     sbEffectOut.begin();
     ofClear(0, 0);
 
@@ -115,6 +141,9 @@ void SongBeamer::draw(ofFbo effectLayer) {
    
 }
 
+/**
+ * @brief Generate background Mask for the Songbeamer Text
+ */
 void SongBeamer::songBeamerInputRender()
 {
 	xEx.begin();

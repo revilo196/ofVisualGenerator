@@ -7,13 +7,15 @@ void ofApp::setup() {
 
 	settings.loadFile("settings.xml");
 
-	ofSetFrameRate(25);
+	ofSetFrameRate(settings.getValue("settings:render:framerate", 25));
 	ofSetVerticalSync(false);
 	ofBackground(0);
 
 	const int width = settings.getValue("settings:render:width", 1920);
 	const int height = settings.getValue("settings:render:height", 1080);
-	
+	VjObject::width = width;
+	VjObject::height = height;
+
 	mgl1.setup();
 	mgl2.setup();
 	mgl3.setup();
@@ -30,19 +32,18 @@ void ofApp::setup() {
 	allGroup.add(mgl4.all);
 
 	a12.setup(&mgl1, &mgl2, width, height);
+	wa12.setup(&a12, width, height);
 	b34.setup(&mgl3, &mgl4, width, height);
-	
 	outAB.setup(&a12, &b34, width, height);
 
+	wa12.setup(&a12, width, height);
+	wb34.setup(&b34, width, height);
+	effectEndMixer.setup(&outAB, width, height);
 
 	allGroup.add(a12.all);
 	allGroup.add(b34.all);
 	allGroup.add(outAB.all);
 
-
-	preFbo.allocate(width, height);
-	preFboOut.allocate(width, height);
-	effectLayer.allocate(width, height);
 
 	gui.setup(allGroup);
 
@@ -54,12 +55,25 @@ void ofApp::setup() {
 
 	sync.setup(allGroup, settings.getValue("settings:osc:port_in", 6666 ), settings.getValue("settings:osc:ip", "192.168.1.1"), settings.getValue("settings:osc:port_out", 6667));
 
+	const int xoff = 200;
+	const int yoff = 0;
+	const int gap = 10;
+	const int w = 425 * 1.2;
+	const int h = 240 * 1.2;
+	
+	preview->addLayer(mgl1.getFrameBuffer(), { 0 + xoff, 0 + yoff, w,h });
+	preview->addLayer(mgl3.getFrameBuffer(), { 0 + xoff , h + yoff + gap, w,h });
+	preview->addLayer(mgl2.getFrameBuffer(), { w + xoff + gap , 0 + yoff, w,h });
+	preview->addLayer(mgl4.getFrameBuffer(), { w + xoff + gap , h + yoff + gap, w,h });
+	preview->addLayer(wa12.wrapper, { w * 2 + gap * 2 + xoff, 0 + yoff, w,h });
+	preview->addLayer(wb34.wrapper, { w * 2 + gap * 2 + xoff, h + yoff + gap, w,h });
+	preview->addLayer(effectEndMixer.wrapper, { w + gap * 2 + xoff, h * 2 + yoff + gap * 2 , w+w/4, h+h/4 });
+	
 
 	#ifdef NDI_OUT
-		strcpy_s(senderName, 256, "Openframeworks NDI Sender"); // Set the sender name
+		auto ndiname = settings.getValue("settings:ndi:name", "Openframeworks NDI Sender");
+		strcpy_s(senderName, 256, ndiname.c_str()); // Set the sender name
 		cout << ndiSender.GetNDIversion() << " (http://ndi.tv/)" << endl;
-		// Create an RGBA fbo for collection of data
-		ndiFbo.allocate(width, height, GL_RGBA);
 		// Optionally set fbo readback using OpenGL pixel buffers
 		ndiSender.SetReadback(); // Change to false to compare
 		// Optionally set NDI asynchronous sending
@@ -114,15 +128,9 @@ void ofApp::update(){
 	mgl3.update();
 	mgl4.update();
 
-	a12.update();
-	b34.update();
-
-	outAB.update();
-
-	effectLayer.begin();
-	ofClear(0, 0);
-	outAB.draw();
-	effectLayer.end();
+	wa12.update();
+	wb34.update();
+	effectEndMixer.update();
 
 
 	#ifdef SONGBEAMER
@@ -147,7 +155,7 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	updatePre();
+	ofFbo effectLayer = effectEndMixer.wrapper;
 
 	ofEnableAlphaBlending();
 
@@ -168,73 +176,6 @@ void ofApp::draw(){
 	#ifdef NDI_OUT
 		ndiSender.SendImage(effectLayer);
 	#endif
-}
-
-void ofApp::drawPreviewLayer(ofxLayer::Layer * layer) {
-	glPushAttrib(GL_ALL_ATTRIB_BITS);
-	{
-		preFbo.begin();
-		ofSetColor(255, 255);
-		ofClear(0, 0);
-		layer->draw();
-		preFbo.end();
-	}
-	glPopAttrib();
-}
-
-void ofApp::updatePre()
-{
-
-	preFboOut.begin();
-	ofClear(0, 0, 0, 0);
-
-	const float scale = 1.2;
-	const float xoff = 200;
-	const float yoff = 0;
-	const float gap = 10;
-	const float w = 425 * scale;
-	const float h = 240 * scale;
-
-
-	drawPreviewLayer(&mgl1);
-	preFbo.draw(0 + xoff, 0 + yoff, w , h);
-	
-	drawPreviewLayer(&mgl3);
-	preFbo.draw(0 + xoff , h + yoff +gap , w, h);
-
-	drawPreviewLayer(&mgl2);
-	preFbo.draw(w + xoff + gap , 0 +yoff, w, h);
-
-	drawPreviewLayer(&mgl4);
-	preFbo.draw(w + xoff + gap , h + yoff + gap , w, h);
-
-	drawPreviewLayer(&a12);
-	preFbo.draw(w*2 + gap *2 + xoff, 0 + yoff, w, h);
-
-	drawPreviewLayer(&b34);
-	preFbo.draw(w * 2 + gap * 2 + xoff, h + yoff + gap, w, h);
-
-	drawPreviewLayer(&outAB);
-	preFbo.draw(w + gap * 2 + xoff, h * 2 + yoff + gap*2 , w*1.25, h*1.25);
-
-	preFboOut.end();
-
-
-}
-
-void ofApp::drawPre(ofEventArgs & args)
-{ 
-	ofClear(0, 0, 0, 0);
-
-	ofDrawCircle(5, 5, 20);
-	glPushMatrix();
-
-	ofTranslate(1920, 1080, 0);
-	ofRotate(180);
-
-	preFboOut.draw(0, 0);
-	glPopMatrix();
-
 }
 
 //--------------------------------------------------------------

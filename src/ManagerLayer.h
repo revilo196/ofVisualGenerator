@@ -23,6 +23,7 @@ public:
 	virtual void draw()  override;
 	void selfInit();
 	void setupParamRouter();
+	ofFbo& getFrameBuffer() { return mng.getFramebuffer(); }
 	template <typename T > T* createLayer(float defalut_alpha = 0);
 
 	ofParameterGroup fader;

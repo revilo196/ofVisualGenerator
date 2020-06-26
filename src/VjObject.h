@@ -5,6 +5,8 @@ class VjObject
 {
 public:
 	const static float * rms;
+	static int width;
+	static int height;
 
 	explicit VjObject(string name = "VjObject");
 	~VjObject();
@@ -21,8 +23,8 @@ public:
 	//virtual void setRMS(float * rmsptr) { this->rms = rmsptr; }
 
 	static void translateMidFlipScale() {
-		float cy = ofGetHeight() / 2;
-		float cx = ofGetWidth() / 2;
+		float cy = height / 2;
+		float cx = width / 2;
 		ofTranslate(cx, cy);
 		ofScale(cy, -cy, cy);
 	}

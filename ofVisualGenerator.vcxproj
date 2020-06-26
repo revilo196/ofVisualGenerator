@@ -194,6 +194,7 @@
     <ClCompile Include="src\ParticleGrowTexture.cpp" />
     <ClCompile Include="src\ParticleSystem.cpp" />
     <ClCompile Include="src\ParticleSystemTexture.cpp" />
+    <ClCompile Include="src\PreviewApp.cpp" />
     <ClCompile Include="src\SimpleDots.cpp" />
     <ClCompile Include="src\SimpleStripes.cpp" />
     <ClCompile Include="src\SoundAnalyzer.cpp" />
@@ -262,6 +263,7 @@
     <ClInclude Include="src\ParticleGrowTexture.h" />
     <ClInclude Include="src\ParticleSystem.h" />
     <ClInclude Include="src\ParticleSystemTexture.h" />
+    <ClInclude Include="src\PreviewApp.h" />
     <ClInclude Include="src\SimpleDots.h" />
     <ClInclude Include="src\SimpleStripes.h" />
     <ClInclude Include="src\SoundAnalyzer.h" />

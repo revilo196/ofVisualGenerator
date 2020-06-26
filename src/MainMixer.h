@@ -53,3 +53,27 @@ private:
 
 };
 
+class MixerFboWrapper : public ofxLayer::Layer
+{
+public:
+	OFX_LAYER_DEFINE_LAYER_CLASS(MixerFboWrapper);
+
+	void setup(MainMixer * mixer,int  width, int height) {
+		this->mixer = mixer;
+		wrapper.allocate(width, height);
+	}
+	virtual void draw() override {
+		wrapper.draw(0,0);
+	}
+	virtual void update() override {
+		mixer->update();
+		wrapper.begin();
+		ofClear(0, 0);
+		mixer->draw();
+		wrapper.end();
+	}
+	ofFbo wrapper;
+private:
+	MainMixer * mixer;
+	
+};

@@ -1,7 +1,8 @@
 #include "VjObject.h"
 
 const float * VjObject::rms = nullptr;
-
+int  VjObject::width = 0;
+int  VjObject::height = 0;
 VjObject::VjObject(std::string name)
 {
 	this->nameParameter = name;

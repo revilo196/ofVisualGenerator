@@ -1,6 +1,6 @@
 #include "ofMain.h"
 #include "ofApp.h"
-
+#include "PreviewApp.h"
 
 #include "ofxXmlSettings.h"
 
@@ -25,7 +25,7 @@ int main(int argc, char** árgv) {
 
 
 	ofGLFWWindowSettings settings;
-	settings.setGLVersion(4, 5);
+	settings.setGLVersion(4, 1);
 	settings.setSize(width, height);
 	settings.setPosition(ofVec2f(50, 50));
 	settings.windowMode = OF_WINDOW;
@@ -41,11 +41,11 @@ int main(int argc, char** árgv) {
 	//other_win_h->setVerticalSync(false);
 
 	shared_ptr<ofApp> mainApp(new ofApp);
-
-	ofAddListener(other_win_h->events().draw, mainApp.get(), &ofApp::drawPre);
-
+	shared_ptr<PreviewApp> preview_app(new PreviewApp);
+	
+	mainApp->preview = preview_app;
 
 	ofRunApp(mainWindow, mainApp);
-	//ofRunApp(other_win_h, mainApp2);
+	ofRunApp(other_win_h, preview_app);
 	ofRunMainLoop();
 }

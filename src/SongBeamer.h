@@ -1,7 +1,8 @@
+#pragma once
 /**
  * @file SongBeamer.h
  * @author Oliver Walter
- * @brief 
+ * @brief Songbeamer module for mixing the the songbeamer output into this Stream
  * @version 0.1
  * @date 2020-06-26
  * 
@@ -12,25 +13,34 @@
 #include "ofBaseTypes.h"
 #include "VjObject.h"
 
+/**
+ * @brief SongBeamer Module for mixing the the songbeamer output into this Stream
+ * 
+ * this is used to overlay the songbeamer 
+ * 
+ */
 class SongBeamer :  public ofBaseUpdates, public VjObject
 {
 private:
-    ofVideoGrabber videoIn;
-    ofFbo sbEffectOut;
-    ofFbo songOverlay;
-    ofShader yExBlur;
-	ofShader xExBlur;
-	ofShader sbmix;
+    ofVideoGrabber videoIn; // Video Input
+    ofFbo sbEffectOut;      // effect output with blank spots for text from SB 
+    ofFbo songOverlay;      // the overlay to remove Mask  for the text
+    ofShader yExBlur;       // Blur filter to generate Mask  
+	ofShader xExBlur;       // Blur filter to generate Mask 
+	ofShader sbmix;            
 	ofShader sbAdd;
     ofFbo xEx;
 	ofFbo yEx;
 	ofFbo xExB;
 	ofFbo yExB;
     ofPlanePrimitive fullQuad;
+
+    //Parameter
     ofParameter<bool> fullSong;
 	ofParameter<bool> blkSong;
     ofParameter<float> songFade;
 
+    //use the video in to genreate the overlay
     void songBeamerInputRender();
 
 public:
@@ -42,18 +52,3 @@ public:
     void videoSettings() {videoIn.videoSettings();};
    
 };
-
-
-
-
-/*		
-        songOverlay.allocate(width, height);
-		sbEffectOut.allocate(width, height);
-		xEx.allocate(width, height);
-		yEx.allocate(width, height);
-		xExB.allocate(width, height);
-		yExB.allocate(width, height);
-		yExBlur.load("shader.vert", "blurYextrem.frag");
-		xExBlur.load("shader.vert", "blurXextrem.frag");
-		sbmix.load("shader.vert", "blend.frag");
-		sbAdd.load("shader.vert", "songadd.frag");*/
