@@ -23,6 +23,24 @@
 #include "ofxNDI.h"
 #include "MainMixer.h"
 
+//#define SONGBEAMER
+//#define SOUND
+//#define NDI_OUT
+//#define ARTNET_IN
+
+
+#ifdef SONGBEAMER
+	#include "SongBeamer.h"
+#endif
+
+#ifdef SOUND
+	#include "SoundAnalyzer.h"
+#endif
+
+#ifdef NDI_OUT
+	#include "ofxNDI.h"
+#endif
+
 class ofApp : public ofBaseApp{
 
 	public:
@@ -31,19 +49,13 @@ class ofApp : public ofBaseApp{
 		void draw();
 		void exit();
 
-		void art();
-
+		
+		void drawPreviewLayer(ofxLayer::Layer * layer);
 		void updatePre();
 		void drawPre(ofEventArgs & args);
 
 		void keyPressed(int key);
 		void keyReleased(int key);
-		void mouseMoved(int x, int y );
-		void mouseDragged(int x, int y, int button);
-		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
 		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
@@ -56,7 +68,6 @@ class ofApp : public ofBaseApp{
 		ofxOscParameterSync sync;
 		ofxXmlSettings settings;
 		
-		SoundAnalyzer sound;
 
 		bool fullscreen = false;
 
@@ -67,59 +78,45 @@ class ofApp : public ofBaseApp{
 
 		MainMixer a12;
 		MainMixer b34;
-
 		MainMixer outAB;
 
+		ofFbo effectLayer;
 		ofFbo preFbo;
 		ofFbo preFboOut;
-
-		void songBeamerInputRender();
-		ofFbo sbEffectOut;
-		ofFbo effectLayer;
-		ofFbo songOverlay;
-		ofShader yExBlur;
-		ofShader xExBlur;
-		ofShader sbmix;
-		ofShader sbAdd;
-		ofFbo xEx;
-		ofFbo yEx;
-		ofFbo xExB;
-		ofFbo yExB;
+		
 
 		ofPlanePrimitive fullQuad;
 
-		ofVideoGrabber videoIn;
-
-		ofParameter<bool> fullSong;
-		ofParameter<bool> blkSong;
-		ofParameter<float> dimm;
-		ofParameter<float> stro;
-		ofParameter<float> colR;
-		ofParameter<float> colG;
-		ofParameter<float> colB;
-		ofParameter<float> songFade;
-
-		ofParameter<bool> artL1;
-		ofParameter<bool> artL2;
-		ofParameter<bool> artL3;
-		ofParameter<bool> artL4;
 		
+		#ifdef ARTNET_IN
+			int artnet = 0;
+			void art();
+			ofParameter<float> dimm;
+			ofParameter<float> stro;
+			ofParameter<float> colR;
+			ofParameter<float> colG;
+			ofParameter<float> colB;
+			ofParameter<bool> artL1;
+			ofParameter<bool> artL2;
+			ofParameter<bool> artL3;
+			ofParameter<bool> artL4;
+		#endif // ARTNET_IN
 
-		void buttonPressed(const void * sender);
-		float rms = 0;
-		int videoID = 0;
-		int soundID = 0;
-		int artnet = 0;
 
+		#ifdef NDI_OUT
+			ofxNDIsender ndiSender;    // NDI sender
+			char senderName[256];      // Sender name
+			ofFbo ndiFbo;
+		#endif
 
-		ofxNDIsender ndiSender;    // NDI sender
-		char senderName[256];      // Sender name
-		ofFbo ndiFbo;              // Fbo used for graphics and sending
+		#ifdef SOUND
+			float rms = 0;
+			int soundID = 0;
+			SoundAnalyzer sound;
+		#endif
 
-
-	//	bool isConnected;
-	//	ofTexture texture; // created from memory mapped file
-	//	ofShader convertARGB;
-	//	ofPlanePrimitive fullQuadVid;
-	//	ofFbo capture;
+		#ifdef SONGBEAMER
+			int videoID = 0;
+			SongBeamer sb_mix;
+		#endif
 };

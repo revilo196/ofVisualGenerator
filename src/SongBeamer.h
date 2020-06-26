@@ -12,7 +12,7 @@
 #include "ofBaseTypes.h"
 #include "VjObject.h"
 
-class SongBeamer :  public ofBaseDraws, public ofBaseUpdates, public VjObject
+class SongBeamer :  public ofBaseUpdates, public VjObject
 {
 private:
     ofVideoGrabber videoIn;
@@ -39,6 +39,7 @@ public:
     void setup(int vid_id, int width, int height);
     void update();
     void draw(ofFbo effectLayer);
+    void videoSettings() {videoIn.videoSettings();};
    
 };
 

@@ -18,6 +18,22 @@ SongBeamer::SongBeamer(string name = "SongBeamer"): VjObject(name) {
 }
 
 void SongBeamer::setup(int vid_id, int width, int height) {
+
+    std::vector<ofVideoDevice> videoList = videoIn.listDevices();
+	ofLog() << "Video Devices:";
+	for (int i = 0; i < videoList.size(); i++) {
+
+		ofLogNotice("VideoIn", videoList[i].deviceName + "  " + ofToString(videoList[i].id));
+		
+		for (int j = 0; j < videoList[i].formats.size(); i++) {
+			ofLogNotice("VideoIn", ofToString(videoList[i].formats[j].framerates));
+			ofLogNotice("VideoIn", ofToString(videoList[i].formats[j].height));
+			ofLogNotice("VideoIn", ofToString(videoList[i].formats[j].width));
+			ofLogNotice("VideoIn", ofToString(videoList[i].formats[j].pixelFormat));
+		}
+
+	}
+
     	videoIn.setVerbose(true);
 		videoIn.setDeviceID(vid_id);
 		videoIn.setUseTexture(true);
@@ -50,7 +66,7 @@ void SongBeamer::update() {
 void SongBeamer::draw(ofFbo effectLayer) {
 
     if(fullSong) {
-       videoIn.draw(0, 0, ofGetWidth(), ofGetHeight()); #
+       videoIn.draw(0, 0, ofGetWidth(), ofGetHeight()); 
        return;
     }
 
