@@ -103,7 +103,7 @@ void ofApp::setup() {
 
 	#ifdef NDI_OUT
 		auto ndiname = settings.getValue("settings:ndi:name", "Openframeworks NDI Sender");
-		strcpy_s(senderName, 256, ndiname.c_str()); // Set the sender name
+		strcpy(senderName, ndiname.c_str()); // Set the sender name
 		cout << ndiSender.GetNDIversion() << " (http://ndi.tv/)" << endl;
 		// Optionally set fbo readback using OpenGL pixel buffers
 		ndiSender.SetReadback(); // Change to false to compare

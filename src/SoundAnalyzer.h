@@ -2,7 +2,7 @@
 
 #include "ofSoundStream.h"
 #include "ofSoundBuffer.h"
-#include "kiss\kiss_fftr.h"
+#include "kiss_fftr.h"
 #include "ofThread.h"
 #include "ofxXmlSettings.h"
 struct Band {
