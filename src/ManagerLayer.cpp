@@ -61,7 +61,26 @@ void ManagerLayer::draw()
 	mng.draw();
 }
 
-void ManagerLayer::selfInit()
+
+
+void ManagerLayer::setupLayerByConfig(ofxXmlSettings layersettings)
+{
+	int num = layersettings.getNumTags("efx");
+	const float def_alpha = 0.0;
+	for (int i = 0; i < num; i++) {
+		string efx_name = layersettings.getValue("efx", "", i);
+		if (efx_name == "CircleGrow")                  this->createLayer<CircleGrow>(def_alpha);
+		else if (efx_name == "ParticleGrowTexture")    this->createLayer<ParticleGrowTexture>(def_alpha);
+		else if (efx_name == "ParticleSystemTexture")  this->createLayer<ParticleSystemTexture>(def_alpha);
+		else if (efx_name == "StripeSpiral")           this->createLayer<StripeSpiral>(def_alpha);
+		else if (efx_name == "SphereGrow")             this->createLayer<SphereGrow>(def_alpha);
+		else if (efx_name == "StripeCubes")            this->createLayer<StripeCubes>(def_alpha);
+		else if (efx_name == "WaveMeshTexture")        this->createLayer<WaveMeshTexture>(def_alpha);
+		else if (efx_name == "WaveMeshAdvTex")         this->createLayer<WaveMeshAdvTex>(def_alpha);
+	}
+}
+
+void ManagerLayer::setupAllLayers()
 {
 	const float def_alpha = 0.0;
 	this->createLayer<CircleGrow>(def_alpha);

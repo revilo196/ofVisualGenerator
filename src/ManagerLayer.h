@@ -1,27 +1,24 @@
 #pragma once
 
 #include "ofxLayerManager.h"
-#include "ofxLayer.h"
 #include "ofxGui.h"
 #include "VjObject.h"
+#include "ofxXmlSettings.h"
 
-
-using namespace ofxLayer;
-
-class ManagerLayer : public ofxLayer::Layer
+class ManagerLayer 
 {
 public:
 	static int globalMngLayCont;
 
-	OFX_LAYER_DEFINE_LAYER_CLASS(ManagerLayer);
-
 	ManagerLayer() {};
 	~ManagerLayer() {};
 
-	virtual void setup() override;
-	virtual void update() override;
-	virtual void draw()  override;
-	void selfInit();
+	void setup();
+	void update();
+	void draw();
+
+	void setupLayerByConfig(ofxXmlSettings layersettings);
+	void setupAllLayers();
 	void setupParamRouter();
 	ofFbo& getFrameBuffer() { return mng.getFramebuffer(); }
 	template <typename T > T* createLayer(float defalut_alpha = 0);
@@ -40,9 +37,6 @@ private:
 	void updateParamRouterf(float &f);
 	void updateParamRouterb(bool &f);
 	void updateParamRouterc(ofFloatColor &f);
-
-
-
 
 	ofxLayer::Manager mng;
 

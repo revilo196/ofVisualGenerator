@@ -1,6 +1,6 @@
 /**
  * @file PreviewApp.cpp
- * @author your name (you@domain.com)
+ * @author PreviewApp code
  * @brief 
  * @version 0.1
  * @date 2020-06-26

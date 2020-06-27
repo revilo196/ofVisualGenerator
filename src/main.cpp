@@ -9,7 +9,7 @@ const char config[] = "<settings><osc><ip>192.168.105.33</ip><port_in>6666</port
 
 
 //========================================================================
-int main(int argc, char** �rgv) {
+int main(int argc, char** rgv) {
 
 
 	ofxXmlSettings xmlsettings;

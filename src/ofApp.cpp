@@ -26,10 +26,30 @@ void ofApp::setup() {
 	mgl3.setup();
 	mgl4.setup();
 
-	mgl1.selfInit();
-	mgl2.selfInit();
-	mgl3.selfInit();
-	mgl4.selfInit();
+	if (settings.tagExists("layers")) {
+		settings.pushTag("layers");
+		settings.pushTag("l1");
+		mgl1.setupLayerByConfig(settings);
+		settings.popTag();
+		settings.pushTag("l2");
+		mgl2.setupLayerByConfig(settings);
+		settings.popTag();
+		settings.pushTag("l3");
+		mgl3.setupLayerByConfig(settings);
+		settings.popTag();
+		settings.pushTag("l4");
+		mgl4.setupLayerByConfig(settings);
+		settings.popTag();
+		settings.popTag();
+	}
+	else {
+		mgl1.setupAllLayers();
+		mgl2.setupAllLayers();
+		mgl3.setupAllLayers();
+		mgl4.setupAllLayers();
+	}
+
+
 
 	// add effect Layer parameter to the global paramerter group
 	allGroup.add(mgl1.all);
@@ -38,14 +58,15 @@ void ofApp::setup() {
 	allGroup.add(mgl4.all);
 
 	// setup the layer mixer
-	a12.setup(&mgl1, &mgl2, width, height);
-	wa12.setup(&a12, width, height);
-	b34.setup(&mgl3, &mgl4, width, height);
-	outAB.setup(&a12, &b34, width, height);
+	a12.setup(mgl1.getFrameBuffer(), mgl2.getFrameBuffer(), width, height);
+	b34.setup(mgl3.getFrameBuffer(), mgl4.getFrameBuffer(), width, height);
 
 	// setup the mixer to fbo Wrapper/renderer
 	wa12.setup(&a12, width, height);
 	wb34.setup(&b34, width, height);
+
+	outAB.setup(wa12.wrapper, wb34.wrapper, width, height);
+
 	effectEndMixer.setup(&outAB, width, height);
 
 	// add mixer parameter to the global paramerter group

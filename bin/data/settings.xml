@@ -17,3 +17,48 @@
         <name>OfVisualGenerator NDI Send</name>
     </ndi>
 </settings>
+<layers>
+    <l1>
+        <efx>CircleGrow</efx>
+        <efx>ParticleGrowTexture</efx>
+        <efx>ParticleSystemTexture</efx>
+        <efx>StripeSpiral</efx>
+        <efx>SphereGrow</efx>
+        <efx>StripeCubes</efx>
+        <efx>WaveMeshTexture</efx>
+        <efx>WaveMeshAdvTex</efx>
+    </l1>
+
+    <l2>
+        <efx>CircleGrow</efx>
+        <efx>ParticleGrowTexture</efx>
+        <efx>ParticleSystemTexture</efx>
+        <efx>StripeSpiral</efx>
+        <efx>SphereGrow</efx>
+        <efx>StripeCubes</efx>
+        <efx>WaveMeshTexture</efx>
+        <efx>WaveMeshAdvTex</efx>
+    </l2>
+
+    <l3>
+        <efx>CircleGrow</efx>
+        <efx>ParticleGrowTexture</efx>
+        <efx>ParticleSystemTexture</efx>
+        <efx>StripeSpiral</efx>
+        <efx>SphereGrow</efx>
+        <efx>StripeCubes</efx>
+        <efx>WaveMeshTexture</efx>
+        <efx>WaveMeshAdvTex</efx>
+    </l3>
+
+    <l4>
+        <efx>CircleGrow</efx>
+        <efx>ParticleGrowTexture</efx>
+        <efx>ParticleSystemTexture</efx>
+        <efx>StripeSpiral</efx>
+        <efx>SphereGrow</efx>
+        <efx>StripeCubes</efx>
+        <efx>WaveMeshTexture</efx>
+        <efx>WaveMeshAdvTex</efx>
+    </l4>
+</layers>
