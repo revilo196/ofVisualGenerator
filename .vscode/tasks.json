@@ -11,8 +11,10 @@
                 "reveal": "always",
                 "panel": "new"
             },
-            "command": "make",
+            "command": "make42",
             "args": [
+                "-j",
+                "4",
                 "Debug"
             ],
             "group": {
@@ -30,8 +32,10 @@
                 "reveal": "always",
                 "panel": "new"
             },
-            "command": "make",
+            "command": "make42",
             "args": [
+                "-j",
+                "4",
                 "Release"
             ]
         },
@@ -42,7 +46,7 @@
                 "reveal": "always",
                 "panel": "new"
             },
-            "command": "make",
+            "command": "make42",
             "args": [
                 "RunDebug"
             ],
@@ -55,7 +59,7 @@
                 "reveal": "always",
                 "panel": "new"
             },
-            "command": "make",
+            "command": "make42",
             "args": [
                 "CleanDebug"
             ]
@@ -67,7 +71,7 @@
                 "reveal": "always",
                 "panel": "new"
             },
-            "command": "make",
+            "command": "make42",
             "args": [
                 "CleanRelease"
             ]
@@ -79,7 +83,7 @@
                 "reveal": "always",
                 "panel": "new"
             },
-            "command": "make",
+            "command": "make42",
             "args": [
                 "clean"
             ]

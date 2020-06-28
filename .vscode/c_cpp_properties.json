@@ -99,12 +99,20 @@
                 "${workspaceRoot}/../../../libs/utf8/include",
                 "${workspaceRoot}/../../../libs/poco/include",
                 "${workspaceRoot}/../../../libs/kiss/include",
+                "${workspaceRoot}/../../../addons/ofxLayer/src",
+                "${workspaceRoot}/../../../addons/ofxNDI/src",
+                "${workspaceRoot}/../../../addons/ofxGui/src",
+                "${workspaceRoot}/../../../addons/ofxAnimatable/src",
+                "${workspaceRoot}/../../../addons/ofxNetwork/src",
+                "${workspaceRoot}/../../../addons/ofxOsc/src",
+                "${workspaceRoot}/../../../addons/ofxXmlSettings/src",
                 "/usr/include/x86_64-linux-gnu/c++/5",
                 "/usr/include/pulse",
                 "/usr/include/cairo",
                 "/usr/include/gstreamer-1.0",
                 "/usr/include/glib-2.0",
                 "${workspaceRoot}"
+
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,

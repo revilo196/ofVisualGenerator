@@ -12,8 +12,9 @@ SoundAnalyzer::~SoundAnalyzer()
 {
 }
 
-void SoundAnalyzer::setup()
+void SoundAnalyzer::setup(int devID)
 {
+	initBands();
 	vector<ofSoundDevice> devices = soundStream.getDeviceList();
 	ofLog() << "Audio Devices";
 	for (int i = 0; i < devices.size(); i++) {
@@ -24,7 +25,6 @@ void SoundAnalyzer::setup()
 		//}
 
 	}
-	int devID = settings.getValue("settings:audioInID", 10);
 	soundStream.setDeviceID(devID);
 	soundStream.setup(0, 1, 48000, bufferSize, 4);
 	soundStream.setInput(this);
@@ -43,7 +43,7 @@ void SoundAnalyzer::setup()
 	cfg = kiss_fftr_alloc(bufferSize * 3, 0, NULL, NULL);
 
 
-	initBands();
+	
 	soundStream.start();
 }
 
@@ -71,7 +71,7 @@ void SoundAnalyzer::audioIn(ofSoundBuffer & buffer)
 		kiss_fftr(cfg, audioBuffer.data(), out.data());
 	}
 
-	for (int i = 0; i < 33; i++) {
+	for (int i = 0; i < 32; i++) {
 		bandSum[i] = 0;
 	}
 

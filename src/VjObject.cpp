@@ -1,6 +1,7 @@
 #include "VjObject.h"
 
 const float * VjObject::rms = nullptr;
+const SoundAnalyzer * VjObject::sound_connect = nullptr;
 int  VjObject::width = 0;
 int  VjObject::height = 0;
 VjObject::VjObject(std::string name)

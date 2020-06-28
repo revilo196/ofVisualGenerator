@@ -22,8 +22,8 @@
 
 /// Enable nedded modules
 //#define SONGBEAMER
-//#define SOUND
-#define NDI_OUT
+#define SOUND
+//#define NDI_OUT
 //#define ARTNET_IN
 
 

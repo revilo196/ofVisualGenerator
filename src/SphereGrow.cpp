@@ -6,7 +6,7 @@ SphereGrow::SphereGrow() : VjObject("SphereGrow")
 {
 	const int res = 1;
 	sphere.resize(sphereCount);
-	//radius.resize(sphereCount);
+	this->sound = VjObject::sound_connect;
 
 	for (int i = 0; i < sphereCount; i++) {
 		float radius = static_cast<float>(i) / static_cast<float>(sphereCount);
@@ -21,12 +21,11 @@ SphereGrow::SphereGrow() : VjObject("SphereGrow")
 
 SphereGrow::~SphereGrow()
 {
+	
 }
 
 void SphereGrow::setup()
 {
-	
-	//fbo.allocate(this->ofGetWidth(), this->ofGetHeight());
 	shader.load("shader.vert", "shader.frag");
 }
 
@@ -56,11 +55,6 @@ void SphereGrow::update()
 	if(sound != nullptr) 
 		rmsTime = sound->getRMS();
 	
-	//cout << rmsTime << endl;
-
-	//fbo.begin();
-	
-	//fbo.end();
 }
 
 

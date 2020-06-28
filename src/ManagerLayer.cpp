@@ -8,6 +8,7 @@
 #include "StripeCubes.h"
 #include "WaveMeshTexture.h"
 #include "WaveMeshAdvTex.h"
+#include "SpectrumVisu.h"
 
 int ManagerLayer::globalMngLayCont = 0;
 
@@ -77,6 +78,8 @@ void ManagerLayer::setupLayerByConfig(ofxXmlSettings layersettings)
 		else if (efx_name == "StripeCubes")            this->createLayer<StripeCubes>(def_alpha);
 		else if (efx_name == "WaveMeshTexture")        this->createLayer<WaveMeshTexture>(def_alpha);
 		else if (efx_name == "WaveMeshAdvTex")         this->createLayer<WaveMeshAdvTex>(def_alpha);
+		else if (efx_name == "SpectrumVisu")         this->createLayer<SpectrumVisu>(def_alpha);
+
 	}
 }
 

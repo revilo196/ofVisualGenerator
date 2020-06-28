@@ -118,7 +118,8 @@ void ofApp::setup() {
 		soundID = settings.getValue("settings:audioInID", 1);
 		if (soundID >= 0) {
 			VjObject::rms = &this->rms;
-			sound.setup();
+			VjObject::sound_connect = (const SoundAnalyzer *)&this->sound;
+			sound.setup(soundID);
 		}
 	#endif // SOUND
 

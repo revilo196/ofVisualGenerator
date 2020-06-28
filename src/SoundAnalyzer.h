@@ -17,7 +17,7 @@ public:
 	SoundAnalyzer();
 	~SoundAnalyzer();
 
-	void setup();
+	void setup(int devID);
 	void update();
 
 	void initBands();

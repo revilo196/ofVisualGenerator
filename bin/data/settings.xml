@@ -7,9 +7,9 @@
     <render>
         <width>1920</width>
         <height>1080</height>
-        <framerate>25</framerate>
+        <framerate>60</framerate>
     </render>
-    <audioInID>1</audioInID>
+    <audioInID>0</audioInID>
     <vidioInID>1</vidioInID>
     <artnetEnable>0</artnetEnable>
     <artnetPort>9999</artnetPort>
@@ -27,6 +27,7 @@
         <efx>StripeCubes</efx>
         <efx>WaveMeshTexture</efx>
         <efx>WaveMeshAdvTex</efx>
+        <efx>SpectrumVisu</efx>
     </l1>
 
     <l2>
@@ -38,6 +39,7 @@
         <efx>StripeCubes</efx>
         <efx>WaveMeshTexture</efx>
         <efx>WaveMeshAdvTex</efx>
+        <efx>SpectrumVisu</efx>
     </l2>
 
     <l3>
@@ -49,6 +51,7 @@
         <efx>StripeCubes</efx>
         <efx>WaveMeshTexture</efx>
         <efx>WaveMeshAdvTex</efx>
+        <efx>SpectrumVisu</efx>
     </l3>
 
     <l4>
@@ -60,5 +63,6 @@
         <efx>StripeCubes</efx>
         <efx>WaveMeshTexture</efx>
         <efx>WaveMeshAdvTex</efx>
+        <efx>SpectrumVisu</efx>
     </l4>
 </layers>

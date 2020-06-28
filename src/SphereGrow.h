@@ -22,8 +22,6 @@ public:
 	virtual void update() override;
 	virtual void draw() override;
 
-	void setSound(const SoundAnalyzer * sound) { this->sound = sound; }
-
 private:
 
 	float edge(float in);
@@ -36,6 +34,6 @@ private:
 	ofParameter<float> grow = 0.3f;
 	ofParameter<float> size = 0.1;
 	ofShader shader;
-	//ofFbo fbo;
+
 };
 

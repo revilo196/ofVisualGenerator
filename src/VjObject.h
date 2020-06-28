@@ -1,10 +1,14 @@
 #pragma once
 #include "ofMain.h"
 
+
+class SoundAnalyzer;
 class VjObject
 {
 public:
 	const static float * rms;
+	const static  SoundAnalyzer * sound_connect;
+
 	static int width;
 	static int height;
 
