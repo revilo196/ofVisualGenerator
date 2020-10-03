@@ -15,7 +15,18 @@ SoundAnalyzer::~SoundAnalyzer()
 void SoundAnalyzer::setup(int devID)
 {
 	initBands();
-	vector<ofSoundDevice> devices = soundStream.getDeviceList();
+	
+	
+#ifdef WIN32
+	auto api = ofSoundDevice::Api::MS_DS;
+#else 
+	auto api = ofSoundDevice::Api::DEFAULT;
+#endif
+
+	ofSoundStreamSettings settings;
+
+
+	vector<ofSoundDevice> devices = soundStream.getDeviceList(api);
 	ofLog() << "Audio Devices";
 	for (int i = 0; i < devices.size(); i++) {
 
@@ -25,9 +36,17 @@ void SoundAnalyzer::setup(int devID)
 		//}
 
 	}
-	soundStream.setDeviceID(devID);
-	soundStream.setup(0, 1, 48000, bufferSize, 4);
-	soundStream.setInput(this);
+
+	settings.setApi(api);
+	settings.setInListener(this);
+	settings.sampleRate = 48000;
+	settings.numOutputChannels = 0;
+	settings.numInputChannels = 1;
+	settings.bufferSize = bufferSize;
+	settings.numBuffers = 4;
+	settings.setInDevice(devices[devID]);
+
+	
 
 	audioBuffer.resize(bufferSize * 3);
 
@@ -43,7 +62,7 @@ void SoundAnalyzer::setup(int devID)
 	cfg = kiss_fftr_alloc(bufferSize * 3, 0, NULL, NULL);
 
 
-	
+	soundStream.setup(settings);
 	soundStream.start();
 }
 
@@ -71,7 +90,7 @@ void SoundAnalyzer::audioIn(ofSoundBuffer & buffer)
 		kiss_fftr(cfg, audioBuffer.data(), out.data());
 	}
 
-	for (int i = 0; i < 32; i++) {
+	for (int i = 0; i < 33; i++) {
 		bandSum[i] = 0;
 	}
 
@@ -103,7 +122,7 @@ void SoundAnalyzer::audioIn(ofSoundBuffer & buffer)
 			db[j] = current;  // bump up
 		}
 		else {
-			db[j] *= 0.90f; // decay // damping
+			db[j] *= db_damp; // decay // damping
 		}
 
 

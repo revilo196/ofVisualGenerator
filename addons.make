@@ -1,7 +1,8 @@
 ofxAnimatable
 ofxGui
 ofxLayer
-
+ofxNDI
 ofxNetwork
 ofxOsc
+ofxShader
 ofxXmlSettings

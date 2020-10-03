@@ -30,6 +30,7 @@ public:
 	vector<float> getSpectrum() const { return power_spectrum; }
 	vector<float> getSpectrumSmooth() const { return power_spectrumSmooth; }
 
+	float db_damp = 0.95;
 
 private:
 	ofxXmlSettings settings;
