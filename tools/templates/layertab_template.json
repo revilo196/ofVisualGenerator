@@ -1,0 +1,135 @@
+{#
+name - name of the layer
+base_address - layer base adress ussaly LMG<N>
+efx array
+   e -> index
+   e -> tap
+#}
+{
+  "type": "tab",
+  "id": "{{name}}",
+  "linkId": "",
+  "label": "auto",
+  "color": "auto",
+  "css": "",
+  "default": "",
+  "value": "",
+  "precision": 0,
+  "address": "/tab_1",
+  "preArgs": [],
+  "target": [],
+  "bypass": false,
+  "variables": {
+    "layer": "/group/{{base_address}}"
+  },
+  "widgets": [
+    {
+      "type": "strip",
+      "id": "@{parent.id}_F",
+      "linkId": "",
+      "left": 0,
+      "top": 0,
+      "width": 770,
+      "height": 350,
+      "label": "auto",
+      "color": "auto",
+      "css": "",
+      "scroll": true,
+      "border": true,
+      "spacing": 0,
+      "variables": {
+        "pre": "@{parent.variables.layer}/fader"
+      },
+      "widgets": [
+        {% for e in efx %}
+        {
+          "type": "fader",
+          "id": "@{parent.id}_{{e.index}}",
+          "linkId": "",
+          "label": "auto",
+          "color": "auto",
+          "css": "",
+          "horizontal": false,
+          "alignRight": false,
+          "pips": true,
+          "input": true,
+          "meter": false,
+          "compact": false,
+          "dashed": false,
+          "snap": false,
+          "spring": false,
+          "doubleTap": false,
+          "range": {
+            "min": 0,
+            "max": 1
+          },
+          "logScale": false,
+          "unit": "",
+          "origin": "auto",
+          "default": "",
+          "value": "",
+          "precision": 2,
+          "address": "@{parent.variables.pre}/{{e.index}}",
+          "touchAddress": "",
+          "meterAddress": "",
+          "preArgs": [],
+          "target": [],
+          "bypass": false,
+          "width": "auto"
+        }
+{%- if not loop.last -%}
+,
+{% endif %}
+        {% endfor %}
+      ],
+      "horizontal": true,
+      "stretch": false,
+      "default": "",
+      "value": "",
+      "precision": 0,
+      "preArgs": [],
+      "target": [],
+      "bypass": false,
+      "address": "/@{parent.id}_F",
+      "tabs": []
+    },
+    {
+      "type": "panel",
+      "top": 350,
+      "left": 0,
+      "id": "@{parent.id}_config",
+      "linkId": "",
+      "width": 910,
+      "height": 450,
+      "label": "auto",
+      "color": "auto",
+      "css": "",
+      "scroll": true,
+      "border": true,
+      "default": "",
+      "value": "",
+      "precision": 0,
+      "address": "/panel_1",
+      "preArgs": [],
+      "target": [],
+      "bypass": false,
+      "variables": {
+        "pre": "@{parent.variables.layer}/config",
+        "l": "@{parent.id}"
+      },
+      "widgets": [],
+      "tabs": [
+
+        {% for e in efx %}
+        {{ e.tab }}
+          {%- if not loop.last -%}
+          ,
+          {% endif %}
+        {% endfor %}
+
+        ]
+    }
+  ],
+  "tabs": [],
+  "scroll": true
+}
