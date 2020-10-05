@@ -1,7 +1,6 @@
 #include "ofApp.h"
 
 
-
 /** -------------------------------------------------
  * @brief setup the main window and all needed components 
  */
@@ -25,7 +24,7 @@ void ofApp::setup() {
 	mgl2.setup();
 	mgl3.setup();
 	mgl4.setup();
-
+	settings.pushTag("settings");
 	if (settings.tagExists("layers")) {
 		settings.pushTag("layers");
 		settings.pushTag("l1");
@@ -48,7 +47,7 @@ void ofApp::setup() {
 		mgl3.setupAllLayers();
 		mgl4.setupAllLayers();
 	}
-
+	settings.popTag();
 
 
 	// add effect Layer parameter to the global paramerter group
