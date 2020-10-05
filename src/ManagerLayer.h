@@ -19,7 +19,6 @@ public:
 
 	void setupLayerByConfig(ofxXmlSettings layersettings);
 	void setupAllLayers();
-	void setupParamRouter();
 	ofFbo& getFrameBuffer() { return mng.getFramebuffer(); }
 	template <typename T > T* createLayer(float defalut_alpha = 0);
 
@@ -32,11 +31,6 @@ public:
 
 
 private:
-	void switchRoutionTo(int &val);
-	void updateParamRouter();
-	void updateParamRouterf(float &f);
-	void updateParamRouterb(bool &f);
-	void updateParamRouterc(ofFloatColor &f);
 
 	ofxLayer::Manager mng;
 
