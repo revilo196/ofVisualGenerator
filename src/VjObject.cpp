@@ -16,9 +16,10 @@ VjObject::~VjObject()
 
 void VjObject::addParameter(ofAbstractParameter & param, bool rms)
 {
-	parameters.add(param);
+	auto ptype = param.type();
 	
-	if (param.type() == "class ofParameter<float>" && rms) {
+	if (ptype == typeid(ofParameter<float>).name() && rms) {  // !!! typeid name is diffrent on other os
+		parameters.add(param);
 		ofParameter<float> p = param.cast<float>();
 		mod.emplace_back(p.getName(), p.get(), p.getMin(), p.getMax());
 		act.emplace_back("rms-" + p.getName(), false);
@@ -55,7 +56,7 @@ void VjObject::updateParms()
 
 	for (int i = 0; i < parameters.size(); i++) {
 		
-		if (parameters.getType(i) == "class ofParameter<float>") {
+		if (parameters.getType(i) == typeid(ofParameter<float>).name()) {
 
 			ofParameter<float> p = parameters.getFloat(i);
 
