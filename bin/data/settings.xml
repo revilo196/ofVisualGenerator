@@ -1,6 +1,6 @@
 <settings>
     <osc>
-        <ip>192.168.105.33</ip>
+        <ip>127.0.0.1</ip>
         <port_in>6666</port_in>
         <port_out>6667</port_out>
     </osc>
@@ -9,60 +9,64 @@
         <height>1080</height>
         <framerate>60</framerate>
     </render>
-    <audioInID>0</audioInID>
-    <vidioInID>1</vidioInID>
+    <audioInID>-1</audioInID>
+    <vidioInID>-1</vidioInID>
     <artnetEnable>0</artnetEnable>
     <artnetPort>9999</artnetPort>
     <ndi>
         <name>OfVisualGenerator NDI Send</name>
     </ndi>
+
+    <layers>
+        <l1>
+            <efx>CircleGrow</efx>
+            <efx>ParticleGrowTexture</efx>
+            <efx>ParticleSystemTexture</efx>
+            <efx>StripeSpiral</efx>
+            <efx>SphereGrow</efx>
+            <efx>StripeCubes</efx>
+            <efx>WaveMeshTexture</efx>
+            <efx>WaveMeshAdvTex</efx>
+            <efx>SpectrumVisu</efx>
+        </l1>
+
+        <l2>
+            <efx>CircleGrow</efx>
+            <efx>ParticleGrowTexture</efx>
+            <efx>ParticleSystemTexture</efx>
+            <efx>StripeSpiral</efx>
+            <efx>SphereGrow</efx>
+            <efx>StripeCubes</efx>
+            <efx>WaveMeshTexture</efx>
+            <efx>WaveMeshAdvTex</efx>
+            <efx>SpectrumVisu</efx>
+        </l2>
+
+        <l3>
+            <efx>CircleGrow</efx>
+            <efx>ParticleGrowTexture</efx>
+            <efx>ParticleSystemTexture</efx>
+            <efx>StripeSpiral</efx>
+            <efx>SphereGrow</efx>
+            <efx>StripeCubes</efx>
+            <efx>WaveMeshTexture</efx>
+            <efx>WaveMeshAdvTex</efx>
+            <efx>SpectrumVisu</efx>
+        </l3>
+
+        <l4>
+            <efx>CircleGrow</efx>
+            <efx>ParticleGrowTexture</efx>
+            <efx>ParticleSystemTexture</efx>
+            <efx>StripeSpiral</efx>
+            <efx>SphereGrow</efx>
+            <efx>StripeCubes</efx>
+            <efx>WaveMeshTexture</efx>
+            <efx>WaveMeshAdvTex</efx>
+            <efx>SpectrumVisu</efx>
+        </l4>
+    </layers>
+
 </settings>
-<layers>
-    <l1>
-        <efx>CircleGrow</efx>
-        <efx>ParticleGrowTexture</efx>
-        <efx>ParticleSystemTexture</efx>
-        <efx>StripeSpiral</efx>
-        <efx>SphereGrow</efx>
-        <efx>StripeCubes</efx>
-        <efx>WaveMeshTexture</efx>
-        <efx>WaveMeshAdvTex</efx>
-        <efx>SpectrumVisu</efx>
-    </l1>
 
-    <l2>
-        <efx>CircleGrow</efx>
-        <efx>ParticleGrowTexture</efx>
-        <efx>ParticleSystemTexture</efx>
-        <efx>StripeSpiral</efx>
-        <efx>SphereGrow</efx>
-        <efx>StripeCubes</efx>
-        <efx>WaveMeshTexture</efx>
-        <efx>WaveMeshAdvTex</efx>
-        <efx>SpectrumVisu</efx>
-    </l2>
-
-    <l3>
-        <efx>CircleGrow</efx>
-        <efx>ParticleGrowTexture</efx>
-        <efx>ParticleSystemTexture</efx>
-        <efx>StripeSpiral</efx>
-        <efx>SphereGrow</efx>
-        <efx>StripeCubes</efx>
-        <efx>WaveMeshTexture</efx>
-        <efx>WaveMeshAdvTex</efx>
-        <efx>SpectrumVisu</efx>
-    </l3>
-
-    <l4>
-        <efx>CircleGrow</efx>
-        <efx>ParticleGrowTexture</efx>
-        <efx>ParticleSystemTexture</efx>
-        <efx>StripeSpiral</efx>
-        <efx>SphereGrow</efx>
-        <efx>StripeCubes</efx>
-        <efx>WaveMeshTexture</efx>
-        <efx>WaveMeshAdvTex</efx>
-        <efx>SpectrumVisu</efx>
-    </l4>
-</layers>
+    
