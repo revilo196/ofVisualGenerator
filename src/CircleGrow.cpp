@@ -9,11 +9,9 @@ CircleGrow::CircleGrow() : VjObject("CircleGrow")
 	addParameter(size.set("size", 1, 0, 3));
 	addParameter(res.set("res", 50, 2, 120));
 	addParameter(thick.set("thick", 0.02, 0, 0.5));
-	//color.setName("color");
-	//addParameter(color);
-	addParameter(rgb_r.set("r", 255, 0, 255));
-	addParameter(rgb_g.set("g", 255, 0, 255));
-	addParameter(rgb_b.set("b", 255, 0, 255));
+	addParameter(rgb_r.set("rgb_r", 255, 0, 255));
+	addParameter(rgb_g.set("rgb_g", 255, 0, 255));
+	addParameter(rgb_b.set("rgb_b", 255, 0, 255));
 
 	this->color.r = rgb_r ;
 	this->color.g = rgb_g ;
