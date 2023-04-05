@@ -14,7 +14,7 @@
     <artnetEnable>0</artnetEnable>
     <artnetPort>9999</artnetPort>
     <ndi>
-        <name>OfVisualGenerator NDI Send</name>
+        <name>OfVisualGeneratorNDISend</name>
     </ndi>
 
     <layers>
