@@ -11,10 +11,12 @@ module.exports = {
         // FULL MATCH only
         if ( res!= null && res[0] == address ) {
 
+            send(host, port, address + "_r", args[0].value)
+            send(host, port, address + "_g", args[1].value)
+            send(host, port, address + "_b", args[2].value)
             send(host, port, address + "-r", args[0].value)
             send(host, port, address + "-g", args[1].value)
             send(host, port, address + "-b", args[2].value)
-
             return // bypass original message
         } 
 
